@@ -26,3 +26,14 @@
 - Mirella: Finish the Shiny DataCamp Introduction Course, and meet Paul again. 
 
 ## 2019-02-12
+### What did you do this week?
+
+Julia: I finished the the Shiny DataCamp Introduction Course and started investigating the weather data. We also emailed Suzanne about getting a account on Shiny Server.
+
+### What is it that you're struggling with right now?
+
+Julia: I'm still having trouble being able to use/upload the data in rstudio to be able to use I think it is uploaded but when I make a dash board it says "object not found." I think this could be because I'm misunderstanding how to use etl_extract to get the data.  
+
+### What are you planning to do next week?
+
+Julia: I'm planning on working on creating a very basic Shiny app for weather data. I'm also planning on learning more about dygraphs and how to implement them in R. 
