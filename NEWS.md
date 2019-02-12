@@ -6,12 +6,14 @@
 - Mirella:We emailed Suzanne, and started playing with Shiny after taking the DataCamp Shiny Introduction course. We also meeting Paul this Thursday. 
 
 ### What is it that you're struggling with right now?
- dygraphs and how to implement them in R. 
+ - Julia:  I'm still having trouble being able to use/upload the data in rstudio to be able to use I think it is uploaded but when I make a dash board it says "object not found." I think this could be because I'm misunderstanding how to use etl_extract to get the data.
 - Marta: To see which parts of Shiny we can utilize for Paul's dashboard and getting the data loaded in successfully.
 - Mirella:To be confident with Shiny and be able to start showing some graphs. And, hopefully after meeting with Paul this week, we have a clear understanding which part to start with in Shiny. 
 
 ### What are you planning to do next week?
+- Julia: I'm planning on working on creating a very basic Shiny app for weather data. I'm also planning on learning more about dygraphs and how to implement them in R. 
 - Marta: We have a meeting scheduled with Paul this Thursday so hopefully we can show him some examples of the Shiny app and ideas we have moving forward. 
+
 
 ### What are you planning to do next week?
 - Marta: Hopefully get access to the Shiny server and keep playing around with Shiny.
