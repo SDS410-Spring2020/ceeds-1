@@ -1,3 +1,21 @@
+## 2019-02-12
+### What did you do this week?
+
+- Julia: I finished the the Shiny DataCamp Introduction Course and started investigating the weather data. We also emailed Suzanne about getting a account on Shiny Server.
+- Marta: We were able to get the two weather data files from Suzanne and started exploring Shiny.
+- Mirella:We emailed Suzanne, and started playing with Shiny after taking the DataCamp Shiny Introduction course. We also meeting Paul this Thursday. 
+
+### What is it that you're struggling with right now?
+ dygraphs and how to implement them in R. 
+- Marta: To see which parts of Shiny we can utilize for Paul's dashboard and getting the data loaded in successfully.
+- Mirella:To be confident with Shiny and be able to start showing some graphs. And, hopefully after meeting with Paul this week, we have a clear understanding which part to start with in Shiny. 
+
+##What are you planning to do next week?
+- Marta: We have a meeting scheduled with Paul this Thursday so hopefully we can show him some examples of the Shiny app and ideas we have moving forward. 
+
+What are you planning to do next week?
+- Marta: Hopefully get access to the Shiny server and keep playing around with Shiny.
+
 ## 2019-02-05
 
 ### What did you do this week?
@@ -30,15 +48,3 @@
     
 - Marta: I'm planning on finishing up the Data Camp course and possibly doing another if I feel like that'll help me understand it more.
 - Mirella: Finish the Shiny DataCamp Introduction Course, and meet Paul again. 
-
-## 2019-02-12
-### What did you do this week?
-
-- Julia: I finished the the Shiny DataCamp Introduction Course and started investigating the weather data. We also emailed Suzanne about getting a account on Shiny Server.
-- Marta:
-- Mirella:We emailed Suzanne, and started playing with Shiny after taking the DataCamp Shiny Introduction course. We also meeting Paul this Thursday. 
-
-### What is it that you're struggling with right now?
- dygraphs and how to implement them in R. 
-- Marta:
-- Mirella:To be confident with Shiny and be able to start showing some graphs. And, hopefully after meeting with Paul this week, we have a clear understanding which part to start with in Shiny. 
