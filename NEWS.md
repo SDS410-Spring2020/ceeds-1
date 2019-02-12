@@ -10,11 +10,12 @@
 - Marta: To see which parts of Shiny we can utilize for Paul's dashboard and getting the data loaded in successfully.
 - Mirella:To be confident with Shiny and be able to start showing some graphs. And, hopefully after meeting with Paul this week, we have a clear understanding which part to start with in Shiny. 
 
-## What are you planning to do next week?
+### What are you planning to do next week?
 - Marta: We have a meeting scheduled with Paul this Thursday so hopefully we can show him some examples of the Shiny app and ideas we have moving forward. 
 
-## What are you planning to do next week?
+### What are you planning to do next week?
 - Marta: Hopefully get access to the Shiny server and keep playing around with Shiny.
+
 
 ## 2019-02-05
 
