@@ -1,0 +1,60 @@
+---
+title: "Shiny fun"
+author: "Julia Lee"
+date: "2/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+#install.packages("sf")
+library(sf)
+#install.packages("macleish")
+library(leaflet)
+library(RSQLite)
+#install.packages("lwgeom")
+library(lwgeom)
+#devtools::install_github("beanumber/macleish")
+library(macleish)
+packageVersion("macleish")
+#install.packages("shiny")
+#install.packages("shinydashboard")
+library(shinydashboard)
+library(shiny)
+```
+
+```{r}
+etl_transform.etl_macleish
+whately<-"/WhatelyMet_Met_10min.dat" 
+```
+
+
+
+```{r}
+ui <- dashboardPage(
+  dashboardHeader(title = "Wind Speed"),
+  dashboardSidebar(),
+  dashboardBody(
+    # Boxes need to be put in a row (or column)
+    fluidRow(
+      box(plotOutput("plot1", height = 250)),
+
+      box(
+        title = "Controls",
+        sliderInput("slider", "Number of observations:", 1, 100, 50)
+      )
+    )
+  )
+)
+
+server <- function(input,output) {
+  output$plot1 <- renderPlot({
+    ggplot(whately, aes(x=windspeed)) + 
+  geom_histogram(binwidth=1)
+  })
+}
+
+shinyApp(ui, server)
+```
+
