@@ -18,6 +18,12 @@
 - Marta: I'm still learning about Shiny and how we can apply it to our project.
 - Mirella: As a team, trying to access the 10 minute data report. Trying to figure out the cleaest way to access it and a let it be availbale for the public. 
 
+- Julia: I'm still having trouble being able to use/upload the data in rstudio to be able to use I think it is uploaded but when I make a dash board it says "object not found." I think this could be because I'm misunderstanding how to use etl_extract to get the data.  
+- Marta:
+- Mirella:Getting the data clean into R. 
+### What are you planning to do next week?
+
+- Julia: I'm planning on working on creating a very basic Shiny app for weather data. I'm also planning on learning more about
 ### What are you planning to do next week?
 
 - Julia: I'm planning on reading more of the weather report that Paul sent us to get a better feel for the data. I'm also planning on trying to experiment with shiny in r with sample data sets to see how it works better.  
@@ -28,12 +34,11 @@
 ## 2019-02-12
 ### What did you do this week?
 
-Julia: I finished the the Shiny DataCamp Introduction Course and started investigating the weather data. We also emailed Suzanne about getting a account on Shiny Server.
+- Julia: I finished the the Shiny DataCamp Introduction Course and started investigating the weather data. We also emailed Suzanne about getting a account on Shiny Server.
+- Marta:
+- Mirella:We emailed Suzanne, and started playing with Shiny after taking the DataCamp Shiny Introduction course. We also meeting Paul this Thursday. 
 
 ### What is it that you're struggling with right now?
-
-Julia: I'm still having trouble being able to use/upload the data in rstudio to be able to use I think it is uploaded but when I make a dash board it says "object not found." I think this could be because I'm misunderstanding how to use etl_extract to get the data.  
-
-### What are you planning to do next week?
-
-Julia: I'm planning on working on creating a very basic Shiny app for weather data. I'm also planning on learning more about dygraphs and how to implement them in R. 
+ dygraphs and how to implement them in R. 
+- Marta:
+- Mirella:To be confident with Shiny and be able to start showing some graphs. And, hopefully after meeting with Paul this week, we have a clear understanding which part to start with in Shiny. 
