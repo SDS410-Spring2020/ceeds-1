@@ -15,8 +15,6 @@
 - Marta: We have a meeting scheduled with Paul this Thursday so hopefully we can show him some examples of the Shiny app and ideas we have moving forward. 
 
 
-### What are you planning to do next week?
-- Marta: Hopefully get access to the Shiny server and keep playing around with Shiny.
 
 
 ## 2019-02-05
@@ -39,13 +37,12 @@
 - Marta: I'm still learning about Shiny and how we can apply it to our project.
 - Mirella: As a team, trying to access the 10 minute data report. Trying to figure out the cleaest way to access it and a let it be availbale for the public. 
 
-- Julia: I'm still having trouble being able to use/upload the data in rstudio to be able to use I think it is uploaded but when I make a dash board it says "object not found." I think this could be because I'm misunderstanding how to use etl_extract to get the data.  
+  
 - Marta:
 - Mirella:Getting the data clean into R. 
-### What are you planning to do next week?
 
-- Julia: I'm planning on working on creating a very basic Shiny app for weather data. I'm also planning on learning more about
 ### What are you planning to do next week?
+- Marta: Hopefully get access to the Shiny server and keep playing around with Shiny.
 
 - Julia: I'm planning on reading more of the weather report that Paul sent us to get a better feel for the data. I'm also planning on trying to experiment with shiny in r with sample data sets to see how it works better.  
     
