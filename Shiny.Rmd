@@ -26,7 +26,22 @@ library(shiny)
 
 ```{r}
 etl_transform.etl_macleish
-whately<-"/WhatelyMet_Met_10min.dat" 
+```
+
+```{r}
+whately<- whately_2015
+macleish <- etl("macleish")
+macleish %>%
+  etl_update()
+whately_update <- macleish %>%
+  tbl("whately")
+names(whately_update)
+```
+
+```{r}
+whately<- whately_2015
+names(whately_2015)
+names(orchard_2015)
 ```
 
 
@@ -42,7 +57,7 @@ ui <- dashboardPage(
 
       box(
         title = "Controls",
-        sliderInput("slider", "Number of observations:", 1, 100, 50)
+        sliderInput("slider", "Number of observations:", 1, 200, 100)
       )
     )
   )
@@ -50,7 +65,7 @@ ui <- dashboardPage(
 
 server <- function(input,output) {
   output$plot1 <- renderPlot({
-    ggplot(whately, aes(x=windspeed)) + 
+    ggplot(whately, aes(x=wind_speed)) + 
   geom_histogram(binwidth=1)
   })
 }
