@@ -3,17 +3,19 @@
 
 - Julia: I start work on using some of the data from the macleish package and trying to figure out how to best visualize it. I also started to  play around with shiny.(Shiny.rmd) This week we also talked to Paul and  decided what needed to be done for the next coming weeks.
 - Marta: I finished the Datacamp Shiny course. We met up with Paul last week and came up with tasks we need to do.
+- Mirella: I was able to install the macleish package, and start working with the data. We also met Paul last Thursday, and we were able to talk about our struggles with him and get some of his input. 
 
 ### What is it that you're struggling with right now?
 
 - Julia: I'm having a hard time trying to access real time data. I followed the code from https://github.com/beanumber/macleish/tree/e4625a8f88b1181785fe5bbb8f3d5f7fd6f37b45 and I still don't really understand how the ETL framework works. 
 - Marta: I'm still struggling with getting used to Shiny.
+- Mirella: Whether or not it would be a good idea to further expand the current Macleish package, since there are quite a few variables that our client would like to include in the new dashboard. 
 
 ### What are you planning to do next week?
 
 -Julia: I'm planning on doing a more thorough data analysis to get a better idea of what vizualizations make sense in the context of our project. I'm also planning on doing more with real time data because write now I'm just looking at Whately_2015 data as a first step. I also think that we as a team were planning on getting in contact with Suzanne Palmer because according to Paul, she has already started redoing the dashboard.
 - Marta: Getting some visualizations put together with the weather data we now have access to.
-
+- Mirella: Start creating a graph for the dashboard, and also have started mutating the data if necessary. 
 
 
 ## 2019-02-12
