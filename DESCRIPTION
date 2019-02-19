@@ -1,0 +1,17 @@
+Package: ceeds
+Title: What the Package Does (One Line, Title Case)
+Version: 0.0.0.9001
+Authors@R: 
+    person(given = "Marta",
+           family = "Garcia",
+           role = c("aut", "cre"),
+           email = "first.last@example.com")
+Description: What the package does (one paragraph).
+License: CC0
+Imports:
+    dplyr,
+    etl,
+    magrittr
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
