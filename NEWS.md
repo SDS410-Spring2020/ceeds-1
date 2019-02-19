@@ -1,3 +1,18 @@
+## 2019-02-19
+### What did you do this week?
+
+- Julia: I start work on using some of the data from the macleish package and trying to figure out how to best visualize it. I also started to  play around with shiny.(Shiny.rmd) This week we also talked to Paul and  decided what needed to be done for the next coming weeks.
+
+### What is it that you're struggling with right now?
+
+- Julia: I'm having a hard time trying to access real time data. I followed the code from https://github.com/beanumber/macleish/tree/e4625a8f88b1181785fe5bbb8f3d5f7fd6f37b45 and I still don't really understand how the ETL framework works. 
+
+### What are you planning to do next week?
+
+-Julia: I'm planning on doing a more thorough data analysis to get a better idea of what vizualizations make sense in the context of our project. I'm also planning on doing more with real time data because write now I'm just looking at Whately_2015 data as a first step. I also think that we as a team were planning on getting in contact with Suzanne Palmer because according to Paul, she has already started redoing the dashboard.
+
+
+
 ## 2019-02-12
 ### What did you do this week?
 
