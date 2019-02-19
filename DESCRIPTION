@@ -8,6 +8,8 @@ Authors@R:
            email = "first.last@example.com")
 Description: What the package does (one paragraph).
 License: CC0
+Depends:
+    R (>= 3.3.0)
 Imports:
     dplyr,
     etl,
