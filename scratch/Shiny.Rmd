@@ -11,9 +11,11 @@ library(tidyverse)
 library(RMySQL)
 #install.packages("sf")
 library(sf)
-install.packages("macleish")
+#install.packages("macleish")
 library(leaflet)
 library(RSQLite)
+install.packages("ceeds")
+library(ceeds)
 #install.packages("lwgeom")
 library(lwgeom)
 #devtools::install_github("beanumber/macleish")
@@ -39,11 +41,7 @@ whately_update <- macleish %>%
 names(whately_update)
 ```
 
-```{r}
-whately<- whately_2015
-names(whately_2015)
-names(orchard_2015)
-```
+
 
 
 
@@ -79,12 +77,8 @@ shinyApp(ui, server)
 
 
 ```{r}
-macleish <- etl("macleish")
-macleish %>%
-  etl_update()
+read_whately()
 
-whately <- macleish %>%
-  tbl("whately")
 whately %>%
   mutate(the_year = strftime('%Y', when)) %>%
   group_by(the_year) %>%
