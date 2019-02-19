@@ -9,7 +9,7 @@ Authors@R:
 Description: What the package does (one paragraph).
 License: CC0
 Depends:
-    R (>= 3.3.0)
+    R (>= 3.4.3)
 Imports:
     dplyr,
     etl,
