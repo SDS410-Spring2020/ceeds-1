@@ -120,14 +120,15 @@ class(whately)
 
 daily <- whately %>%
   mutate(the_date = date(when)) %>%
-  group_by(the_date) 
+  group_by(the_date)%>% 
+  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity))
  
    
 View(daily)
 ```
 
 ```{r}
-ggplot(data = whately, aes(x = wind_speed, y = temperature)) +
+ggplot(data = daily, aes(x = avgWindSpeed, y = avgTemp)) +
   geom_point() + 
   geom_smooth()
 ggplot(whately, aes(x=wind_speed)) + 
