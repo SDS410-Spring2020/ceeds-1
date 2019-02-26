@@ -56,7 +56,7 @@ ui <- dashboardPage(
 
 server <- function(input,output) {
   output$plot1 <- renderPlot({
-    ggplot(input, aes(x=wind_speed)) +
+    ggplot(whately_2015, aes(x=wind_speed)) +
   geom_histogram(binwidth=1)
   })
 }
@@ -68,7 +68,7 @@ shinyApp(ui, server)
 
 count(whately_2015)
 ui <- dashboardPage(
-  dashboardHeader(title = "Wind Speed"),
+  dashboardHeader(title = "Fun Plots"),
   dashboardSidebar(),
   dashboardBody(
     # Boxes need to be put in a row (or column)
@@ -88,9 +88,11 @@ ui <- dashboardPage(
 )
 
 server <- function(input,output) {
+  FilterData <- reactive({
+    whately_2015[, c(input$xcol, input$ycol)]
+  })
   output$plot1 <- renderPlot({
-    ggplot(data = whately_2015, aes(x = input$xcol, y = input$ycol)) +
-  geom_point(color = "blue") 
+    plot(FilterData(), pch = 19, frame = FALSE)
   })
 }
 
