@@ -128,7 +128,7 @@ View(daily)
 ```
 
 ```{r}
-ggplot(data = daily, aes(x = avgWindSpeed, y = avgTemp)) +
+ggplot(data = daily, aes(x =the_date, y = avgWindSpeed)) +
   geom_point() + 
   geom_smooth()
 ggplot(whately, aes(x=wind_speed)) + 
