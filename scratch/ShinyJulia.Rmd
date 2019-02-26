@@ -37,6 +37,7 @@ library(shiny)
 
 
 ```{r}
+count(whately_2015)
 ui <- dashboardPage(
   dashboardHeader(title = "Wind Speed"),
   dashboardSidebar(),
@@ -47,7 +48,7 @@ ui <- dashboardPage(
 
       box(
         title = "Controls",
-        sliderInput(, "Number of observations:", 1, 200, 100)
+        sliderInput("count(whately_2015)", "Number of observations:", 0,52560 , 100)
       )
     )
   )
@@ -55,8 +56,41 @@ ui <- dashboardPage(
 
 server <- function(input,output) {
   output$plot1 <- renderPlot({
-    ggplot(whately, aes(x=wind_speed)) + 
+    ggplot(input, aes(x=wind_speed)) +
   geom_histogram(binwidth=1)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+```{r}
+
+count(whately_2015)
+ui <- dashboardPage(
+  dashboardHeader(title = "Wind Speed"),
+  dashboardSidebar(),
+  dashboardBody(
+    # Boxes need to be put in a row (or column)
+    fluidRow(
+      box(plotOutput("plot1", height = 250)),
+
+      box(
+        title = "Controls",
+         sidebarPanel(
+    selectInput('xcol', 'X Variable', names(whately_2015)),
+    selectInput('ycol', 'Y Variable', names(whately_2015),
+                selected=names(whately_2015)[[2]])
+  )
+      )
+    )
+  )
+)
+
+server <- function(input,output) {
+  output$plot1 <- renderPlot({
+    ggplot(data = whately_2015, aes(x = input$xcol, y = input$ycol)) +
+  geom_point(color = "blue") 
   })
 }
 
@@ -65,24 +99,30 @@ shinyApp(ui, server)
 
 
 
-
-
 ```{r}
 whately<-read_whately()
 View(whately)
+data(whately)
 ```
 
 ```{r}
+class(whately)
+```
+
+```{r}
+
 daily <- whately %>%
   mutate(the_date = date(when)) %>%
-  group_by(the_date) %>%
-   tail(whatley,30)
+  group_by(the_date) 
+ 
+   
 View(daily)
 ```
 
 ```{r}
 ggplot(data = whately, aes(x = wind_speed, y = temperature)) +
-  geom_point() + geom_smooth()
+  geom_point() + 
+  geom_smooth()
 ggplot(whately, aes(x=wind_speed)) + 
   geom_histogram(binwidth=1)
   
