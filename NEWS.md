@@ -1,5 +1,25 @@
 ## 2019-02-19
 ### What did you do this week?
+ 
+- Julia: 
+
+
+### What is it that you're struggling with right now?
+
+- Julia: I don't understand how to turn reactivevalues into a data frame, in order to use ggplot in the shiny dashboard. This is the error I keep on getting : "ggplot2 doesn't know how to deal with data of class reactivevalues."  
+
+
+### What are you planning to do next week?
+
+-Julia:
+
+
+
+
+
+
+## 2019-02-19
+### What did you do this week?
 
 - Julia: I start work on using some of the data from the macleish package and trying to figure out how to best visualize it. I also started to  play around with shiny.(Shiny.rmd) This week we also talked to Paul and  decided what needed to be done for the next coming weeks.
 - Marta: I finished the Datacamp Shiny course. We met up with Paul last week and came up with tasks we need to do.
