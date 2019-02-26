@@ -1,3 +1,22 @@
+## 2019-02-26
+### What did you do this week?
+ 
+- Julia: This Week I created a function in Our Ceeds package called read_orchard() similar to read_whately() to get real time Orchard met data! I also made some exploratory data visualizations using the updated data.
+- Marta:
+- Mirella: I updated R since the latest version was not letting me work with the code and packages we want to work with. I'm also trying to create a temperature data visualization.  
+
+### What is it that you're struggling with right now?
+
+- Julia: I don't understand how to turn reactivevalues into a data frame, in order to use ggplot in the shiny dashboard. This is the error I keep on getting : "ggplot2 doesn't know how to deal with data of class reactivevalues." Can I not use ggplot if I also want to filter? I'm also struggling with trying to parse the "When" variable to be a date and then grouping by date. I'm also confused about why we don't need to import "macleish" in our ceeds package.
+- Marta:
+- Mirella: I'm having a hard time trying to get the real time data to work in my computer. 
+
+### What are you planning to do next week?
+
+-Julia: I'm planning on working more on the user dashboard interface to get filtering to be able to work with our plots. We are also going to work on the ceeds package documentation and the README. We are also planning on meeting with Paul this Thursday.  
+- Marta:
+- Mirella: My computer to be ready, so I can finalize a data visualization for Temperature. And to start working in other graphs for out dashboard. 
+
 ## 2019-02-19
 ### What did you do this week?
 
