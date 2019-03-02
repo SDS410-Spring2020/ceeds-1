@@ -90,7 +90,7 @@ hc_exporting(enabled = TRUE) # enable exporting option
 ```
 
 ```{r}
-# Highchart of precipitation
+# Highchart of wind
 highchart(type = "stock")%>%
 hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = " Max Wind Speed") %>%
 hc_add_theme(hc_theme_538()) %>%
@@ -109,25 +109,28 @@ ui <- dashboardPage(
 menuItem("Wind",tabName="Wind",icon=icon("globe"))      
 ),
   dashboardBody(
-   fluidRow( 
+    fluidRow(
   tabItem(tabName = "Temperature", h3("Average Temperature",align="center") ,
-      box(highchartOutput("hc1", height = 12))
-      ),
+      box(highchartOutput("hc1", height = 12)),
       tabItem(tabName = "Precipitation",
       h3("Total Precipitation",align="center") ,
-   box(highchartOutput("hc2"), width=12)),
+   box(highchartOutput("hc2"), width=12),
     tabItem(tabName = "Wind",
       h3("Max Wind Speed",align="center") ,
-   box(highchartOutput("hc3"), width=12))
-    )#end tabitems
+   box(highchartOutput("hc3"), width=12)
+    )
+   )
+  )#end tabitems
+  )
  )#end body
 )
+
 ```
 
 
 
 ```{r}
-server <- function(input, output) {
+server <- function(input, output){
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
 hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
@@ -136,11 +139,11 @@ hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), nam
 hc_exporting(enabled = TRUE)})
   output$hc2 <- renderHighchart({highchart(type = "stock")%>%
 hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, x = the_date), name = "precipitation") %>%
-hc_exporting(enabled = TRUE)}) 
-  output$hc3 <- renderHighchart({highchart(type = "stock")%>%
-hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = " Max Wind Speed") %>%
-hc_add_theme(hc_theme_538()) %>%
 hc_exporting(enabled = TRUE)})
+output$hc3 <-renderHighchart({highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = "Max Wind") %>%
+hc_exporting(enabled = TRUE)})
+
 }
 
 ```
