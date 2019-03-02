@@ -108,6 +108,7 @@ shinyApp(ui, server)
 
 ```{r}
 whately<-read_whately()
+orchard <-read_orchard()
 View(whately)
 data(whately)
 ```
@@ -121,11 +122,21 @@ class(whately)
 daily <- whately %>%
   mutate(the_date = date(when)) %>%
   group_by(the_date)%>% 
-  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity))
- 
-   
+  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),maxtemp= max(temperature), 
+mintemp = min(temperature),
+maxwind= max(wind_speed), 
+minwind = min(wind_speed))
 View(daily)
 ```
+
+```{r}
+#Let's look at current week data
+This_week <- daily%>%
+ filter(between(the_date, today() - days(7), today()))
+View(This_week)
+```
+
+
 
 ```{r}
 ggplot(data = daily, aes(x =the_date, y = avgWindSpeed)) +
@@ -133,5 +144,16 @@ ggplot(data = daily, aes(x =the_date, y = avgWindSpeed)) +
   geom_smooth()
 ggplot(whately, aes(x=wind_speed)) + 
   geom_histogram(binwidth=1)
+  
+ggplot(daily_whately, aes(the_date,
+               ymin = mintemp,
+               ymax = maxtemp,
+               color = avgTemp)) + 
+  geom_linerange(size = 1.5, alpha = 0.85) +
+  scale_x_date(labels = date_format("%Y"), breaks = date_breaks("year")) + 
+  ylim(-27, 36) +
+  coord_polar() +
+  theme_fivethirtyeight()
+
   
 ```
