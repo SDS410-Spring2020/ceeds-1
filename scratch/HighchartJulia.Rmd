@@ -1,0 +1,150 @@
+---
+title: "Highcharter"
+author: "Julia Lee"
+date: "3/2/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(RMySQL)
+#install.packages("etl")
+library(etl)
+#install.packages("macleish")
+library(leaflet)
+library(RSQLite)
+#install.packages("ceeds")
+library(ceeds)
+#install.packages("lwgeom")
+#library(lwgeom)
+#devtools::install_github("beanumber/macleish")
+library(macleish)
+#packageVersion("macleish")
+#install.packages("lubridate")
+library(lubridate)
+#install.packages("shinyCustom")
+library(shinydashboard)
+library(shiny)
+#library(shinyCustom)
+#install.packages("highcharter")
+library(highcharter)
+#install.packages("scales")
+#install.packages("viridis")
+library(viridis)
+library(scales)
+library(RColorBrewer)
+library(ggthemes)
+#install.packages("kableExtra")
+#install.packages("timetk")
+library(timetk)
+library(kableExtra)
+```
+
+```{r}
+whately<-read_whately()
+```
+
+```{r}
+# Grouping by the date 
+daily_whately <- whately %>%
+  mutate(the_date = date(when)) %>%
+  group_by(the_date)%>% 
+  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
+maxtemp= max(temperature), 
+mintemp = min(temperature),
+maxwind= max(wind_speed), 
+minwind = min(wind_speed))
+```
+
+
+```{r}
+#Let's only look at current week data
+This_week <- daily_whately%>%
+ filter(between(the_date, today() - days(7), today()))
+View(This_week)
+```
+
+```{r}
+#Let's only look at data from last year
+This_year <- daily_whately%>%
+ filter(between(the_date, today() - days(365), today()))
+```
+
+
+#trying to make highcharts!
+```{r}
+# Highchart of temperature 
+highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
+  hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), name = "min temperature") %>%
+  hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), name = "max temperature") %>%
+hc_exporting(enabled = TRUE) # enable exporting option
+```
+
+```{r}
+# Highchart of precipitation
+highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, x = the_date), name = "precipitation") %>%
+hc_exporting(enabled = TRUE) # enable exporting option
+```
+
+```{r}
+# Highchart of precipitation
+highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = " Max Wind Speed") %>%
+hc_add_theme(hc_theme_538()) %>%
+hc_exporting(enabled = TRUE) # enable exporting option
+```
+
+# now putting all of these graphs in shiny dashboard:
+
+```{r}
+ui <- dashboardPage(
+  dashboardHeader(title = "Macleish weather",
+                  dropdownMenu()),
+  dashboardSidebar(menuItem("Temperature", tabName = "Temperature", icon = icon("dashboard")),
+      menuItem("Precipitation", tabName = "Precipitation", icon = icon("th")),
+      menuItem("",tabName="unions",icon=icon("signal")),
+menuItem("Wind",tabName="Wind",icon=icon("globe"))      
+),
+  dashboardBody(
+   fluidRow( 
+  tabItem(tabName = "Temperature", h3("Average Temperature",align="center") ,
+      box(highchartOutput("hc1", height = 12))
+      ),
+      tabItem(tabName = "Precipitation",
+      h3("Total Precipitation",align="center") ,
+   box(highchartOutput("hc2"), width=12)),
+    tabItem(tabName = "Wind",
+      h3("Max Wind Speed",align="center") ,
+   box(highchartOutput("hc3"), width=12))
+    )#end tabitems
+ )#end body
+)
+```
+
+
+
+```{r}
+server <- function(input, output) {
+  output$hc1 <- renderHighchart ({
+    highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
+  hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), name = "min temperature") %>%
+  hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), name = "max temperature") %>%
+hc_exporting(enabled = TRUE)})
+  output$hc2 <- renderHighchart({highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, x = the_date), name = "precipitation") %>%
+hc_exporting(enabled = TRUE)}) 
+  output$hc3 <- renderHighchart({highchart(type = "stock")%>%
+hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = " Max Wind Speed") %>%
+hc_add_theme(hc_theme_538()) %>%
+hc_exporting(enabled = TRUE)})
+}
+
+```
+
+```{r}
+shinyApp(ui, server)
+```
