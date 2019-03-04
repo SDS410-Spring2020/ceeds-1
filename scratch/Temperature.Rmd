@@ -1,0 +1,189 @@
+---
+title: "Temperature"
+author: "Mirella"
+date: "2/5/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(RMySQL)
+#install.packages("etl")
+library(etl)
+#install.packages("macleish")
+library(leaflet)
+library(RSQLite)
+#install.packages("ceeds")
+library(ceeds)
+#install.packages("lwgeom")
+#library(lwgeom)
+#devtools::install_github("beanumber/macleish")
+library(macleish)
+#packageVersion("macleish")
+#install.packages("lubridate")
+library(lubridate)
+#install.packages("shinyCustom")
+library(shinydashboard)
+library(shiny)
+#library(shinyCustom)
+```
+
+
+
+```{r}
+count(whately_2015)
+ui <- dashboardPage(
+  dashboardHeader(title = "Wind Speed"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem(text = "Current Weather Stations",
+               tabName = "current weather stations"),
+      menuItem(text = "Orchard Met Historic",
+               tabName = "orchard meti historc"),
+      menuItem(text = "Whately Met Historic",
+               tabName = "whately met historic"),
+      menuItem(text = "Whately Met Data Table Month",
+               tabName = "whately met data table month"),
+      menuItem(text = "Orchard Met Data Table Month",
+               tabName = "orchard met data table month")
+    )
+  ),
+  dashboardBody(
+    # Boxes need to be put in a row (or column)
+    fluidRow(
+      box(plotOutput("plot1", height = 250)),
+      box(
+        title = "Controls",
+        sliderInput("bins",
+                  "Number of bins:",
+                  min = 2,
+                  max = 100,
+                  value = 50)
+      )
+    )
+  )
+)
+
+server <- function(input,output) {
+  output$plot1 <- renderPlot({
+    bins <- seq(min(whately_2015$wind_speed), max(whately_2015$wind_speed), length.out = input$bins)
+    hist(whately_2015$wind_speed, breaks = bins, col = 'darkgray', border = 'white') 
+  })
+}
+
+shinyApp(ui, server)
+```
+
+```{r}
+#including tabs
+count(whately_2015)
+ui <- dashboardPage(
+  dashboardHeader(title = "Macleish Dashboard"),
+  dashboardSidebar(
+    sidebarMenu(
+      menuItem(text = "Current Weather Stations",
+               tabName = "current weather stations"),
+      menuItem(text = "Orchard Met Historic",
+               tabName = "orchard met historc"),
+      menuItem(text = "Whately Met Historic",
+               tabName = "whately met historic"),
+      menuItem(text = "Whately Met Data Table Month",
+               tabName = "whately met data table month"),
+      menuItem(text = "Orchard Met Data Table Month",
+               tabName = "orchard met data table month")
+    )
+    
+  ),
+  dashboardBody(
+    # linking tabs to the body
+    tabItem(
+      tabItem(tabName = "current weather stations"),
+      tabItem(tabName = "orchard met historic")
+    ),
+    # Boxes need to be put in a row (or column)
+    fluidRow(
+      box(plotOutput("plot1", height = 250)),
+
+      box(
+        title = "Controls",
+         sidebarPanel(
+    selectInput('daily', 'X Variable', names(whately_2015)),
+    selectInput('ycol', 'Y Variable', names(whately_2015),
+                selected=names(whately_2015)[[2]])
+  )
+      )
+    )
+  )
+)
+
+
+# server <- function(input,output) {
+#   FilterData <- reactive({
+#     getSymbols(input$symb, src = "whately_2015",
+#                from)
+#   })
+#   output$plot1 <- renderPlot({
+#     plot(FilterData(), pch = 19, frame = FALSE)
+#   })
+# }
+
+
+server <- function(input,output) {
+  FilterData <- reactive({
+    whately_2015[, c(input$daily, input$ycol)]
+  })
+  output$plot1 <- renderPlot({
+    plot(FilterData(), pch = 19, frame = FALSE)
+  })
+}
+
+shinyApp(ui, server)
+```
+
+
+
+```{r}
+whately<-read_whately()
+View(whately)
+data(whately)
+```
+
+```{r}
+class(whately)
+```
+
+```{r}
+
+daily <- whately %>%
+  mutate(the_date = date(when)) %>%
+  group_by(the_date)%>% 
+  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity))
+ 
+   
+View(daily)
+```
+
+```{r}
+ggplot(data = daily, aes(x = avgWindSpeed, y = avgTemp)) +
+  geom_point() + 
+  geom_smooth()
+ggplot(whately, aes(x=wind_speed)) + 
+  geom_histogram(binwidth=1)
+  
+```
+
+
+```{r}
+
+#Temperature average overall
+ggplot(data = daily, aes(x = the_date, y = avgTemp, color ="red"))+
+  geom_point() + 
+  geom_line()
+
+# #temperature
+# ggplot(data = whately, aes(x = when, y = temperature)) +
+#   geom_point() + 
+#   geom_line()
+```
+
