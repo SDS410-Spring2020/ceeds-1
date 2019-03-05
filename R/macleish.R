@@ -17,7 +17,8 @@
 read_whately <- function() {
   macleish <- etl::etl("macleish")
   macleish %>%
-    etl::etl_update()
+    etl_extract() %>%
+    etl_transform()
   whately <- macleish %>%
     dplyr::tbl("whately") %>%
     dplyr::collect()
