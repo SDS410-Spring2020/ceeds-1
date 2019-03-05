@@ -3,19 +3,19 @@
  
 - Julia: This Week I explored highcharter package and made some graphics using highcharter. I also worked on incorporating tabs into the shiny app. I also looked into the lubridate pacakge to filter the data by date and I figured how to filter the data for just the past week or month using the today() function.
 - Marta: This week I continued to work on the precipation graph.
-- Mirella: 
+- Mirella: This week I worked on the tabs for our dashbiard. I started a new Shiny DataCamp course that helped me start the tabs. I completed a temperarture graph as well. 
 
 ### What is it that you're struggling with right now?
 
 - Julia: I'm still trying to use ggplot if I also want to filter in Shiny. I also still don't have access to the shiny server. I'm also still trying to see how tabs work. I'm also currently struggling to find the best way for allowing a user to download filtered data, because highcharter allows users to download filtered data but only variables used in the chart. 
 - Marta: I'm struggling with integrating ggplot into Shiny and also finding the most efficient way to depict rainfall since it is an accumulation.
-- Mirella: 
+- Mirella: I am trying to put each the graphs into their corresponding tab. 
 
 ### What are you planning to do next week?
 
 -Julia: I'm planning on working more on the user dashboard interface to get tabs to be able to work with our plots. We are also going to work on the ceeds package documentation and the README. I also think it would be good to put the function that filters data for just for the last week/last month in our ceeds package. I also am planning on annotating code that I have already written to make it easier for others and my future self to read. 
 - Marta: I'm planning on catching up with Julia and Mirella regarding how the last meeting with Paul went and discussing how we can move forward effectively.
-- Mirella:
+- Mirella: Finish with the tabs, and also work with the filtering data (help Julia). As a team, determine our goals and expectations for our project. 
 
 ## 2019-02-26
 ### What did you do this week?
