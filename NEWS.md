@@ -13,7 +13,7 @@
 
 ### What are you planning to do next week?
 
--Julia: I'm planning on working more on the user dashboard interface to get filtering to be able to work with our plots. We are also going to work on the ceeds package documentation and the README. I also think it would be good to put the function that filters data for just for the last week/last month in our ceeds package. I also am planning on annotating code that I have already written to make it easier for others and my future self to read. 
+-Julia: I'm planning on working more on the user dashboard interface to get tabs to be able to work with our plots. We are also going to work on the ceeds package documentation and the README. I also think it would be good to put the function that filters data for just for the last week/last month in our ceeds package. I also am planning on annotating code that I have already written to make it easier for others and my future self to read. 
 - Marta:
 - Mirella:
 
