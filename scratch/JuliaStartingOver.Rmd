@@ -1,0 +1,114 @@
+---
+title: "Julia-ShinyTake2"
+author: "Julia Lee"
+date: "3/10/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(RMySQL)
+#install.packages("etl")
+library(etl)
+#install.packages("macleish")
+library(leaflet)
+library(RSQLite)
+#install.packages("ceeds")
+library(ceeds)
+#install.packages("lwgeom")
+#library(lwgeom)
+#devtools::install_github("beanumber/macleish")
+library(macleish)
+#packageVersion("macleish")
+#install.packages("lubridate")
+library(lubridate)
+#install.packages("shinyCustom")
+library(shinydashboard)
+library(shiny)
+#library(shinyCustom)
+#install.packages("highcharter")
+library(highcharter)
+#install.packages("scales")
+#install.packages("viridis")
+library(viridis)
+library(scales)
+library(RColorBrewer)
+library(ggthemes)
+#install.packages("kableExtra")
+#install.packages("timetk")
+library(timetk)
+library(kableExtra)
+```
+
+```{r}
+#reading in the data using the ceeds package
+whately<-read_whately()
+orchard<-read_orchard()
+```
+
+```{r}
+# Grouping by the date 
+daily_whately <- whately %>%
+  mutate(the_date = date(when)) %>%
+  group_by(the_date)%>% 
+  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
+maxtemp= max(temperature), 
+mintemp = min(temperature),
+maxwind= max(wind_speed), 
+minwind = min(wind_speed))
+```
+
+```{r}
+#setting up the UI
+ui<-shinyUI(
+  #Making a dashboard
+dashboardPage(
+  #making a header
+  dashboardHeader(title = "MacLeish weather"),
+  dashboardSidebar(
+    #making a sidebar with items
+    sidebarMenu(
+      #menu items 
+    menuItem("Wind Speed"),
+    #menu subItems
+      menuSubItem("Whately", tabName = "Wind Speed"),
+      menuSubItem("Orchard met"),
+    menuItem("Temperature"),
+      menuSubItem("Whately"),
+      menuSubItem("Orchard met"),
+    menuItem("Precipitation"),
+      menuSubItem("Whately"),
+      menuSubItem("Orchard met"),
+    menuItem("Raw Data"),
+      menuSubItem("Whately"),
+      menuSubItem("Orchard met")
+  )),
+  #dashboard body
+  dashboardBody(
+    #dashboard tabs items (linking menu items to pages)
+    tabItems(
+      tabItem(tabName = "Wind Speed",
+              fluidRow(
+                box(highchartOutput("hc3", height = 12))
+              )
+    )
+    )
+  )
+)
+)
+```
+
+```{r}
+server<-shinyServer(function(input, output){
+  
+
+})
+```
+
+```{r}
+shinyApp(ui, server)
+```
+
+
+
