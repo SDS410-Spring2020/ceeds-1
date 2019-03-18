@@ -19,7 +19,10 @@ read_whately <- function() {
   macleish %>%
     etl_extract() %>%
     etl_transform()
-  whately <- read_csv("whately")
+  whately<- macleish %>%
+    dplyr::tbl("whately") %>%
+    dplyr::collect() %>%
+    read_csv()
   return(whately)
 }
 
