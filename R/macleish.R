@@ -19,18 +19,21 @@ read_whately <- function() {
   macleish %>%
     etl_extract() %>%
     etl_transform()
-  whately <- macleish %>%
+  whately<- macleish %>%
     dplyr::tbl("whately") %>%
-    dplyr::collect()
+    dplyr::collect() %>%
+    read_csv()
   return(whately)
 }
 
 read_orchard <- function() {
   macleish <- etl::etl("macleish")
   macleish %>%
-    etl::etl_update()
+    etl_extract() %>%
+    etl_transform()
   orchard <- macleish %>%
     dplyr::tbl("orchard") %>%
     dplyr::collect()
   return(orchard)
 }
+

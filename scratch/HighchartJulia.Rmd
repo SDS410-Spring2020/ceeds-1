@@ -103,11 +103,13 @@ hc_exporting(enabled = TRUE) # enable exporting option
 ui <- dashboardPage(
   dashboardHeader(title = "Macleish weather",
                   dropdownMenu()),
-  dashboardSidebar(menuItem("Temperature", tabName = "Temperature", icon = icon("dashboard")),
+  dashboardSidebar(
+    sidebarMenu(
+    menuItem("Temperature", tabName = "Temperature", icon = icon("dashboard")),
       menuItem("Precipitation", tabName = "Precipitation", icon = icon("th")),
       menuItem("",tabName="unions",icon=icon("signal")),
 menuItem("Wind",tabName="Wind",icon=icon("globe"))      
-),
+)),
   dashboardBody(
     fluidRow(
   tabItem(tabName = "Temperature", h3("Average Temperature",align="center") ,
