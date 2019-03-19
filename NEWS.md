@@ -2,7 +2,7 @@
 ### What did you do this week?
  
 - Julia: I spent a lot of time this week trying to fix read_whately() in the ceeds package but I am still having problems. I also figured out how to allow user to download data from a shiny dashboard. I'm also still working on making tabs for the shiny dashboard and the layout. Over Spring break I did alot of research and watched tutorials about shiny dashboard. I also added some comments to my code to make it easier to read. 
-- Marta: I created a precipitation graph on ggplot that we can hopefully make reactive.
+- Marta: I created a precipitation line graph on ggplot that we can hopefully make reactive.
 - Mirella: 
 
 ### What is it that you're struggling with right now?
