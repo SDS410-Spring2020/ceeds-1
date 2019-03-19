@@ -2,19 +2,19 @@
 ### What did you do this week?
  
 - Julia: I spent a lot of time this week trying to fix read_whately() in the ceeds package but I am still having problems. I also figured out how to allow user to download data from a shiny dashboard. I'm also still working on making tabs for the shiny dashboard and the layout. Over Spring break I did alot of research and watched tutorials about shiny dashboard. I also added some comments to my code to make it easier to read. 
-- Marta: 
+- Marta: I created a precipitation graph on ggplot that we can hopefully make reactive.
 - Mirella: 
 
 ### What is it that you're struggling with right now?
 
 - Julia: I'm still having problems with how to make the tabs in the dashboard to work as they should. I'm also having a hard time how to make more functions in the ceeds package. I'm also struggling to make read_whately and read_orchard more efficient but also work. 
-- Marta: 
+- Marta: Making a ggplot reactive in Shiny.
 - Mirella: 
 
 ### What are you planning to do next week?
 
 -Julia: I feel like we are on the cusp of getting tabs to work and I think that I can get that done this week. I'm also planning on trying to fix the errors in the Ceeds package. I'm also hoping to combine all of the work on one dashboard (after tabs work). I also want to create a data file that is smaller to work with for our tests. 
-- Marta: 
+- Marta: Come up with a mock-up of what we want our app to look like ultimately. Also, keep working on data visualizations that we can maybe use. 
 - Mirella:
 
 ## 2019-03-05
