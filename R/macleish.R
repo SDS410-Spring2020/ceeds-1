@@ -21,8 +21,7 @@ read_whately <- function() {
     etl_transform()
   whately<- macleish %>%
     dplyr::tbl("whately") %>%
-    dplyr::collect() %>%
-    read_csv()
+    dplyr::collect() 
   return(whately)
 }
 
@@ -36,4 +35,30 @@ read_orchard <- function() {
     dplyr::collect()
   return(orchard)
 }
+DailyWhately <- function() {
+  whately<-read_whately()
+  daily_whately <- whately %>%
+    mutate(the_date = date(when)) %>%
+    group_by(the_date)%>% 
+    summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
+              maxtemp= max(temperature), 
+              mintemp = min(temperature),
+              maxwind= max(wind_speed), 
+              minwind = min(wind_speed))
+  return(daily_whately)
+}
+
+DailyOrchard <- function() {
+  orchard<-read_orchard()
+  daily_orchard <- orchard %>%
+    mutate(the_date = date(when)) %>%
+    group_by(the_date)%>% 
+    summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
+              maxtemp= max(temperature), 
+              mintemp = min(temperature),
+              maxwind= max(wind_speed), 
+              minwind = min(wind_speed))
+  return(daily_orchard)
+} 
+
 

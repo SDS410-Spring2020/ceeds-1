@@ -13,7 +13,9 @@ Depends:
 Imports:
     dplyr,
     etl,
-    magrittr
+    magrittr,
+    lubridate,
+    macleish
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.1
