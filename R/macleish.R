@@ -1,20 +1,19 @@
-#' Read in the current Whately data
-#' Read in the current Orchard data
+#' Read in the current Whately and Orchard data
 #' @importFrom magrittr %>%
+#' @importFrom etl etl_extract etl_transform
+#' @import macleish
 #' @export
+#' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 
 #' \dontrun{
-#' whately <- read_whately()
-#' nrow(whately)
-#' head(whately)
-#' }
-#' #' \dontrun{
-#' orchard <- read_orchard()
-#' nrow(orchard)
-#' head(orchard)
+#' mac_data <- read_whately()
+#' names(mac_data)
+#' lapply(mac_data, dim)
+#' lapply(mac_data, head)
 #' }
 
 read_whately <- function() {
+<<<<<<< HEAD
   macleish <- etl::etl("macleish")
   macleish %>%
     etl_extract() %>%
@@ -23,17 +22,32 @@ read_whately <- function() {
     dplyr::tbl("whately") %>%
     dplyr::collect() 
   return(whately)
+=======
+  
+  mac <- refresh_macleish()
+  
+  whately <- mac %>%
+    attr("load") %>%
+    fs::dir_ls(regex = "whately.csv$") %>%
+    readr::read_csv()
+  
+  orchard <- mac %>%
+    attr("load") %>%
+    fs::dir_ls(regex = "orchard.csv$") %>%
+    readr::read_csv()
+  
+  return(list("whately" = whately, "orchard" = orchard))
+>>>>>>> eefd658a3116dd89841a9230ad59f85bce3808d1
 }
 
-read_orchard <- function() {
-  macleish <- etl::etl("macleish")
-  macleish %>%
+
+refresh_macleish <- function() {
+  mac <- etl::etl("macleish")
+  mac %>%
     etl_extract() %>%
     etl_transform()
-  orchard <- macleish %>%
-    dplyr::tbl("orchard") %>%
-    dplyr::collect()
-  return(orchard)
+  
+  return(mac)
 }
 DailyWhately <- function() {
   whately<-read_whately()

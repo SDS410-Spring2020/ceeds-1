@@ -3,6 +3,9 @@
 ceeds
 =====
 
+<!-- badges: start -->
+[![Travis build status](https://travis-ci.org/beanumber/ceeds.svg?branch=master)](https://travis-ci.org/beanumber/ceeds) <!-- badges: end -->
+
 The goal of ceeds is to ...
 
 Installation
