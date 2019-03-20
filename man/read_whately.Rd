@@ -2,17 +2,20 @@
 % Please edit documentation in R/macleish.R
 \name{read_whately}
 \alias{read_whately}
-\title{Read in the current Whately data}
+\title{Read in the current Whately data
+Read in the current Orchard data}
 \usage{
 read_whately()
 }
 \description{
 Read in the current Whately data
+Read in the current Orchard data
 }
 \examples{
 \dontrun{
-whately <- read_whately()
-nrow(whately)
-head(whately)
+mac_data <- read_whately()
+names(mac_data)
+lapply(mac_data, dim)
+lapply(mac_data, head)
 }
 }
