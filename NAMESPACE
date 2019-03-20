@@ -2,4 +2,6 @@
 
 export(read_whately)
 import(macleish)
+importFrom(etl,etl_extract)
+importFrom(etl,etl_transform)
 importFrom(magrittr,"%>%")

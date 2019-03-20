@@ -1,8 +1,9 @@
-#' Read in the current Whately data
-#' Read in the current Orchard data
+#' Read in the current Whately and Orchard data
 #' @importFrom magrittr %>%
+#' @importFrom etl etl_extract etl_transform
 #' @import macleish
 #' @export
+#' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 
 #' \dontrun{
 #' mac_data <- read_whately()
@@ -18,12 +19,12 @@ read_whately <- function() {
   whately <- mac %>%
     attr("load") %>%
     fs::dir_ls(regex = "whately.csv$") %>%
-    read_csv()
+    readr::read_csv()
   
   orchard <- mac %>%
     attr("load") %>%
     fs::dir_ls(regex = "orchard.csv$") %>%
-    read_csv()
+    readr::read_csv()
   
   return(list("whately" = whately, "orchard" = orchard))
 }

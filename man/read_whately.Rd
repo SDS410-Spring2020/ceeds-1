@@ -2,14 +2,12 @@
 % Please edit documentation in R/macleish.R
 \name{read_whately}
 \alias{read_whately}
-\title{Read in the current Whately data
-Read in the current Orchard data}
+\title{Read in the current Whately and Orchard data}
 \usage{
 read_whately()
 }
 \description{
-Read in the current Whately data
-Read in the current Orchard data
+Read in the current Whately and Orchard data
 }
 \examples{
 \dontrun{
@@ -18,4 +16,7 @@ names(mac_data)
 lapply(mac_data, dim)
 lapply(mac_data, head)
 }
+}
+\seealso{
+\code{\link[macleish]{whately_2015}}
 }
