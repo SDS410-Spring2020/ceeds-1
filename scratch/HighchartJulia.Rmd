@@ -49,7 +49,7 @@ orchard <- purrr::pluck(mac_data, "orchard")
 
 ```{r}
 # Grouping by the date 
-daily_whately <- DailyWhately()
+daily_whately<-get_daily(whately)
 ```
 
 
