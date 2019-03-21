@@ -27,7 +27,7 @@ library(lubridate)
 library(shinydashboard)
 library(shiny)
 #library(shinyCustom)
-#install.packages("highcharter")
+#install.packages("roxygen2")
 library(highcharter)
 #install.packages("scales")
 #install.packages("viridis")
@@ -50,19 +50,7 @@ orchard <- purrr::pluck(mac_data, "orchard")
 
 ```{r}
 # Grouping by the date 
-daily_whately <- whately %>%
-  mutate(the_date = date(when)) %>%
-  group_by(the_date) %>% 
-  summarise(N = n(), 
-            avgTemp = mean(temperature), 
-            precipitation = sum(rainfall), 
-            avgWindSpeed = mean(wind_speed), 
-            avghumidity = mean(rel_humidity),
-            maxtemp = max(temperature), 
-            mintemp = min(temperature),
-            maxwind = max(wind_speed), 
-            minwind = min(wind_speed)
-  )
+daily_whately<-get_daily(whately)
 ```
 
 ```{r}

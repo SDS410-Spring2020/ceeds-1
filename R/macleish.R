@@ -5,7 +5,6 @@
 #' @import lubridate
 #' @import dplyr
 #' @import purrr
-#' @import fs
 #' @export
 #' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 
@@ -15,7 +14,7 @@
 #' lapply(mac_data, dim)
 #' lapply(mac_data, head)
 #' }
-  
+read_whately <- function() {
   mac <- refresh_macleish()
   
   whately <- mac %>%
@@ -29,7 +28,7 @@
     readr::read_csv()
   
   return(list("whately" = whately, "orchard" = orchard))
-
+}
 
 refresh_macleish <- function() {
   mac <- etl::etl("macleish")
@@ -40,34 +39,17 @@ refresh_macleish <- function() {
   return(mac)
 }
 
-DailyWhately <- function() {
-  mac_data <- read_whately()
-  whately <- purrr::pluck(mac_data, "whately")
-  orchard <- purrr::pluck(mac_data, "orchard")
-  daily_whately <- whately %>%
-    mutate(the_date = lubridate:date(when)) %>%
+#' @export
+#' @rdname read_whately
+get_daily <- function(x) {
+  daily <- x %>%
+    mutate(the_date = lubridate::date(when)) %>%
     group_by(the_date)%>% 
     summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
               maxtemp= max(temperature), 
               mintemp = min(temperature),
               maxwind= max(wind_speed), 
               minwind = min(wind_speed))
-  return(daily_whately)
+  return(daily)
 }
-
-DailyOrchard <- function() {
-  mac_data <- read_whately()
-  whately <- purrr::pluck(mac_data, "whately")
-  orchard <- purrr::pluck(mac_data, "orchard")
-  daily_orchard <- orchard %>%
-    mutate(the_date = lubridate:date(when)) %>%
-    group_by(the_date)%>% 
-    summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
-              maxtemp= max(temperature), 
-              mintemp = min(temperature),
-              maxwind= max(wind_speed), 
-              minwind = min(wind_speed))
-  return(daily_orchard)
-} 
-
 

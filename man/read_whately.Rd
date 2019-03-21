@@ -2,9 +2,12 @@
 % Please edit documentation in R/macleish.R
 \name{read_whately}
 \alias{read_whately}
+\alias{get_daily}
 \title{Read in the current Whately and Orchard data}
 \usage{
 read_whately()
+
+get_daily(x)
 }
 \description{
 Read in the current Whately and Orchard data
