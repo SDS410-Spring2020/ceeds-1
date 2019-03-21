@@ -11,18 +11,6 @@
 #' lapply(mac_data, dim)
 #' lapply(mac_data, head)
 #' }
-
-read_whately <- function() {
-<<<<<<< HEAD
-  macleish <- etl::etl("macleish")
-  macleish %>%
-    etl_extract() %>%
-    etl_transform()
-  whately<- macleish %>%
-    dplyr::tbl("whately") %>%
-    dplyr::collect() 
-  return(whately)
-=======
   
   mac <- refresh_macleish()
   
@@ -37,8 +25,6 @@ read_whately <- function() {
     readr::read_csv()
   
   return(list("whately" = whately, "orchard" = orchard))
->>>>>>> eefd658a3116dd89841a9230ad59f85bce3808d1
-}
 
 
 refresh_macleish <- function() {
