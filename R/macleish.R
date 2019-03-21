@@ -4,6 +4,7 @@
 #' @import macleish
 #' @import lubridate
 #' @import dplyr
+#' @import purrr
 #' @export
 #' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 
