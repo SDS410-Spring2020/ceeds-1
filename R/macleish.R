@@ -2,6 +2,8 @@
 #' @importFrom magrittr %>%
 #' @importFrom etl etl_extract etl_transform
 #' @import macleish
+#' @import lubridate
+#' @import dplyr
 #' @export
 #' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 
@@ -38,7 +40,7 @@ refresh_macleish <- function() {
 DailyWhately <- function() {
   whately<-read_whately()
   daily_whately <- whately %>%
-    mutate(the_date = date(when)) %>%
+    mutate(the_date = lubridate:date(when)) %>%
     group_by(the_date)%>% 
     summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
               maxtemp= max(temperature), 
@@ -51,7 +53,7 @@ DailyWhately <- function() {
 DailyOrchard <- function() {
   orchard<-read_orchard()
   daily_orchard <- orchard %>%
-    mutate(the_date = date(when)) %>%
+    mutate(the_date = lubridate:date(when)) %>%
     group_by(the_date)%>% 
     summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
               maxtemp= max(temperature), 
