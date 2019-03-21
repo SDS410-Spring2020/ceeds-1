@@ -2,9 +2,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom etl etl_extract etl_transform
 #' @import macleish
-#' @import lubridate
 #' @import dplyr
-#' @import purrr
 #' @export
 #' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 

@@ -18,7 +18,6 @@ Depends:
 Imports:
     dplyr,
     etl,
-    magrittr,
     lubridate,
     macleish,
     fs,
