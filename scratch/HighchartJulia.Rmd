@@ -49,14 +49,7 @@ orchard <- purrr::pluck(mac_data, "orchard")
 
 ```{r}
 # Grouping by the date 
-daily_whately <- whately %>%
-  mutate(the_date = date(when)) %>%
-  group_by(the_date)%>% 
-  summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
-            maxtemp= max(temperature), 
-            mintemp = min(temperature),
-            maxwind= max(wind_speed), 
-            minwind = min(wind_speed))
+daily_whately <- DailyWhately()
 ```
 
 

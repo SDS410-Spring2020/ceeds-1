@@ -5,6 +5,7 @@
 #' @import lubridate
 #' @import dplyr
 #' @import purrr
+#' @import fs
 #' @export
 #' @seealso \code{\link[macleish]{whately_2015}}
 #' @examples 
@@ -38,6 +39,7 @@ refresh_macleish <- function() {
   
   return(mac)
 }
+
 DailyWhately <- function() {
   mac_data <- read_whately()
   whately <- purrr::pluck(mac_data, "whately")
