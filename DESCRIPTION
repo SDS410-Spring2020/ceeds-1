@@ -21,7 +21,6 @@ Imports:
     magrittr,
     lubridate,
     macleish,
-    fs,
     magrittr,
     readr,
     purrr
