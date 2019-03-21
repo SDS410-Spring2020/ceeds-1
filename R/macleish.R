@@ -38,7 +38,9 @@ refresh_macleish <- function() {
   return(mac)
 }
 DailyWhately <- function() {
-  whately<-read_whately()
+  mac_data <- read_whately()
+  whately <- purrr::pluck(mac_data, "whately")
+  orchard <- purrr::pluck(mac_data, "orchard")
   daily_whately <- whately %>%
     mutate(the_date = lubridate:date(when)) %>%
     group_by(the_date)%>% 
@@ -51,7 +53,9 @@ DailyWhately <- function() {
 }
 
 DailyOrchard <- function() {
-  orchard<-read_orchard()
+  mac_data <- read_whately()
+  whately <- purrr::pluck(mac_data, "whately")
+  orchard <- purrr::pluck(mac_data, "orchard")
   daily_orchard <- orchard %>%
     mutate(the_date = lubridate:date(when)) %>%
     group_by(the_date)%>% 
