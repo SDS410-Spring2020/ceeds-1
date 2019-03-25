@@ -107,20 +107,12 @@ ui <- dashboardPage(
       menuItem("Wind",tabName="Wind",icon=icon("globe"))      
     )),
   dashboardBody(
-    fluidRow(
-      tabItem(tabName = "Temperature", h3("Average Temperature",align="center") ,
-              box(highchartOutput("hc1", height = 12)),
-              tabItem(tabName = "Precipitation",
-                      h3("Total Precipitation",align="center") ,
-                      box(highchartOutput("hc2"), width=12),
-                      tabItem(tabName = "Wind",
-                              h3("Max Wind Speed",align="center") ,
-                              box(highchartOutput("hc3"), width=12)
-                      )
-              )
-      )#end tabitems
-    )
-  )#end body
+    tabItems(
+tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), box(highchartOutput("hc1", width = 12))),
+tabItem(tabName = "Precipitation", h3("Total Precipitation",align="center"), box(highchartOutput("hc2"), width=12)),
+tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 box(highchartOutput("hc3"), width=12))
+              )#end tabitems
+    )#end body
 )
 
 ```
@@ -128,7 +120,7 @@ ui <- dashboardPage(
 
 
 ```{r}
-server <- function(input, output){
+server <- function(input, output,session){
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
@@ -141,6 +133,10 @@ server <- function(input, output){
   output$hc3 <-renderHighchart({highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = "Max Wind") %>%
       hc_exporting(enabled = TRUE)})
+  observeEvent(input$switchtab, {
+    newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" = "Temperature")
+    updateTabItems(session, "tabs", newtab)
+  })
   
 }
 
