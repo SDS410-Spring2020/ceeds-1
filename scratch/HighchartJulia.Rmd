@@ -14,7 +14,7 @@ library(etl)
 #install.packages("macleish")
 library(leaflet)
 library(RSQLite)
-#install.packages("ceeds")
+install.packages("ceeds")
 library(ceeds)
 #install.packages("lwgeom")
 #library(lwgeom)
@@ -42,14 +42,14 @@ library(kableExtra)
 ```
 
 ```{r}
-mac_data <- read_whately()
+mac_data <- refresh_macleish()
 whately <- purrr::pluck(mac_data, "whately")
 orchard <- purrr::pluck(mac_data, "orchard")
 ```
 
 ```{r}
 # Grouping by the date 
-daily_whately<-get_daily(whately)
+daily_whately <- DailyWhately()
 ```
 
 

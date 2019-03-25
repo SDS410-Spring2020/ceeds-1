@@ -50,4 +50,9 @@ get_daily <- function(x) {
               minwind = min(wind_speed))
   return(daily)
 }
-
+#' @export
+get_lastyear <- function(y) {
+This_year <- y%>%
+  filter(lubridate::between(the_date, lubridate::today() - lubridate::days(365), lubridate::today()))
+return(This_year)
+}
