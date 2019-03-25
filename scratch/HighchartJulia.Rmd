@@ -42,14 +42,14 @@ library(kableExtra)
 ```
 
 ```{r}
-mac_data <- refresh_macleish()
+mac_data <- read_whately()
 whately <- purrr::pluck(mac_data, "whately")
 orchard <- purrr::pluck(mac_data, "orchard")
 ```
 
 ```{r}
 # Grouping by the date 
-daily_whately <- DailyWhately()
+daily_whately <- get_daily(whately)
 ```
 
 
