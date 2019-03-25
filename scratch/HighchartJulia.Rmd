@@ -100,6 +100,7 @@ ui <- dashboardPage(
                   dropdownMenu()),
   dashboardSidebar(
     sidebarMenu(
+      id = "tabs",
       menuItem("Temperature", tabName = "Temperature", icon = icon("dashboard")),
       menuItem("Precipitation", tabName = "Precipitation", icon = icon("th")),
       menuItem("",tabName="unions",icon=icon("signal")),
