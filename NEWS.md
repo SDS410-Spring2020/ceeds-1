@@ -1,3 +1,22 @@
+## 2019-03-26
+### What did you do this week?
+ 
+- Julia: I got the tabs in the dashboard (see HighchartJulia.Rmd) to work as they should. I also added a function in macleish.R called get_lastyear(x) which takes in a data set,x, and returns and filters the data only from the last year. I also started trying to add in a tab for downloading user filtered data sets into our dashboard. This week, we also made a sketch of what we want our dashboard to look like. 
+- Marta: 
+- Mirella: 
+
+### What is it that you're struggling with right now?
+
+- Julia: While I got tabs to work, I would like a better/deeper understanding of how they work. I'm also confused because the highcharts that were working areno longer work on our dashboard. It seems like the boxes are too small or something. The only chart that is working is the one for max wind speed. I'm still struggling with making our app run faster and be more efficient beause it takes a long time for everything to load. I'm still trying to find the best way to get data to be downloaded by users.   
+- Marta: 
+- Mirella:  
+
+### What are you planning to do next week?
+
+-Julia: Now that we have working tabs we need to we arrage the tabs to be the ones we want for our final dashboard. We would like start working on our final dashboard where we can have everything in one app .I'm planning on making the tabs reflect our design and putting the charts where they make sense based on the design. I'm also planning on working on using orchard data because all of our existing charts are from Whately (we might want to create a way to toggle between the two sets of data). I would also like to fix our highcharts in the app we have and see why they are not showing up in big enough boxes. I also going to work more on a tab for downloading user filtered data sets into our dashboard.
+- Marta:  
+- Mirella: 
+
 ## 2019-03-19
 ### What did you do this week?
  
