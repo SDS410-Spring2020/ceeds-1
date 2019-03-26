@@ -78,7 +78,8 @@ server <- function(input, output,session){
       hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
       hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), name = "min temperature") %>%
       hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), name = "max temperature") %>%
-      hc_exporting(enabled = TRUE)})
+      hc_exporting(enabled = TRUE) # enable exporting option 
+    })
   output$hc2 <- renderHighchart({highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, x = the_date), name = "precipitation") %>%
       hc_exporting(enabled = TRUE)})
