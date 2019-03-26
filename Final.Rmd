@@ -23,6 +23,8 @@ library(kableExtra)
 ```
 
 ```{r}
+# fetching the data from the server
+#using read_whately from ceeds package
 mac_data <- read_whately()
 whately <- purrr::pluck(mac_data, "whately")
 orchard <- purrr::pluck(mac_data, "orchard")
@@ -36,18 +38,24 @@ daily_whately <- get_daily(whately)
 # now putting all of these graphs in shiny dashboard:
 
 ```{r}
+#setting up the ui of the dashboard
 ui <- dashboardPage(
-  dashboardHeader(title = "Macleish weather",
-                  dropdownMenu()),
+  # making a heading for the dashboard
+  dashboardHeader(title = "Macleish weather",                dropdownMenu()),
+  #making a sidebar with tabs
   dashboardSidebar(
+    # making a sidebar menu
     sidebarMenu(
+      #making an id 
       id = "tabs",
+      #creating menu items 
       menuItem("Temperature", tabName = "Temperature", icon = icon("dashboard")),
       menuItem("Precipitation", tabName = "Precipitation", icon = icon("th")),
-      menuItem("",tabName="unions",icon=icon("signal")),
       menuItem("Wind",tabName="Wind",icon=icon("globe"))      
     )),
+  # Drawing the dashboard body
   dashboardBody(
+    # tab items 
     tabItems(
 tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), box(highchartOutput("hc1"), width = 12)),
 tabItem(tabName = "Precipitation", h3("Total Precipitation",align="center"), box(highchartOutput("hc2"), width=12)),
