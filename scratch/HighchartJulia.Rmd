@@ -134,7 +134,7 @@ server <- function(input, output,session){
       hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = "Max Wind") %>%
       hc_exporting(enabled = TRUE)})
   observeEvent(input$switchtab, {
-    newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" = "Temperature")
+    newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" = "Temperature", "Temperature" = "Wind","Wind" = "Temperature","Precipitation" = "Wind","Precipitation" = "Temperature", )
     updateTabItems(session, "tabs", newtab)
   })
   

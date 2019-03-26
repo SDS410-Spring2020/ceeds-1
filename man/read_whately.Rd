@@ -3,11 +3,14 @@
 \name{read_whately}
 \alias{read_whately}
 \alias{get_daily}
+\alias{get_lastyear}
 \title{Read in the current Whately and Orchard data}
 \usage{
 read_whately()
 
 get_daily(x)
+
+get_lastyear(y)
 }
 \description{
 Read in the current Whately and Orchard data
