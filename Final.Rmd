@@ -69,7 +69,10 @@ tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 
 
 
 ```{r}
+# shiny server
 server <- function(input, output,session){
+# defining outputs
+# output$name <- name = highchartOutput("name")
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
@@ -82,6 +85,8 @@ server <- function(input, output,session){
   output$hc3 <-renderHighchart({highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = "Max Wind") %>%
       hc_exporting(enabled = TRUE)})
+
+# we want to switch tabs so we need to refresh session
   observeEvent(input$switchtab, {
     newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" = "Temperature", "Temperature" = "Wind","Wind" = "Temperature","Precipitation" = "Wind","Precipitation" = "Temperature")
     updateTabItems(session, "tabs", newtab)
