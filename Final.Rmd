@@ -52,46 +52,6 @@ orchard <- purrr::pluck(mac_data, "orchard")
 daily_whately <- get_daily(whately)
 ```
 
-
-```{r}
-#Let's only look at current week data
-This_week <- daily_whately%>%
-  filter(between(the_date, today() - days(7), today()))
-View(This_week)
-```
-
-```{r}
-#Let's only look at data from last year
-This_year <- daily_whately%>%
-  filter(between(the_date, today() - days(365), today()))
-```
-
-
-#trying to make highcharts!
-```{r}
-# Highchart of temperature 
-highchart(type = "stock")%>%
-  hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
-  hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), name = "min temperature") %>%
-  hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), name = "max temperature") %>%
-  hc_exporting(enabled = TRUE) # enable exporting option
-```
-
-```{r}
-# Highchart of precipitation
-highchart(type = "stock")%>%
-  hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, x = the_date), name = "precipitation") %>%
-  hc_exporting(enabled = TRUE) # enable exporting option
-```
-
-```{r}
-# Highchart of wind
-highchart(type = "stock")%>%
-  hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = " Max Wind Speed") %>%
-  hc_add_theme(hc_theme_538()) %>%
-  hc_exporting(enabled = TRUE) # enable exporting option
-```
-
 # now putting all of these graphs in shiny dashboard:
 
 ```{r}
