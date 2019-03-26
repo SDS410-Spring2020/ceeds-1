@@ -108,7 +108,7 @@ ui <- dashboardPage(
     )),
   dashboardBody(
     tabItems(
-tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), box(highchartOutput("hc1", width = 12))),
+tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), box(highchartOutput("hc1"), width = 12)),
 tabItem(tabName = "Precipitation", h3("Total Precipitation",align="center"), box(highchartOutput("hc2"), width=12)),
 tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 box(highchartOutput("hc3"), width=12))
               )#end tabitems
