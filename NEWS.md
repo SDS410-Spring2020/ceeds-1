@@ -4,7 +4,7 @@
 - Julia: I got the tabs in the dashboard (see HighchartJulia.Rmd) to work as they should. I also added a function in macleish.R called get_lastyear(x) which takes in a data set,x, and returns and filters the data only from the last year. I also started trying to add in a tab for downloading user filtered data sets into our dashboard. This week, we also made a sketch of what we want our dashboard to look like. 
 
 - Marta: I worked on a mockup of what the final app should look like and started working on replicating the classic Tufte weather visualization to our weather data.
-- Mirella: 
+- Mirella: I continued trying to work in getting the tabs to work. Used Julia's example to learn and know what I was doing wrong when referencing to Data Camp.
 
 ### What is it that you're struggling with right now?
 
@@ -12,7 +12,7 @@
 
 - Marta: I want to explore the highcharter package more and see what visualizations we can create, specifically the wind rose visualization for the wind data. 
 
-- Mirella:  
+- Mirella:  Although the tabs are working, I want to understand it more properly. I want to understand how one can add more to each tab page (in addition to high charts) without it being too overwhelming. 
 
 ### What are you planning to do next week?
 
@@ -20,7 +20,7 @@
 
 - Marta: I plan to keep working with the highcharter package.
 
-- Mirella: 
+- Mirella: Adding the additional features of each tab page, and working on the wind graph (similar to what Paul had on the website).
 
 ## 2019-03-19
 ### What did you do this week?
