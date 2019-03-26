@@ -88,8 +88,10 @@ server <- function(input, output,session){
       hc_exporting(enabled = TRUE)})
 
 # we want to switch tabs so we need to refresh session
+# observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
     newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" = "Temperature", "Temperature" = "Wind","Wind" = "Temperature","Precipitation" = "Wind","Precipitation" = "Temperature")
+    #update tab items 
     updateTabItems(session, "tabs", newtab)
   })
   
