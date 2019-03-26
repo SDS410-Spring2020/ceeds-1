@@ -19,6 +19,7 @@
 -Julia: Now that we have working tabs we need to we arrage the tabs to be the ones we want for our final dashboard. We would like start working on our final dashboard where we can have everything in one app .I'm planning on making the tabs reflect our design and putting the charts where they make sense based on the design. I'm also planning on working on using orchard data because all of our existing charts are from Whately (we might want to create a way to toggle between the two sets of data). I would also like to fix our highcharts in the app we have and see why they are not showing up in big enough boxes. I also going to work more on a tab for downloading user filtered data sets into our dashboard.
 
 - Marta: I plan to keep working with the highcharter package.
+
 - Mirella: 
 
 ## 2019-03-19
