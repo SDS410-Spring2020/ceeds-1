@@ -41,7 +41,8 @@ daily_whately <- get_daily(whately)
 #setting up the ui of the dashboard
 ui <- dashboardPage(
   # making a heading for the dashboard
-  dashboardHeader(title = "Macleish weather",                dropdownMenu()),
+  dashboardHeader(title = "Macleish weather",                
+                  dropdownMenu()),
   #making a sidebar with tabs
   dashboardSidebar(
     # making a sidebar menu
@@ -57,9 +58,12 @@ ui <- dashboardPage(
   dashboardBody(
     # tab items 
     tabItems(
-tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), box(highchartOutput("hc1"), width = 12)),
-tabItem(tabName = "Precipitation", h3("Total Precipitation",align="center"), box(highchartOutput("hc2"), width=12)),
-tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 box(highchartOutput("hc3"), width=12))
+tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), 
+        box(highchartOutput("hc1"), width = 12)),
+tabItem(tabName = "Precipitation", h3("Total Precipitation",align="center"), 
+        box(highchartOutput("hc2"), width=12)),
+tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 
+        box(highchartOutput("hc3"), width=12))
               )#end tabitems
     )#end body
 )
@@ -75,22 +79,30 @@ server <- function(input, output,session){
 # output$name <- name = highchartOutput("name")
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), name = "Avg temperature") %>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), name = "min temperature") %>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), name = "max temperature") %>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), 
+                    name = "Avg temperature") %>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), 
+                    name = "min temperature") %>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), 
+                    name = "max temperature") %>%
       hc_exporting(enabled = TRUE) # enable exporting option 
     })
   output$hc2 <- renderHighchart({highchart(type = "stock")%>%
-      hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, x = the_date), name = "precipitation") %>%
+      hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, 
+            x = the_date), name = "precipitation") %>%
       hc_exporting(enabled = TRUE)})
   output$hc3 <-renderHighchart({highchart(type = "stock")%>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date), name = "Max Wind") %>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date)
+                    , name = "Max Wind") %>%
       hc_exporting(enabled = TRUE)})
 
 # we want to switch tabs so we need to refresh session
 # observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
-    newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" = "Temperature", "Temperature" = "Wind","Wind" = "Temperature","Precipitation" = "Wind","Precipitation" = "Temperature")
+    newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" 
+                     = "Temperature", "Temperature" = "Wind",
+                     "Wind" = "Temperature",
+                     "Precipitation" = "Wind","Precipitation" = "Temperature")
     #update tab items 
     updateTabItems(session, "tabs", newtab)
   })
