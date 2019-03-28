@@ -49,18 +49,19 @@ ui <- dashboardPage(
     sidebarMenu(
       #making an id 
       id = "tabs",
-      #creating menu items 
-      menuItem("Temperature", tabName = "Temperature", icon = icon("dashboard")),
-      menuItem("Precipitation", tabName = "Precipitation", icon = icon("th")),
+      #creating menu items
+      menuItem("Current Weather",tabName="Current Weather",icon=icon("globe")),
+      menuItem("About", tabName = "About", icon = icon("dashboard")),
+      menuItem("Historic Data", tabName = "Historic Data", icon = icon("bar-chart-o")),
       menuItem("Wind",tabName="Wind",icon=icon("globe"))      
     )),
   # Drawing the dashboard body
   dashboardBody(
     # tab items 
     tabItems(
-tabItem(tabName = "Temperature", h3("Average Temperature",align="center"), 
+tabItem(tabName = "About", h3("About",align="center"), 
         box(highchartOutput("hc1"), width = 12)),
-tabItem(tabName = "Precipitation", h3("Total Precipitation",align="center"), 
+tabItem(tabName = "Historic Data", h3("Historic Data",align="center"), 
         box(highchartOutput("hc2"), width=12)),
 tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 
         box(highchartOutput("hc3"), width=12))
@@ -99,10 +100,15 @@ server <- function(input, output,session){
 # we want to switch tabs so we need to refresh session
 # observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
-    newtab <- switch(input$tabs, "Temperature" = "Precipitation","Precipitation" 
-                     = "Temperature", "Temperature" = "Wind",
-                     "Wind" = "Temperature",
-                     "Precipitation" = "Wind","Precipitation" = "Temperature")
+    newtab <- switch(input$tabs, "About" = "Historic Data","Historic Data" 
+                     = "About", "About" = "Wind",
+                     "Wind" = "About",
+                     "Historic Data" = "Wind","Historic Data" = "About",
+                     "Current Weather" = "Historic Data", 
+                     "Historic Data" = "Current Weather", 
+                    "Current Weather" = "About", "About" = "Current Weather",
+                     "Wind" = "Current Weather",
+                     "Current Weather" = "Wind")
     #update tab items 
     updateTabItems(session, "tabs", newtab)
   })
