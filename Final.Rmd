@@ -31,9 +31,18 @@ orchard <- purrr::pluck(mac_data, "orchard")
 ```
 
 ```{r}
+View(whately)
+```
+
+```{r}
 # Grouping by the date 
 daily_whately <- get_daily(whately)
 ```
+
+```{r}
+View(daily_whately)
+```
+
 
 # now putting all of these graphs in shiny dashboard:
 

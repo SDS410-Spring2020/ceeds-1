@@ -43,11 +43,13 @@ get_daily <- function(x) {
   daily <- x %>%
     mutate(the_date = lubridate::date(when)) %>%
     group_by(the_date)%>% 
-    summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
+    summarise(N=n(), avgTemp=mean(temperature), precipitation=sum(rainfall), 
+              avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
               maxtemp= max(temperature), 
               mintemp = min(temperature),
               maxwind= max(wind_speed), 
-              minwind = min(wind_speed))
+              minwind = min(wind_speed),
+              avgwind_direction = mean(wind_dir))
   return(daily)
 }
 #' @export
