@@ -62,21 +62,25 @@ ui <- dashboardPage(
       menuItem("Current Weather",tabName="Current Weather",icon=icon("globe")),
       menuItem("About", tabName = "About", icon = icon("dashboard")),
       menuItem("Historic Data", tabName = "Historic Data", icon = icon("bar-chart-o")),
-      menuItem("Wind",tabName="Wind",icon=icon("globe"))      
+      menuItem("Raw data",tabName="Raw data",icon=icon("globe"))      
     )),
   # Drawing the dashboard body
   dashboardBody(
     # tab items 
     tabItems(
-tabItem(tabName = "About", h3("About",align="center"), 
-        box(highchartOutput("hc1"), width = 12)),
+tabItem(tabName = "Current Weather", h3("Current Weather",align="center")),
+tabItem(tabName = "About", h3("About",align="center")),
 tabItem(tabName = "Historic Data", h3("Historic Data",align="center"), 
-        box(highchartOutput("hc2"), width=12)),
-tabItem(tabName = "Wind", h3("Max Wind Speed",align="center") ,                 
-        box(highchartOutput("hc3"), width=12))
+        box(highchartOutput("hc2"), width=12),
+        box(highchartOutput("hc3"), width=12),
+        box(highchartOutput("hc1"), width = 12)
+        ),
+tabItem(tabName = "Raw data", h3("Raw data",align="center"))
               )#end tabitems
     )#end body
 )
+
+
 
 ```
 
@@ -110,14 +114,15 @@ server <- function(input, output,session){
 # observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
     newtab <- switch(input$tabs, "About" = "Historic Data","Historic Data" 
-                     = "About", "About" = "Wind",
-                     "Wind" = "About",
-                     "Historic Data" = "Wind","Historic Data" = "About",
+                     = "About", "About" = "Raw data",
+                     "Raw data" = "About",
+                     "Historic Data" = "Raw data", 
+                     "Raw data" = "Historic Data",
                      "Current Weather" = "Historic Data", 
                      "Historic Data" = "Current Weather", 
                     "Current Weather" = "About", "About" = "Current Weather",
-                     "Wind" = "Current Weather",
-                     "Current Weather" = "Wind")
+                     "Raw data" = "Current Weather",
+                     "Current Weather" = "Raw data")
     #update tab items 
     updateTabItems(session, "tabs", newtab)
   })
