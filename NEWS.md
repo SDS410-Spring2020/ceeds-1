@@ -1,7 +1,7 @@
 ## 2019-04-02
 ### What did you do this week?
  
-- Julia:  I spent most of this week working on the infrastructure  of our final dashboard. I first made a new file to combine all of the elements that we want on our final dashboard. I also renamed the tabs to reflect our mark up design. I also tried to figured out how to get many plots on one page. I also made a wind rose graph in ggplot and found a package to work with wind data ("rWind"). I also worked on trying to get different data sets to show up and be filtered in the raw data tab. I also finished the get_lastyear function to maybe help us get a smaller data set to work with. This week, I also made other temperature variables that are in fahrenheit and rounded it to 2 places because Paul told us that that is as accurate as temperature can be collected at. I also was trying to see what happened to our precipitation graph and then saw that all of the entries in our data set for rainfall are now zero and we should ask paul about that?! everything seemed to be fine until there was an error where tabs appear to be no longer working properly and so I spent the rest of the week trying to see why that was the case and debug the code. I did not get as much done as I would have liked to and I need to work on my time managment skills. 
+- Julia:  I spent most of this week working on the infrastructure  of our final dashboard. I first made a new file to combine all of the elements that we want on our final dashboard. I also renamed the tabs to reflect our mark up design. I also tried to figured out how to get many plots on one page. I also made a wind rose graph in ggplot and found a package to work with wind data ("rWind"). I also worked on trying to get different data sets to show up and be filtered in the raw data tab. I also finished the get_lastyear function to maybe help us get a smaller data set to work with. This week, I also made other temperature variables that are in fahrenheit and rounded it to 2 places because Paul told us that that is as accurate as temperature can be collected at. I also made a current weather data set so we can get a table with only the current 10 min weather (and I hope to make that into a function in the ceeds package ). I also was trying to see what happened to our precipitation graph and then saw that all of the entries in our data set for rainfall are now zero and we should ask paul about that?! Everything seemed to be fine until there was an error where tabs appear to be no longer working properly and so I'm going to spend the rest of the week trying to see why this is the case and debug the code. I did not get as much done as I would have liked to and I need to work on my time managment skills. 
 
 
 - Marta: 
@@ -10,7 +10,7 @@
 
 ### What is it that you're struggling with right now?
 
-- Julia: I'm struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also think I need to expirenment more with tabs to see what is truly wrong with our dashboard. I'm also struggling with how to get users to toggle between data sets and download the data. I also need to find away to get our code to run faster which might help with the debugging process. 
+- Julia: I'm struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also think I need to expirenment more with tabs to see what is truly wrong with our dashboard. I'm also struggling with how to get users to toggle between data sets and download the data. I also need to find away to get our code to run faster which might help with the debugging process. I'm also struggling with how to make my code more readable bacuse to me it is fine but it seems like that might be  only readable to me and I need feedback on how to make it more readable to others. 
 
 - Marta: 
 
@@ -18,7 +18,7 @@
 
 ### What are you planning to do next week?
 
--Julia: 
+-Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd). With that said I would like to better understand tabs so if I need to change something later on there will be no mistakes or be easier to find them. I also would like to finish the tab to allow the user to download the data (I already found an example so we just need to follow that). I also want to finally allow users to toggle between orchard and whatley for the graphs and current data. I'm also planning on getting my code to be more readable for other people. 
 
 - Marta: 
 
