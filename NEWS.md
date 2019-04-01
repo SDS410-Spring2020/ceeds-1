@@ -10,15 +10,15 @@
 
 ### What is it that you're struggling with right now?
 
-- Julia: I'm struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also think I need to expirenment more with tabs to see what is truly wrong with our dashboard. I'm also struggling with how to get users to toggle between data sets and download the data. I also need to find away to get our code to run faster which might help with the debugging process. I'm also struggling with how to make my code more readable bacuse to me it is fine but it seems like that might be  only readable to me and I need feedback on how to make it more readable to others. 
+- Julia: I'm struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also think I need to expirenment more with tabs to see what is truly wrong with our dashboard. I'm also struggling with how to get users to toggle between data sets and download the data. I also need to find away to get our code to run faster which might help with the debugging process. I'm also struggling with how to make my code more readable bacuse to me it is fine but it seems like that it might be only readable to me and I need feedback on how to make it more readable to others. 
 
-- Marta: 
+- Marta:  
 
 - Mirella:   
 
 ### What are you planning to do next week?
 
--Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd). With that said I would like to better understand tabs so if I need to change something later on there will be no mistakes or be easier to find them. I also would like to finish the tab to allow the user to download the data (I already found an example so we just need to follow that). I also want to finally allow users to toggle between orchard and whatley for the graphs and current data. I'm also planning on getting my code to be more readable for other people. 
+-Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd). With that said I would like to better understand tabs so if I need to change something later on there will be no mistakes or be easier to find them. I also would like to finish the tab to allow the user to download the data (I already found an example so we just need to follow that). I also want to finally allow users to toggle between orchard and whatley for the graphs and current data. I'm also planning on getting my code to be more readable for other people. I'm also planning on trying to extract info from the current weather table and make it into a text object. 
 
 - Marta: 
 
