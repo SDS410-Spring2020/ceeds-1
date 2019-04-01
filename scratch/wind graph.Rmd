@@ -1,0 +1,67 @@
+---
+title: "Wind rose graph"
+author: "Julia Lee"
+date: "4/1/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(RMySQL)
+#install.packages("etl")
+library(etl)
+#install.packages("macleish")
+library(leaflet)
+library(RSQLite)
+#install.packages("ceeds")
+library(ceeds)
+#install.packages("lwgeom")
+#library(lwgeom)
+#devtools::install_github("beanumber/macleish")
+library(macleish)
+#packageVersion("macleish")
+#install.packages("lubridate")
+library(lubridate)
+#install.packages("shinyCustom")
+library(shinydashboard)
+library(shiny)
+#library(shinyCustom)
+#install.packages("highcharter")
+library(highcharter)
+#install.packages("scales")
+#install.packages("viridis")
+library(viridis)
+library(scales)
+library(RColorBrewer)
+library(ggthemes)
+#install.packages("kableExtra")
+install.packages("shape")
+library(timetk)
+library(kableExtra)
+library (geosphere)
+library (rWind)
+```
+
+```{r}
+mac_data <- read_whately()
+whately <- purrr::pluck(mac_data, "whately")
+orchard <- purrr::pluck(mac_data, "orchard")
+```
+
+```{r}
+# Grouping by the date 
+daily_whately <- get_daily(whately)
+last_whately <- get_lastyear(daily_whately)
+```
+
+```{r}
+alpha <- arrowDir(daily_whately)
+#making a wind rose graph 
+ggplot(data = last_whately, aes(x = cut(dir,5), fill = cut(avgWindSpeed,10))) +
+    geom_bar() + 
+    scale_x_discrete(drop = FALSE,
+                     labels = waiver()) +
+    coord_polar(start = 0) +
+   scale_colour_brewer()
+```

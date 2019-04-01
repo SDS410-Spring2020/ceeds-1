@@ -49,7 +49,7 @@ get_daily <- function(x) {
               mintemp = min(temperature),
               maxwind= max(wind_speed), 
               minwind = min(wind_speed),
-              avgwind_direction = mean(wind_dir)) %>%
+              dir = mean(wind_dir)) %>%
     mutate(avgTemp = round(avgTemp,digits=2)) %>%
     mutate(avgF = (avgTemp * 1.8)+32) %>%
     mutate(MaxF = (maxtemp * 1.8)+32) %>%
