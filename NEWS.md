@@ -18,7 +18,7 @@
 
 ### What are you planning to do next week?
 
--Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd). With that said I would like to better understand tabs so if I need to change something later on there will be no mistakes or be easier to find them. I also would like to finish the tab to allow the user to download the data (I already found an example so we just need to follow that). I also want to finally allow users to toggle between orchard and whatley for the graphs and current data. I'm also planning on getting my code to be more readable for other people. I'm also planning on trying to extract info from the current weather table and make it into a text object. 
+-Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd). With that said I would like to better understand tabs so if I need to change something later on there will be no mistakes or be easier to find them. I also would like to finish the tab to allow the user to download the data (I already found an example so we just need to follow that). I also want to finally allow users to toggle between orchard and whatley for the graphs and certain variables. I'm also planning on getting my code to be more readable for other people. I'm also planning on trying to extract info from the current weather table and make it into a text object. 
 
 - Marta: 
 
