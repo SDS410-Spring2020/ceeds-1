@@ -1,3 +1,29 @@
+## 2019-04-02
+### What did you do this week?
+ 
+- Julia:  I spent most of this week working on the infrastructure  of our final dashboard. I first made a new file to combine all of the elements that we want on our final dashboard. I also renamed the tabs to reflect our mark up design. I also tried to figured out how to get many plots on one page. I also made a wind rose graph in ggplot and found a package to work with wind data ("rWind"). I also worked on trying to get different data sets to show up and be filtered in the raw data tab. I also finished the get_lastyear function to maybe help us get a smaller data set to work with. This week, I also made other temperature variables that are in fahrenheit and rounded it to 2 places because Paul told us that that is as accurate as temperature can be collected at. I also was trying to see what happened to our precipitation graph and then saw that all of the entries in our data set for rainfall are now zero and we should ask paul about that?! everything seemed to be fine until there was an error where tabs appear to be no longer working properly and so I spent the rest of the week trying to see why that was the case and debug the code. I did not get as much done as I would have liked to and I need to work on my time managment skills. 
+
+
+- Marta: 
+
+- Mirella: 
+
+### What is it that you're struggling with right now?
+
+- Julia: I'm struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also think I need to expirenment more with tabs to see what is truly wrong with our dashboard. I'm also struggling with how to get users to toggle between data sets and download the data. I also need to find away to get our code to run faster which might help with the debugging process. 
+
+- Marta: 
+
+- Mirella:   
+
+### What are you planning to do next week?
+
+-Julia: 
+
+- Marta: 
+
+- Mirella: 
+
 ## 2019-03-26
 ### What did you do this week?
  
@@ -8,7 +34,7 @@
 
 ### What is it that you're struggling with right now?
 
-- Julia: While I got tabs to work, I would like a better/deeper understanding of how they work. I'm also confused because the highcharts that were working areno longer work on our dashboard. It seems like the boxes are too small or something. The only chart that is working is the one for max wind speed. I'm still struggling with making our app run faster and be more efficient beause it takes a long time for everything to load. I'm still trying to find the best way to get data to be downloaded by users.   
+- Julia: While I got tabs to work, I would like a better/deeper understanding of how they work. I'm also confused because the highcharts that were working are no longer work on our dashboard. It seems like the boxes are too small or something. The only chart that is working is the one for max wind speed. I'm still struggling with making our app run faster and be more efficient beause it takes a long time for everything to load. I'm still trying to find the best way to get data to be downloaded by users.   
 
 - Marta: I want to explore the highcharter package more and see what visualizations we can create, specifically the wind rose visualization for the wind data. 
 
