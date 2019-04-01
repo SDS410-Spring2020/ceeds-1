@@ -60,7 +60,7 @@ last_whately <- get_lastyear(daily_whately)
 ggplot(data = whately, aes(x = cut(wind_dir,15), fill = cut(wind_speed,15))) +
     geom_bar() + 
     scale_x_discrete(drop = FALSE, labels = waiver()) +
-    coord_polar(start = 0) +
+    coord_polar(start = -((30/2)/360) * 2*pi) +
    scale_colour_brewer(name = "Wind Speed (m/s)")  
   
   
