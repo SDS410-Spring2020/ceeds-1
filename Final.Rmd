@@ -76,10 +76,9 @@ tabItem(tabName = "About", h3("About",align="center"),
         box(leafletOutput("Abt"), width=12)),
 tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
         fluidRow(
-        box(highchartOutput("hc2"), width=12),
-        box(highchartOutput("hc3"), width=12),
-        box(highchartOutput("hc1"), width = 12),
-        box(highchartOutput("hc4"), width = 12)
+          splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
+                      highchartOutput("hc2"), highchartOutput("hc3"), 
+   highchartOutput("hc1"),highchartOutput("hc4"))
         )
 )
               )#end tabItems
