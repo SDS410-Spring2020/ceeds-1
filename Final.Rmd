@@ -80,7 +80,7 @@ tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
           highchartOutput("hc2"), highchartOutput("hc3"), 
    highchartOutput("hc1"), highchartOutput("hc4")))),
-  tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
+  tabItem(tabName = "Raw data", h3("Raw data",align="center"),
   fluidPage(
     selectInput("dataset", "Dataset", c("Whately", "Orchard")),
   conditionalPanel( condition = "output.nrows",
