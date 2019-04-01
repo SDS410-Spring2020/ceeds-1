@@ -56,6 +56,6 @@ get_daily <- function(x) {
 #' @rdname read_whately
 get_lastyear <- function(y) {
 This_year <- y%>%
-  filter(lubridate::between(the_date, lubridate::today() - lubridate::days(365), lubridate::today()))
+  filter(between(the_date, lubridate::today() - lubridate::days(365), lubridate::today()))
 return(This_year)
 }

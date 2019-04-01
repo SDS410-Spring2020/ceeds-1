@@ -37,6 +37,8 @@ View(whately)
 ```{r}
 # Grouping by the date 
 daily_whately <- get_daily(whately)
+last_whately <- get_lastyear(daily_whately)
+current<-last(whately)
 ```
 
 ```{r}
@@ -68,15 +70,16 @@ ui <- dashboardPage(
   dashboardBody(
     # tab items 
     tabItems(
-tabItem(tabName = "Current Weather", h3("Current Weather",align="center")),
-tabItem(tabName = "About", h3("About",align="center")),
-tabItem(tabName = "Historic Data", h3("Historic Data",align="center"), 
+tabItem(tabName = "Current Weather", h3("Current Weather",align="center"), 
+        box(textOutput("cw"), width=12)),
+tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
+        fluidRow(
         box(highchartOutput("hc2"), width=12),
         box(highchartOutput("hc3"), width=12),
         box(highchartOutput("hc1"), width = 12)
-        ),
-tabItem(tabName = "Raw data", h3("Raw data",align="center"))
-              )#end tabitems
+        )
+)
+              )#end tabItems
     )#end body
 )
 
@@ -91,6 +94,9 @@ tabItem(tabName = "Raw data", h3("Raw data",align="center"))
 server <- function(input, output,session){
 # defining outputs
 # output$name <- name = highchartOutput("name")
+output$cw <- renderPrint({
+  print(current[1,2]);
+})
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), 
@@ -113,14 +119,16 @@ server <- function(input, output,session){
 # we want to switch tabs so we need to refresh session
 # observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
-    newtab <- switch(input$tabs, "About" = "Historic Data","Historic Data" 
-                     = "About", "About" = "Raw data",
+    newtab <- switch(input$tabs, "About" = "Historic Data",
+                     "Historic Data" = "About", 
+                     "About" = "Raw data",
                      "Raw data" = "About",
                      "Historic Data" = "Raw data", 
                      "Raw data" = "Historic Data",
                      "Current Weather" = "Historic Data", 
                      "Historic Data" = "Current Weather", 
-                    "Current Weather" = "About", "About" = "Current Weather",
+                    "Current Weather" = "About", 
+                    "About" = "Current Weather",
                      "Raw data" = "Current Weather",
                      "Current Weather" = "Raw data")
     #update tab items 
