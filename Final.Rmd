@@ -30,9 +30,6 @@ whately <- purrr::pluck(mac_data, "whately")
 orchard <- purrr::pluck(mac_data, "orchard")
 ```
 
-```{r}
-View(whately)
-```
 
 ```{r}
 # Grouping by the date 
@@ -47,6 +44,7 @@ print(current[1,2])
 ```{r}
 View(daily_whately)
 ```
+
 
 
 # now putting all of these graphs in shiny dashboard:
@@ -75,6 +73,8 @@ ui <- dashboardPage(
     tabItems(
 tabItem(tabName = "Current Weather", h3("Current Weather",align="center"), 
         mainPanel(tableOutput("cw"), width=12)),
+tabItem(tabName = "About", h3("About",align="center"), 
+        box(leafletOutput("Abt"), width=12)),
 tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
         fluidRow(
         box(highchartOutput("hc2"), width=12),
@@ -99,6 +99,15 @@ server <- function(input, output,session){
 # output$name <- name = highchartOutput("name")
 output$cw <- renderTable({
   current;
+})
+output$abt <- renderLeaflet({
+   leaflet() %>%
+  addTiles(group = "street") %>%
+    addPolygons(data = macleish_layers[["boundary"]], 
+              weight = 0.5, color = "lightgreen", group = "boundary") %>%
+  addScaleBar(options = scaleBarOptions(maxWidth = 80, metric = FALSE, imperial = TRUE,
+  updateWhenIdle = TRUE))
+    
 })
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
