@@ -34,6 +34,7 @@ orchard <- purrr::pluck(mac_data, "orchard")
 ```{r}
 # Grouping by the date 
 daily_whately <- get_daily(whately)
+daily_orchard <- get_daily(orchard)
 last_whately <- get_lastyear(daily_whately)
 #getting current weather data
 current<-tail(whately,1)
@@ -75,12 +76,19 @@ tabItem(tabName = "Current Weather", h3("Current Weather",align="center"),
 tabItem(tabName = "About", h3("About",align="center"), 
         box(leafletOutput("Abt"), width=12)),
 tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
-        fluidRow(
+        fluidPage(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
-                      highchartOutput("hc2"), highchartOutput("hc3"), 
-   highchartOutput("hc1"),highchartOutput("hc4"))
-        )
+          highchartOutput("hc2"), highchartOutput("hc3"), 
+   highchartOutput("hc1"), highchartOutput("hc4")))),
+  tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
+  fluidPage(
+    selectInput("dataset", "Dataset", c("Whately", "Orchard")),
+  conditionalPanel( condition = "output.nrows",
+                    checkboxInput("headonly", "Only use first 1000 rows"))
+  
 )
+            
+          )
               )#end tabItems
     )#end body
 )
@@ -133,11 +141,22 @@ output$abt <- renderLeaflet({
     coord_polar(start = -((30/2)/360) * 2*pi) +
    scale_colour_brewer(name = "Wind Speed (m/s)") })
 
+ # download raw data 
+  datasetInput <- reactive({
+    switch(input$dataset,
+           "Whately" = daily_whately,
+           "Orchard" = daily_orchard)
+  })
+  output$nrows <- reactive({
+    nrow(datasetInput())
+  })
+  
+  outputOptions(output, "nrows", suspendWhenHidden = FALSE)  
 # we want to switch tabs so we need to refresh session
 # observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
     newtab <- switch(input$tabs, "About" = "Historic Data",
-                     "Historic Data" = "About", 
+                      "Historic Data" = "About", 
                      "About" = "Raw data",
                      "Raw data" = "About",
                      "Historic Data" = "Raw data", 
