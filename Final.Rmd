@@ -72,20 +72,21 @@ ui <- dashboardPage(
     # tab items 
     tabItems(
 tabItem(tabName = "Current Weather", h2("Current Weather",align="center"), 
-        mainPanel(tableOutput("cw"), width=12)),
-tabItem(tabName = "About", h2("About",align="center")),
+        box(tableOutput("cw"), width=12)),
+tabItem(tabName = "About", h2("About",align="center"),
+        box(tableOutput("cw"), width=12)),
 tabItem(tabName = "Historic Data", h2("Historic Data",align="center"),
-        fluidRow(
+        box(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
           highchartOutput("hc2"), highchartOutput("hc3"), 
-   highchartOutput("hc1"), highchartOutput("hc4")))),
+   highchartOutput("hc1"), highchartOutput("hc4")), width=12)),
   tabItem(tabName = "Raw data", h2("Raw data",align="center"),
-  fluidRow(
+  box(
     selectInput("dataset", "Dataset", c("Whately", "Orchard")), uiOutput("choose_columns"),
   conditionalPanel( condition = "output.nrows",
                     checkboxInput("headonly", "Only use first 1000 rows"),
                     downloadButton('downloadData', 'Download')),
-tableOutput("data_table")))
+tableOutput("data_table"), width=12))
               )#end tabItems
     )#end body
 )
