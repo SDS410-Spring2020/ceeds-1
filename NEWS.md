@@ -6,7 +6,8 @@
 
 - Marta: 
 
-- Mirella: 
+- Mirella:I was working on getting the download filtered data to work. I'm
+trying to figure out whether it would be a better idea to work with gridextra package (vs how we have it) when getting multiple plots into one tab. 
 
 ### What is it that you're struggling with right now?
 
@@ -14,7 +15,7 @@
 
 - Marta:  
 
-- Mirella:   
+- Mirella: What's the most efficient (and better) way to have the download filtered data for our final project. We have a few options; however, they are not exactly what our client wants. Havign trouble catching up with how tab works since it stops working.   
 
 ### What are you planning to do next week?
 
@@ -22,7 +23,7 @@
 
 - Marta: 
 
-- Mirella: 
+- Mirella: Work on our report, and help Julia with the multiple plots in one tab (weather that is with the gridextra package or how we have it right now).
 
 ## 2019-03-26
 ### What did you do this week?
