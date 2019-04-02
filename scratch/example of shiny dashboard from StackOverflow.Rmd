@@ -41,7 +41,7 @@ shinyApp(ui, server)
 
 ```
 
-
+# example about how to download data 
 
 ```{r}
 
@@ -100,7 +100,6 @@ server<-shinyServer(function(input, output) {
 })
 ```
 
-# example about how to download data 
 ```{r}
 ui<-shinyUI(pageWithSidebar(
 
