@@ -71,15 +71,15 @@ ui <- dashboardPage(
   dashboardBody(
     # tab items 
     tabItems(
-tabItem(tabName = "Current Weather", h3("Current Weather",align="center"), 
+tabItem(tabName = "Current Weather", h2("Current Weather",align="center"), 
         mainPanel(tableOutput("cw"), width=12)),
-tabItem(tabName = "About", h3("About",align="center")),
-tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
+tabItem(tabName = "About", h2("About",align="center")),
+tabItem(tabName = "Historic Data", h2("Historic Data",align="center"),
         fluidRow(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
           highchartOutput("hc2"), highchartOutput("hc3"), 
    highchartOutput("hc1"), highchartOutput("hc4")))),
-  tabItem(tabName = "Raw data", h3("Raw data",align="center"),
+  tabItem(tabName = "Raw data", h2("Raw data",align="center"),
   fluidRow(
     selectInput("dataset", "Dataset", c("Whately", "Orchard")), uiOutput("choose_columns"),
   conditionalPanel( condition = "output.nrows",
