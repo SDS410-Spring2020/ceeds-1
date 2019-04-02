@@ -75,21 +75,17 @@ tabItem(tabName = "Current Weather", h3("Current Weather",align="center"),
         mainPanel(tableOutput("cw"), width=12)),
 tabItem(tabName = "About", h3("About",align="center")),
 tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
-        fluidPage(
+        fluidRow(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
           highchartOutput("hc2"), highchartOutput("hc3"), 
    highchartOutput("hc1"), highchartOutput("hc4")))),
   tabItem(tabName = "Raw data", h3("Raw data",align="center"),
-  fluidPage(
+  fluidRow(
     selectInput("dataset", "Dataset", c("Whately", "Orchard")), uiOutput("choose_columns"),
   conditionalPanel( condition = "output.nrows",
                     checkboxInput("headonly", "Only use first 1000 rows"),
                     downloadButton('downloadData', 'Download')),
-  tableOutput("data_table")
-  
-)
-            
-          )
+tableOutput("data_table")))
               )#end tabItems
     )#end body
 )
