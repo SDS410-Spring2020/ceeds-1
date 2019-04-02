@@ -73,8 +73,7 @@ ui <- dashboardPage(
     tabItems(
 tabItem(tabName = "Current Weather", h3("Current Weather",align="center"), 
         mainPanel(tableOutput("cw"), width=12)),
-tabItem(tabName = "About", h3("About",align="center"), 
-        box(leafletOutput("Abt"), width=12)),
+tabItem(tabName = "About", h3("About",align="center")),
 tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
         fluidPage(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
@@ -82,9 +81,11 @@ tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
    highchartOutput("hc1"), highchartOutput("hc4")))),
   tabItem(tabName = "Raw data", h3("Raw data",align="center"),
   fluidPage(
-    selectInput("dataset", "Dataset", c("Whately", "Orchard")),
+    selectInput("dataset", "Dataset", c("Whately", "Orchard")), uiOutput("choose_columns"),
   conditionalPanel( condition = "output.nrows",
-                    checkboxInput("headonly", "Only use first 1000 rows"))
+                    checkboxInput("headonly", "Only use first 1000 rows"),
+                    downloadButton('downloadData', 'Download')),
+  tableOutput("data_table")
   
 )
             
@@ -100,6 +101,7 @@ tabItem(tabName = "Historic Data", h3("Historic Data",align="center"),
 
 
 ```{r}
+data_sets <- c("daily_orchard","daily_whately")
 # shiny server
 server <- function(input, output,session){
 # defining outputs
@@ -107,15 +109,7 @@ server <- function(input, output,session){
 output$cw <- renderTable({
   current;
 })
-output$abt <- renderLeaflet({
-   leaflet() %>%
-  addTiles(group = "street") %>%
-    addPolygons(data = macleish_layers[["boundary"]], 
-              weight = 0.5, color = "lightgreen", group = "boundary") %>%
-  addScaleBar(options = scaleBarOptions(maxWidth = 80, metric = FALSE, imperial = TRUE,
-  updateWhenIdle = TRUE))
-    
-})
+
   output$hc1 <- renderHighchart ({
     highchart(type = "stock")%>%
       hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), 
@@ -142,31 +136,62 @@ output$abt <- renderLeaflet({
    scale_colour_brewer(name = "Wind Speed (m/s)") })
 
  # download raw data 
-  datasetInput <- reactive({
-    switch(input$dataset,
-           "Whately" = daily_whately,
-           "Orchard" = daily_orchard)
+  output$choose_dataset <- renderUI({
+    selectInput("dataset", "Data set", as.list(data_sets))
   })
-  output$nrows <- reactive({
-    nrow(datasetInput())
+
+  # Check boxes
+  output$choose_columns <- renderUI({
+    # If missing input, return to avoid error later in function
+    if(is.null(input$dataset))
+      return()
+
+    # Get the data set with the appropriate name
+    dat <- get(input$dataset)
+    colnames <- names(dat)
+
+    # Create the checkboxes and select them all by default
+    checkboxGroupInput("columns", "Choose columns", 
+                        choices  = colnames,
+                        selected = colnames)
+  })
+
+
+  # Output the data
+  output$data_table <- renderTable({
+    # If missing input, return to avoid error later in function
+    if(is.null(input$dataset))
+      return()
+
+    # Get the data set
+    dat <- get(input$dataset)
+
+    # Make sure columns are correct for data set (when data set changes, the
+    # columns will initially be for the previous data set)
+    if (is.null(input$columns) || !(input$columns %in% names(dat)))
+      return()
+
+    # Keep the selected columns
+    dat <- dat[, input$columns, drop = FALSE]
+
+    # Return first 20 rows
+    tail(dat, 20)
+     output$downloadData <- downloadHandler(
+    filename = function() { paste(input$dat, '.csv', sep='') },
+    content = function(file) {
+      write.csv(datasetInput(), file)
+    }
+  )
   })
   
-  outputOptions(output, "nrows", suspendWhenHidden = FALSE)  
 # we want to switch tabs so we need to refresh session
 # observeEvent allows reactive input and allows us to switch tabs
   observeEvent(input$switchtab, {
-    newtab <- switch(input$tabs, "About" = "Historic Data",
-                      "Historic Data" = "About", 
-                     "About" = "Raw data",
-                     "Raw data" = "About",
-                     "Historic Data" = "Raw data", 
-                     "Raw data" = "Historic Data",
-                     "Current Weather" = "Historic Data", 
-                     "Historic Data" = "Current Weather", 
-                    "Current Weather" = "About", 
-                    "About" = "Current Weather",
-                     "Raw data" = "Current Weather",
-                     "Current Weather" = "Raw data")
+    newtab <- switch(input$tabs, 
+                     "About"="Raw data","Raw data"="About","About"="Current Weather", "Current Weather"="About", "About"="Historic Data", "Historic Data"="About",
+  "Raw data"="Current Weather","Current Weather"="Raw data","Raw data"="Historic Data",
+  "Historic Data"="Raw data","Historic Data"="Current Weather",
+  "Current Weather"="Historic Data")
     #update tab items 
     updateTabItems(session, "tabs", newtab)
   })
