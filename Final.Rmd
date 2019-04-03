@@ -73,8 +73,7 @@ ui <- dashboardPage(
     tabItems(
 tabItem(tabName = "Current Weather", h2("Current Weather",align="center"), 
         box(tableOutput("cw"), width=12)),
-tabItem(tabName = "About", h2("About",align="center"),
-        box(width=12)),
+tabItem(tabName = "About", h2("About",align="center")),
 tabItem(tabName = "Historic Data", h2("Historic Data",align="center"),
         box(fluidRow(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
