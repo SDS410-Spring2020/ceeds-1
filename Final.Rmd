@@ -78,8 +78,8 @@ tabItem(tabName = "Historic Data", h2("Historic Data",align="center"),
         box(fluidRow(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
           highchartOutput("hc2"), highchartOutput("hc3"), 
-   highchartOutput("hc1"), highchartOutput("hc4"))), width=12)),
-  tabItem(tabName = "Raw data", h2("Raw data",align="center"),
+          highchartOutput("hc1"), highchartOutput("hc4"))), width=12)),
+tabItem(tabName = "Raw data", h2("Raw data",align="center"),
   box(
     selectInput("dataset", "Dataset", c("Whately", "Orchard")), uiOutput("choose_columns"),
   conditionalPanel( condition = "output.nrows",
