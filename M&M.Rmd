@@ -1,0 +1,208 @@
+---
+title: "M&M"
+author: "Mirella Hernandez"
+date: "April 4, 2019"
+output: html_document
+---
+
+---
+title: "Highcharter"
+author: "Julia Lee"
+date: "3/2/2019"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(RMySQL)
+library(etl)
+library(leaflet)
+library(RSQLite)
+library(ceeds)
+library(macleish)
+library(lubridate)
+library(shinydashboard)
+library(shiny)
+library(highcharter)
+library(timetk)
+library(kableExtra)
+```
+
+```{r}
+# fetching the data from the server
+#using read_whately from ceeds package
+mac_data <- read_whately()
+whately <- purrr::pluck(mac_data, "whately")
+orchard <- purrr::pluck(mac_data, "orchard")
+```
+
+
+```{r}
+# Grouping by the date 
+daily_whately <- get_daily(whately)
+daily_orchard <- get_daily(orchard)
+last_whately <- get_lastyear(daily_whately)
+#getting current weather data
+current<-tail(whately,1)
+print(current[1,2])
+```
+
+```{r}
+View(daily_whately)
+```
+
+
+
+# now putting all of these graphs in shiny dashboard:
+
+```{r}
+#setting up the ui of the dashboard
+ui <- dashboardPage(
+  # making a heading for the dashboard
+  dashboardHeader(title = "Macleish weather",                
+                  dropdownMenu()),
+  #making a sidebar with tabs
+  dashboardSidebar(
+    # making a sidebar menu
+    sidebarMenu(
+      #making an id 
+      id = "tabs",
+      #creating menu items
+      menuItem("Current Weather",tabName="Current Weather",icon=icon("globe")),
+      menuItem("About", tabName = "About", icon = icon("dashboard")),
+      menuItem("Historic Data", tabName = "Historic Data", icon = icon("bar-chart-o")),
+      menuItem("Raw data",tabName="Raw data",icon=icon("globe"))      
+    )),
+  # Drawing the dashboard body
+  dashboardBody(
+    # tab items 
+    tabItems(
+tabItem(tabName = "Current Weather", h2("Current Weather",align="center"), 
+        box(tableOutput("cw"), width=12)),
+tabItem(tabName = "About", h2("About",align="center")),
+tabItem(tabName = "Historic Data", h2("Historic Data",align="center"),
+        box(fluidRow(
+          splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
+          highchartOutput("hc2"), highchartOutput("hc3"), 
+          highchartOutput("hc1"), highchartOutput("hc4"))), width=12)),
+tabItem(tabName = "Raw data", h2("Raw data",align="center"),
+  box(
+    selectInput("dataset", "Dataset", c("Whately", "Orchard")), uiOutput("choose_columns"),
+  conditionalPanel( condition = "output.nrows",
+                    checkboxInput("headonly", "Only use first 1000 rows"),
+                    downloadButton('downloadData', 'Download')),
+tableOutput("data_table"), width=12))
+              )#end tabItems
+    )#end body
+)
+
+
+
+```
+
+
+
+```{r}
+data_sets <- c("daily_orchard","daily_whately")
+# shiny server
+server <- function(input, output,session){
+# defining outputs
+# output$name <- name = highchartOutput("name")
+output$cw <- renderTable({
+  current;
+})
+
+  output$hc1 <- renderHighchart ({
+    highchart(type = "stock")%>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), 
+                    name = "Avg temperature") %>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), 
+                    name = "min temperature") %>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), 
+                    name = "max temperature") %>%
+      hc_exporting(enabled = TRUE) # enable exporting option 
+    })
+  output$hc2 <- renderHighchart({highchart(type = "stock")%>%
+      hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, 
+            x = the_date), name = "precipitation") %>%
+      hc_exporting(enabled = TRUE)})
+  output$hc3 <-renderHighchart({highchart(type = "stock")%>%
+      hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date)
+                    , name = "Max Wind") %>%
+      hc_exporting(enabled = TRUE)})
+  output$hc4 <-renderPlot({
+    ggplot(data = whately, aes(x = cut(wind_dir,15), fill = cut(wind_speed,15))) +
+    geom_bar() + 
+    scale_x_discrete(drop = FALSE, labels = waiver()) +
+    coord_polar(start = -((30/2)/360) * 2*pi) +
+   scale_colour_brewer(name = "Wind Speed (m/s)") })
+
+ # download raw data 
+  output$choose_dataset <- renderUI({
+    selectInput("dataset", "Data set", as.list(data_sets))
+  })
+
+  # Check boxes
+  output$choose_columns <- renderUI({
+    # If missing input, return to avoid error later in function
+    if(is.null(input$dataset))
+      return()
+
+    # Get the data set with the appropriate name
+    dat <- get(input$dataset)
+    colnames <- names(dat)
+
+    # Create the checkboxes and select them all by default
+    checkboxGroupInput("columns", "Choose columns", 
+                        choices  = colnames,
+                        selected = colnames)
+  })
+
+
+  # Output the data
+  output$data_table <- renderTable({
+    # If missing input, return to avoid error later in function
+    if(is.null(input$dataset))
+      return()
+
+    # Get the data set
+    dat <- get(input$dataset)
+
+    # Make sure columns are correct for data set (when data set changes, the
+    # columns will initially be for the previous data set)
+    if (is.null(input$columns) || !(input$columns %in% names(dat)))
+      return()
+
+    # Keep the selected columns
+    dat <- dat[, input$columns, drop = FALSE]
+
+    # Return first 20 rows
+    tail(dat, 20)
+     output$downloadData <- downloadHandler(
+    filename = function() { paste(input$dat, '.csv', sep='') },
+    content = function(file) {
+      write.csv(datasetInput(), file)
+    }
+  )
+  })
+  
+# we want to switch tabs so we need to refresh session
+# observeEvent allows reactive input and allows us to switch tabs
+  observeEvent(input$switchtab, {
+    newtab <- switch(input$tabs, 
+                     "About"="Raw data","Raw data"="About","About"="Current Weather", "Current Weather"="About", "About"="Historic Data", "Historic Data"="About",
+  "Raw data"="Current Weather","Current Weather"="Raw data","Raw data"="Historic Data",
+  "Historic Data"="Raw data","Historic Data"="Current Weather",
+  "Current Weather"="Historic Data")
+    #update tab items 
+    updateTabItems(session, "tabs", newtab)
+  })
+  
+}
+
+```
+
+```{r}
+shinyApp(ui, server)
+```
