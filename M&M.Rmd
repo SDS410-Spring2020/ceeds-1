@@ -49,7 +49,7 @@ print(current[1,2])
 ```
 
 ```{r}
-View(daily_whately)
+#View(daily_whately)
 ```
 
 
@@ -78,10 +78,10 @@ ui <- dashboardPage(
   dashboardBody(
     # tab items 
     tabItems(
-tabItem(tabName = "Current Weather", h2("Current Weather",align="center"), 
+tabItem(tabName = "Current Weather", h2("Current Weather", align="center"), 
         box(tableOutput("cw"), width=12)),
-tabItem(tabName = "About", h2("About",align="center")),
-tabItem(tabName = "Historic Data", h2("Historic Data",align="center"),
+tabItem(tabName = "About", h2("About", align="center")),
+tabItem(tabName = "Historic Data", h2("Historic Data",align= "center"),
         box(fluidRow(
           splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
           highchartOutput("hc2"), highchartOutput("hc3"), 
