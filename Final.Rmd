@@ -59,7 +59,7 @@ ui <- dashboardPage(
       menuItem("Current Weather", tabName = "current", icon = icon("globe")),
       menuItem("About", tabName = "about", icon = icon("dashboard")),
       menuItem("Historic Data", tabName = "historic", icon = icon("bar-chart-o")),
-      menuItem("Raw data",tabName = "raw",icon = icon("globe"))      
+      menuItem("Raw data", tabName = "raw", icon = icon("globe"))      
     )),
   # Drawing the dashboard body
   dashboardBody(
@@ -67,7 +67,7 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "current", h2("Current Weather", align = "center"), 
               box(tableOutput("cw"), width = 12)),
-      tabItem(tabName = "about", h2("About",align = "center")),
+      tabItem(tabName = "about", h2("About", align = "center")),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
               box(fluidRow(
                 splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
@@ -118,16 +118,20 @@ server <- function(input, output, session) {
       hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, 
                                                       x = the_date), name = "precipitation") %>%
       hc_exporting(enabled = TRUE)})
+  
   output$hc3 <- renderHighchart({highchart(type = "stock") %>%
       hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date)
                     , name = "Max Wind") %>%
       hc_exporting(enabled = TRUE)})
+  
+  # ggplot2
   output$hc4 <- renderPlot({
-    ggplot(data = whately, aes(x = cut(wind_dir,15), fill = cut(wind_speed,15))) +
+    ggplot(data = daily_whately, aes(x = cut(dir,15), fill = cut(avgWindSpeed, 15))) +
       geom_bar() + 
       scale_x_discrete(drop = FALSE, labels = waiver()) +
       coord_polar(start = -((30/2)/360) * 2*pi) +
-      scale_colour_brewer(name = "Wind Speed (m/s)") })
+      scale_colour_brewer(name = "Wind Speed (m/s)") 
+  })
   
   # download raw data 
   output$choose_dataset <- renderUI({
