@@ -13,28 +13,13 @@
 #' lapply(mac_data, head)
 #' }
 read_whately <- function() {
-  mac <- refresh_macleish()
-  
-  whately <- mac %>%
-    attr("load") %>%
-    fs::dir_ls(regex = "whately.csv$") %>%
-    readr::read_csv()
-  
-  orchard <- mac %>%
-    attr("load") %>%
-    fs::dir_ls(regex = "orchard.csv$") %>%
-    readr::read_csv()
-  
-  return(list("whately" = whately, "orchard" = orchard))
-}
 
-refresh_macleish <- function() {
   mac <- etl::etl("macleish")
-  mac %>%
+  out <- mac %>%
     etl_extract() %>%
-    etl_transform()
+    macleish::etl_transform_help()
   
-  return(mac)
+  return(out)
 }
 
 #' @export
@@ -59,7 +44,7 @@ get_daily <- function(x) {
 #' @export
 #' @rdname read_whately
 get_lastyear <- function(y) {
-This_year <- y%>%
-  filter(between(the_date, lubridate::today() - lubridate::days(365), lubridate::today()))
-return(This_year)
+  This_year <- y%>%
+    filter(between(the_date, lubridate::today() - lubridate::days(365), lubridate::today()))
+  return(This_year)
 }

@@ -1,6 +1,6 @@
 Package: ceeds
 Title: What the Package Does (One Line, Title Case)
-Version: 0.0.0.9001
+Version: 0.0.0.9002
 Authors@R: c(
     person("Benjamin S.", "Baumer", email = "ben.baumer@gmail.com", 
       role = c("aut", "cre")),
@@ -19,8 +19,7 @@ Imports:
     dplyr,
     etl,
     lubridate,
-    macleish,
-    fs,
+    macleish (>= 0.3.3.9004),
     magrittr,
     readr,
     purrr
