@@ -3,7 +3,7 @@
  
 - Julia:  I started working on the tab to allow the user to download the data. I also found out how to use ggplot and reactive user data and I tried to follow the example that I found online to use ggplot. I also spent most of the week trying to find the bug in final.rmd. I learned that something is wrong with the "about" tab but I'm not sure what. I also tried to see if it was because the data was too big to load and was stalling and that's why our plots did not appear and used a smaller data set but that was not the case.  
 
-- Marta: 
+- Marta: Mirella and I started to debug the tabs problem, but Ben has already solved that problem for us.
 
 - Mirella: Marta and I started a new file to debug and clean our work to figure out what was going wrong. 
 
@@ -11,7 +11,7 @@
 
 - Julia: I'm still struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also struggling with allowing users to toggle between orchard and whatley for the graphs and certain variables.  I'm also unsure about how to extract info from the current weather table and make it into a text object.
 
-- Marta:  
+- Marta: We're struggling with debugging, seeing if ggplot can be reactive and also putting what graphs we want into the tabs.
 
 - Mirella: The debugging, and getting every file we have to work smoothly toguether.     
 
@@ -19,7 +19,7 @@
 
 -Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd).  I'm also planning on reading more examples online that could help me debug our code.
 
-- Marta: 
+- Marta: I'm planning on working on the current weather tab, so that all the appropriate visualizations appear.
 
 - Mirella: Having a better demo and clear structure of our project to present for our technical report. 
 
