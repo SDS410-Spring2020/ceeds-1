@@ -1,3 +1,28 @@
+## 2019-04-09
+### What did you do this week?
+ 
+- Julia:  I started working on the tab to allow the user to download the data. I also found out how to use ggplot and reactive user data and I tried to follow the example that I found online to use ggplot. I also spent most of the week trying to find the bug in final.rmd. I learned that something is wrong with the "about" tab but I'm not sure what. I also tried to see if it was because the data was too big to load and was stalling and that's why our plots did not appear and used a smaller data set but that was not the case.  
+
+- Marta: 
+
+- Mirella:
+
+### What is it that you're struggling with right now?
+
+- Julia: I'm still struggling with debugging the code that I have already written and seeing what went wrong to make tabs no longer work in final.Rmd. I also struggling with allowing users to toggle between orchard and whatley for the graphs and certain variables.  I'm also unsure about how to extract info from the current weather table and make it into a text object.
+
+- Marta:  
+
+- Mirella:    
+
+### What are you planning to do next week?
+
+-Julia:  I'm planning on solving where the bug is in my code and get the tabs to be working again, I'm pretty sure it might just be an unfound typo because I did not change any of the logical ways that this code runs compared to (HighchartJulia.Rmd).  I'm also planning on reading more examples online that could help me debug our code.
+
+- Marta: 
+
+- Mirella: 
+
 ## 2019-04-02
 ### What did you do this week?
  
