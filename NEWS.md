@@ -5,7 +5,7 @@
 
 - Marta: 
 
-- Mirella:
+- Mirella: Marta and I started a new file to debug and clean our work to figure out what was going wrong. 
 
 ### What is it that you're struggling with right now?
 
@@ -13,7 +13,7 @@
 
 - Marta:  
 
-- Mirella:    
+- Mirella: The debugging, and getting every file we have to work smoothly toguether.     
 
 ### What are you planning to do next week?
 
@@ -21,7 +21,7 @@
 
 - Marta: 
 
-- Mirella: 
+- Mirella: Having a better demo and clear structure of our project to present for our technical report. 
 
 ## 2019-04-02
 ### What did you do this week?
