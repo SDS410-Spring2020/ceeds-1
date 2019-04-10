@@ -69,10 +69,11 @@ ui <- dashboardPage(
               box(tableOutput("cw"), width = 12)),
       tabItem(tabName = "about", h2("About", align = "center")),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
-              box(fluidRow(
-                splitLayout(cellWidths = c("25%", "25%","25%", "25%"),
-                            highchartOutput("hc2"), highchartOutput("hc3"), 
-                            highchartOutput("hc1"), highchartOutput("hc4"))), width = 12)),
+            fluidPage(
+              box(highchartOutput("hc2"), width = 12), 
+              box(highchartOutput("hc3"),width = 12), 
+              box(highchartOutput("hc1"),width = 12), 
+              box(highchartOutput("hc4"), width = 12))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
               box(
                 selectInput("dataset", "Dataset", c("whately", "orchard")), uiOutput("choose_columns"),
