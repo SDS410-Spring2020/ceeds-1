@@ -73,7 +73,7 @@ ui <- dashboardPage(
               box(highchartOutput("hc2"), width = 12), 
               box(highchartOutput("hc3"),width = 12), 
               box(highchartOutput("hc1"),width = 12), 
-              box(highchartOutput("hc4"), width = 12))),
+              box(plotOutput("hc4"), width = 12))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
               box(
                 selectInput("dataset", "Dataset", c("whately", "orchard")), uiOutput("choose_columns"),
