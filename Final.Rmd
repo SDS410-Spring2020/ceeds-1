@@ -142,7 +142,8 @@ server <- function(input, output, session) {
   
   whately <- whately_2015
   daily_whately <- ceeds::get_daily(whately)
-  
+  orchard <- orchard_2015
+  daily_orchard <- ceeds::get_daily(orchard)
   # defining outputs
   # output$name <- name = highchartOutput("name")
   output$cw <- renderTable({
