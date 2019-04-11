@@ -113,6 +113,7 @@ ui <- dashboardPage(
                 a("pwetzel@smith.edu"))),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(
+              box(selectInput("dataset", "Dataset", c("whately", "orchard")), width = 12),
               box(highchartOutput("hc2"), width = 12), 
               box(highchartOutput("hc3"),width = 12), 
               box(highchartOutput("hc1"),width = 12), 
