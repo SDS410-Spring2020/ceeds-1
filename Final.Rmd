@@ -176,12 +176,13 @@ server <- function(input, output, session) {
       hc_exporting(enabled = TRUE)})
   
   # ggplot2
-  output$hc4 <- renderPlotly({
-    ggplot(data = daily_whately, aes(x = cut(dir,15), fill = cut(avgWindSpeed, 15))) +
+  p<-ggplot(data = daily_whately, aes(x = cut(dir,15), fill = cut(avgWindSpeed, 15))) +
       geom_bar() + 
       scale_x_discrete(drop = FALSE, labels = waiver()) +
       coord_polar(start = -((30/2)/360) * 2*pi) +
-      scale_colour_brewer(name = "Wind Speed (m/s)") 
+      scale_colour_brewer(name = "Wind Speed (m/s)")
+  output$hc4 <- renderPlotly({
+    ggplotly(p) 
   })
   
  
