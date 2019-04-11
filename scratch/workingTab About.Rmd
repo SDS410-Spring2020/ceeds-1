@@ -1,6 +1,6 @@
 ---
-title: "Highcharter"
-author: "Julia Lee"
+title: "Working on About Tab"
+author: "Mirella"
 date: "3/2/2019"
 output: html_document
 ---
@@ -67,7 +67,7 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "current", h2("Current Weather", align = "center"), 
               box(tableOutput("cw"), width = 12)),
-           tabItem(tabName = "about", h2("About", align = "center"), 
+      tabItem(tabName = "about", h2("About", align = "center"), 
               h1("hello, Welcome to the MacLeish Weather App"),
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
@@ -90,7 +90,7 @@ ui <- dashboardPage(
                  sea level. Temperature, relative humidity, and radiation are 
                  measured 2 m above the ground. The tower is located in a forest
                  clearing.", style = "font-family: 'arial'; font-si50pt"),
-              img(src = "height_comparison.png", height = 210, width = 400, 
+              img(src = "height_comparison.png", height = 250, width = 400, 
               style="display: block; margin-left: auto; margin-right: auto;"),
               h4("height comparison between weather station towers, trees and 
                  people", align = "center"),
@@ -111,6 +111,10 @@ ui <- dashboardPage(
                 style = "font-family: 'arial'; font-si50pt"),
               p("Paul R. Wetzel", style = "font-family: 'arial'; font-si50pt",
                 a("pwetzel@smith.edu"))),
+              
+              
+              
+        
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(
               box(highchartOutput("hc2"), width = 12), 
@@ -122,8 +126,8 @@ ui <- dashboardPage(
                 selectInput("dataset", "Dataset", c("whately", "orchard")), uiOutput("choose_columns"),
                 conditionalPanel( condition = "output.nrows",
                                   checkboxInput("headonly", "Only use first 1000 rows"),
-                                  downloadButton('downloadData', 'Download')),width = 12), 
-                box(tableOutput("data_table"), width = 12))
+                                  downloadButton('downloadData', 'Download')),
+                tableOutput("data_table"), width = 12))
     )#end tabItems
   )#end body
 )
@@ -177,16 +181,12 @@ server <- function(input, output, session) {
       scale_colour_brewer(name = "Wind Speed (m/s)") 
   })
   
- 
-# download raw data 
+  # download raw data 
   output$choose_dataset <- renderUI({
     selectInput("dataset", "Data set", as.list(data_sets))
   })
-  datasetInput <- reactive({
-    switch(input$dataset,
-           "Whately" = daily_whately,
-           "Orchard" = daily_orchard)
-  })
+  
+  # Check boxes
   output$choose_columns <- renderUI({
     # If missing input, return to avoid error later in function
     if (is.null(input$dataset))
@@ -201,8 +201,33 @@ server <- function(input, output, session) {
                        choices  = colnames,
                        selected = colnames)
   })
+  
+  
+  # Output the data
   output$data_table <- renderTable({
-    datasetInput()
+    # If missing input, return to avoid error later in function
+    if (is.null(input$dataset))
+      return()
+    
+    # Get the data set
+    dat <- get(input$dataset)
+    
+    # Make sure columns are correct for data set (when data set changes, the
+    # columns will initially be for the previous data set)
+    if (is.null(input$columns) || !(input$columns %in% names(dat)))
+      return()
+    
+    # Keep the selected columns
+    dat <- dat[, input$columns, drop = FALSE]
+    
+    # Return first 20 rows
+    tail(dat, 20)
+    output$downloadData <- downloadHandler(
+      filename = function() { paste(input$dat, '.csv', sep = '') },
+      content = function(file) {
+        write.csv(datasetInput(), file)
+      }
+    )
   })
   
   # we want to switch tabs so we need to refresh session
