@@ -66,3 +66,8 @@ ggplot(data = whately, aes(x = cut(wind_dir,15), fill = cut(wind_speed,15))) +
   
 
 ```
+```{r}
+highchart() %>% 
+  hc_chart(polar=TRUE)%>%
+  hc_add_series(whately_2015, hcaes(x = cut(wind_dir,15), fill = cut(wind_speed,15)))
+```
