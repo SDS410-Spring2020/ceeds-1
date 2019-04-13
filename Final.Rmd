@@ -116,13 +116,13 @@ ui <- dashboardPage(
             fluidPage(
               box(selectInput("dataset", "Dataset", c("whately", "orchard")), width = 12),
               h4("precipitation", align = "center"),
-              box(highchartOutput("hc2"), width = 12),
-              h4("MAX Wind Speed", align = "center"),
-              box(highchartOutput("hc3"),width = 12),
+              box(highchartOutput("hc2"), width = 12,collapsible = T),
+              h4("MAX Wind Speed", align = "center",collapsible = T),
+              box(highchartOutput("hc3"),width = 12,collapsible = T),
               h4("Temperature", align = "center"),
-              box(highchartOutput("hc1"),width = 12),
+              box(highchartOutput("hc1"),width = 12,collapsible = T),
               h4("Wind Direction", align = "center"),
-              box(plotlyOutput("hc4"), width = 12))),
+              box(plotlyOutput("hc4"), width = 12,collapsible = T))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
               box(
                 selectInput("dataset", "Dataset", c("whately", "orchard")), uiOutput("choose_columns"),
