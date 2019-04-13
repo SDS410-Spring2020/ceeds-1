@@ -124,13 +124,14 @@ ui <- dashboardPage(
               box(plotlyOutput("hc4"), width = 12,collapsible = T,solidHeader = T, 
                   title = "Wind Direction", collapsed =T))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
+          fluidPage(
               box(
                 selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), uiOutput("choose_columns"),
                 conditionalPanel( condition = "output.nrows",
                                   checkboxInput("headonly", "Only use first 1000 rows"),
                                   downloadButton('downloadData', 'Download')),width = 12), 
-                box(tableOutput("data_table"), width = 20,collapsible = T,
-                    solidHeader = T, title="Data table",collapsed =T))
+                box(tableOutput("data_table"), width = 30,collapsible = T,
+                    solidHeader = T, title="Data table",collapsed =T)))
     )#end tabItems
   )#end body
 )
@@ -211,7 +212,7 @@ server <- function(input, output, session) {
                        selected = colnames)
   })
   output$data_table <- renderTable({
-    datasetInput()
+    tail(datasetInput(), 10)
   })
   
   # we want to switch tabs so we need to refresh session
