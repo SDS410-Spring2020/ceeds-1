@@ -117,7 +117,7 @@ ui <- dashboardPage(
               box(selectInput("dataset", "Dataset", c("whately", "orchard")), width = 12),
               h4("precipitation", align = "center"),
               box(highchartOutput("hc2"), width = 12,collapsible = T),
-              h4("MAX Wind Speed", align = "center",collapsible = T),
+              h4("MAX Wind Speed", align = "center"),
               box(highchartOutput("hc3"),width = 12,collapsible = T),
               h4("Temperature", align = "center"),
               box(highchartOutput("hc1"),width = 12,collapsible = T),
