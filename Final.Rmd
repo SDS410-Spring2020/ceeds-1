@@ -214,6 +214,11 @@ server <- function(input, output, session) {
   output$data_table <- renderTable({
     tail(datasetInput(), 10)
   })
+    output$downloadData <- downloadHandler(
+    filename = function() { paste(output$data_table, '.csv', sep='') },
+    content = function(file) {
+      write.csv(output$data_table, file)
+    })
   
   # we want to switch tabs so we need to refresh session
   # observeEvent allows reactive input and allows us to switch tabs
