@@ -114,7 +114,7 @@ ui <- dashboardPage(
                 a("pwetzel@smith.edu"))),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(
-              box(selectInput("dataset", "Dataset", c("whately", "orchard")), width = 12),
+              box(selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), width = 12),
               box(highchartOutput("hc2"), width = 12, collapsible = T, solidHeader = T, 
                   title = "Precipitation",collapsed =T),
               box(highchartOutput("hc3"),width = 12,collapsible = T,solidHeader = T, 
@@ -125,11 +125,12 @@ ui <- dashboardPage(
                   title = "Wind Direction", collapsed =T))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
               box(
-                selectInput("dataset", "Dataset", c("whately", "orchard")), uiOutput("choose_columns"),
+                selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), uiOutput("choose_columns"),
                 conditionalPanel( condition = "output.nrows",
                                   checkboxInput("headonly", "Only use first 1000 rows"),
                                   downloadButton('downloadData', 'Download')),width = 12), 
-                box(tableOutput("data_table"), width = 12))
+                box(tableOutput("data_table"), width = 20,collapsible = T,
+                    solidHeader = T, title="Data table",collapsed =T))
     )#end tabItems
   )#end body
 )
@@ -141,14 +142,14 @@ ui <- dashboardPage(
 
 
 ```{r}
-data_sets <- c("daily_orchard", "daily_whately")
 # shiny server
 server <- function(input, output, session) {
   
-  whately <- whately_2015
-  daily_whately <- ceeds::get_daily(whately)
-  orchard <- orchard_2015
-  daily_orchard <- ceeds::get_daily(orchard)
+  WhatelyMet <- ceeds::get_daily(whately_2015)
+  daily_whately <- ceeds::get_daily(whately_2015)
+  OrchardMet <- ceeds::get_daily(orchard_2015)
+  daily_orchard <- ceeds::get_daily(orchard_2015)
+  data_sets <- c("daily_orchard", "daily_whately")
   # defining outputs
   # output$name <- name = highchartOutput("name")
   output$cw <- renderTable({
@@ -192,8 +193,8 @@ server <- function(input, output, session) {
   })
   datasetInput <- reactive({
     switch(input$dataset,
-           "Whately" = daily_whately,
-           "Orchard" = daily_orchard)
+           "WhatelyMet" = daily_whately,
+           "OrchardMet" = daily_orchard)
   })
   output$choose_columns <- renderUI({
     # If missing input, return to avoid error later in function
