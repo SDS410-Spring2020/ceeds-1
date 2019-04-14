@@ -124,7 +124,7 @@ ui <- dashboardPage(
               box(plotlyOutput("hc4"), width = 12,collapsible = T,solidHeader = T, 
                   title = "Wind Direction", collapsed =T),
                box(plotlyOutput("plot1"), width = 12, collapsible = T,solidHeader = T, 
-          collapsed =T,title = "Other Variables", sidebarPanel(
+          collapsed =T,title = "Other Variables (correlation)", sidebarPanel(
     selectInput('xcol', 'X Variable', names(ceeds::get_daily(whately_2015))),
     selectInput('ycol', 'Y Variable', names(ceeds::get_daily(whately_2015))),
                 selected=names(ceeds::get_daily(whately_2015))[[2]])))),
