@@ -122,7 +122,12 @@ ui <- dashboardPage(
               box(highchartOutput("hc1"),width = 12, collapsible = T,solidHeader = T, 
                   title = "Temperature", collapsed =T),
               box(plotlyOutput("hc4"), width = 12,collapsible = T,solidHeader = T, 
-                  title = "Wind Direction", collapsed =T))),
+                  title = "Wind Direction", collapsed =T),
+               box(plotlyOutput("plot1"), width = 12, collapsible = T,solidHeader = T, 
+          collapsed =T,title = "Other Variables", sidebarPanel(
+    selectInput('xcol', 'X Variable', names(ceeds::get_daily(whately_2015))),
+    selectInput('ycol', 'Y Variable', names(ceeds::get_daily(whately_2015))),
+                selected=names(ceeds::get_daily(whately_2015))[[2]])))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
           fluidPage(
               box(
@@ -190,7 +195,11 @@ server <- function(input, output, session) {
     coord_polar(start = -((30/2)/360) * 2*pi) +
    scale_colour_brewer(name = "Wind Speed (m/s)")) 
   })
-
+  
+output$plot1 <- renderPlotly({
+    ggplotly(ggplot(data = datasetInput(), aes_string(x =input$xcol, y = input$ycol)) +
+    geom_point(color = "green")) 
+  })
     
  
 # download raw data 
