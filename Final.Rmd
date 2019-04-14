@@ -1,6 +1,6 @@
 ---
-title: "Highcharter"
-author: "Julia Lee"
+title: "MacLeish Weather Dashboard"
+author: "Julia Lee, Marta Garcia, & Mirella Hernandez"
 date: "3/2/2019"
 output: html_document
 ---
@@ -49,7 +49,7 @@ current <- tail(whately, 1)
 #setting up the ui of the dashboard
 ui <- dashboardPage(
   # making a heading for the dashboard
-  dashboardHeader(title = "Macleish weather", dropdownMenu()),
+  dashboardHeader(title = "MacLeish Weather", dropdownMenu()),
   #making a sidebar with tabs
   dashboardSidebar(
     # making a sidebar menu
