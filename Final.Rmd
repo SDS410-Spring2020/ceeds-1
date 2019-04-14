@@ -156,35 +156,39 @@ server <- function(input, output, session) {
   output$cw <- renderTable({
     current;
   })
-  
+  datasetInput <- reactive({
+    switch(input$dataset,
+           "WhatelyMet" = daily_whately,
+           "OrchardMet" = daily_orchard)
+  })
   output$hc1 <- renderHighchart({
     highchart(type = "stock") %>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = avgTemp, x = the_date), 
+      hc_add_series(datasetInput(),type = "line", hcaes(y = avgTemp, x = the_date), 
                     name = "Avg temperature") %>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = mintemp, x = the_date), 
+      hc_add_series(datasetInput(),type = "line", hcaes(y = mintemp, x = the_date), 
                     name = "min temperature") %>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = maxtemp, x = the_date), 
+      hc_add_series(datasetInput(),type = "line", hcaes(y = maxtemp, x = the_date), 
                     name = "max temperature") %>%
       hc_exporting(enabled = TRUE) # enable exporting option 
   })
   output$hc2 <- renderHighchart({highchart(type = "stock") %>%
-      hc_add_series(daily_whately,type = "bar", hcaes(y = precipitation, 
+      hc_add_series(datasetInput(),type = "bar", hcaes(y = precipitation, 
                                                       x = the_date), name = "precipitation") %>%
       hc_exporting(enabled = TRUE)})
   
   output$hc3 <- renderHighchart({highchart(type = "stock") %>%
-      hc_add_series(daily_whately,type = "line", hcaes(y = maxwind, x = the_date)
+      hc_add_series(datasetInput(),type = "line", hcaes(y = maxwind, x = the_date)
                     , name = "Max Wind") %>%
       hc_exporting(enabled = TRUE)})
   
   # ggplot2
-  p<-ggplot(data = daily_whately, aes(x = cut(dir,15), fill = cut(avgWindSpeed, 15))) +
+  
+  output$hc4 <- renderPlotly({
+    ggplotly(ggplot(data = datasetInput(), aes(x = cut(dir,15), fill = cut(avgWindSpeed, 15))) +
       geom_bar() + 
       scale_x_discrete(drop = FALSE, labels = waiver()) +
       coord_polar(start = -((30/2)/360) * 2*pi) +
-      scale_colour_brewer(name = "Wind Speed (m/s)")
-  output$hc4 <- renderPlotly({
-    ggplotly(p) 
+      scale_colour_brewer(name = "Wind Speed (m/s)")) 
   })
   
  
