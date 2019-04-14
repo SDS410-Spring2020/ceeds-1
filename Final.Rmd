@@ -129,14 +129,16 @@ ui <- dashboardPage(
     selectInput('ycol', 'Y Variable', names(ceeds::get_daily(whately_2015))),
                 selected=names(ceeds::get_daily(whately_2015))[[2]])))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
-          fluidPage(
-              box(
-                selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), uiOutput("choose_columns"),
-                conditionalPanel( condition = "output.nrows",
-                                  checkboxInput("headonly", "Only use first 1000 rows"),
-                                  downloadButton('downloadData', 'Download')),width = 12), 
-                box(tableOutput("data_table"), width = 30,collapsible = T,
-                    solidHeader = T, title="Data table",collapsed =T)))
+             fluidPage(splitLayout(cellWidths = c("45%","55%"),
+               box(sidebarPanel(
+    selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")),
+    uiOutput("choose_columns"),
+    br(),
+    a(href = "https://gist.github.com/4211337", "Source code"),
+     downloadButton('downloadData', 'Download'),
+  width=12),width=12),box(tableOutput("data_table"), width = 24,collapsible = T,
+                    solidHeader = T, title="Data table",collapsed =T)))) 
+                
     )#end tabItems
   )#end body
 )
