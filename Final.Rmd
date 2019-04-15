@@ -1,6 +1,6 @@
 ---
 title: "MacLeish Weather Dashboard"
-author: "Julia Lee, Marta Garcia, & Mirella Hernandez"
+author: "Marta Garcia, Mirella Hernandez, & Julia Lee"
 date: "3/2/2019"
 output: html_document
 ---
