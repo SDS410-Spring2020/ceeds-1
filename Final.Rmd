@@ -219,8 +219,8 @@ output$plot1 <- renderPlotly({
       return()
     
     # Get the data set with the appropriate name
-    dat <- get(input$dataset)
-    colnames <- names(dat)
+    data1 <- get(input$dataset)
+    colnames <- names(data1)
     
     # Create the checkboxes and select them all by default
     checkboxGroupInput("columns", "Choose columns", 
@@ -228,7 +228,16 @@ output$plot1 <- renderPlotly({
                        selected = colnames)
   })
   output$data_table <- renderTable({
-    tail(datasetInput(), 10)
+    if(is.null(input$dataset))
+      return()
+    if (is.null(input$columns) || !(input$columns %in% names(datasetInput())))
+      return()
+
+    # Keep the selected columns
+    data1 <- datasetInput()[, input$columns, drop = FALSE]
+
+
+    tail(data1, 10)
   })
     output$downloadData <- downloadHandler(
     filename = function() { paste(output$data_table, '.csv', sep='') },
