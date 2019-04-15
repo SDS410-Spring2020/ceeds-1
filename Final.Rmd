@@ -113,7 +113,7 @@ ui <- dashboardPage(
               p("Paul R. Wetzel", style = "font-family: 'arial'; font-si50pt",
                 a("pwetzel@smith.edu"))),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
-            fluidPage(
+            fluidPage(splitLayout(cellWidths = c("15%","16%","16%","16%","16%","16%")),
               box(selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), width = 12),
               box(highchartOutput("hc2"), width = 12, collapsible = T, solidHeader = T, 
                   title = "Precipitation",collapsed =T),
