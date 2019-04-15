@@ -209,10 +209,11 @@ output$plot1 <- renderPlotly({
   })
  v2<-reactive({
   x<-input$v
-  return(x)
+  y<-datasetInput()$x
+  return(y)
 })
  output$fast_stats <- renderTable({
-     mosaic::favstats(v2(), data=datasetInput()) 
+     mosaic::favstats(v2()) 
     })
    
  
