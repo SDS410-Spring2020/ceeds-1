@@ -21,8 +21,9 @@ library(highcharter)
 library(timetk)
 library(kableExtra)
 library(plotly)
-#install.packages("DT")
+#install.packages("skimr")
 library(DT)
+library(skimr)
 ```
 
 ```{r}
@@ -125,7 +126,7 @@ ui <- dashboardPage(
                   title = "MAX Wind Speed", collapsed =T),
               box(highchartOutput("hc1"),width = 12, collapsible = T,solidHeader = T, 
                   title = "Temperature", collapsed =T),
-              box(plotlyOutput("hc4"), width = 12,collapsible = T,solidHeader = T, 
+              box(plotOutput("hc4"), width = 12,collapsible = T,solidHeader = T, 
                   title = "Wind Direction", collapsed =T),
                box(plotlyOutput("plot1"), width = 12, collapsible = T,solidHeader = T, 
           collapsed =T,title = "Other Variables (correlation)", sidebarPanel(
@@ -197,12 +198,12 @@ server <- function(input, output, session) {
   
   # ggplot2
   
-  output$hc4 <- renderPlotly({
-    ggplotly(ggplot(data = datasetInput(), aes(x = cut(dir,15), fill = cut(maxwind,15))) +
+  output$hc4 <- renderPlot({
+    ggplot(data = datasetInput(), aes(x = cut(dir,15), fill = cut(maxwind,15))) +
     geom_bar() + 
     scale_x_discrete(drop = FALSE, labels = waiver()) +
     coord_polar(start = -((30/2)/360) * 2*pi) +
-   scale_colour_brewer(name = "Wind Speed (m/s)")) 
+   scale_colour_brewer(name = "Wind Speed (m/s)") 
   })
   
 output$plot1 <- renderPlotly({
@@ -215,7 +216,7 @@ output$plot1 <- renderPlotly({
   return(y)
 })
  output$fast_stats <- renderTable({
-     mosaic::favstats(v2()) 
+     skim_df(v2) 
     })
    
  
