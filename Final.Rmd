@@ -93,7 +93,8 @@ ui <- dashboardPage(
                  sea level. Temperature, relative humidity, and radiation are 
                  measured 2 m above the ground. The tower is located in a forest
                  clearing.", style = "font-family: 'arial'; font-si50pt"),
-              img(src = "height_comparison.png", height = 210, width = 400, 
+              img(src = "https://github.com/beanumber/ceeds/blob/master/inst/height_comparison.png",
+                  height = 210, width = 400, 
               style="display: block; margin-left: auto; margin-right: auto;"),
               h4("height comparison between weather station towers, trees and 
                  people", align = "center"),
@@ -102,7 +103,8 @@ ui <- dashboardPage(
                  who need large datasets to practice data visualization & data 
                  wrangling methods, to local researchers in the Pioneer Valley.",
                  style = "font-family: 'arial'; font-si50pt"),
-              img(src = "paul.png", height = 250, width = 400, 
+              img(src = "https://github.com/beanumber/ceeds/blob/master/inst/paul.png",
+                  height = 250, width = 400, 
               style="display: block; margin-left: auto; margin-right: auto;"),
               h4("meet the weather station manager, Paul Wetzel of CEEDS ", 
                  align = "center"),
