@@ -5,7 +5,7 @@
 
 - Marta: 
 
-- Mirella: 
+- Mirella: I've been trying to get the images to work for all computers, since the images are currently only working on mine. I have also started working on the introduction of the paper. 
 
 ### What is it that you're struggling with right now?
 
@@ -13,7 +13,7 @@
 
 - Marta: 
 
-- Mirella:     
+- Mirella:Understanding why the images aren't working when the method I got from the shiny website states it should work with the way we did it.     
 
 ### What are you planning to do next week?
 
@@ -21,7 +21,7 @@
 
 - Marta: 
 
-- Mirella: 
+- Mirella: Working on the final paper of the draft, collecting MacLeish pictures for the website (will be going to Macleish). Help my team in the sections they are working on if they need any help. 
 
 ## 2019-04-09
 ### What did you do this week?
