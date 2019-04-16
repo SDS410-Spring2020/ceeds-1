@@ -205,7 +205,7 @@ server <- function(input, output, session) {
   
 output$plot1 <- renderPlotly({
     ggplotly(ggplot(data = datasetInput(), aes_string(x =input$xcol, y = input$ycol)) +
-    geom_point(color = "green")) 
+    geom_point(color = "green", alpha = 0.3)) 
   })
  v2<-reactive({
   x<-input$v
