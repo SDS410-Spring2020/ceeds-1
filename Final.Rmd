@@ -216,7 +216,7 @@ output$plot1 <- renderPlotly({
   return(y)
 })
  output$fast_stats <- renderTable({
-     skim_df(v2) 
+     skim(v2) 
     })
    
  
