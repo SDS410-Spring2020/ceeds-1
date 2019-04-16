@@ -71,7 +71,7 @@ ui <- dashboardPage(
       tabItem(tabName = "current", h2("Current Weather", align = "center"), 
               box(tableOutput("cw"), width = 12)),
            tabItem(tabName = "about", h2("About", align = "center"), 
-              h1("hello, Welcome to the MacLeish Weather App"),
+              h1("hello, welcome to the MacLeish Weather App"),
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
                  weather stations at the MacLeish Field Station of Smith 
