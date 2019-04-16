@@ -3,7 +3,7 @@
  
 - Julia: I spent most of the week working on the historic data tab to get it to work and reflect our plan. First, I made the graphs be in a fluid page, this allows for the size of the boxes and visuals to change based on the size of the window. I then put all of our content for the tab in separate boxes that are collapsible. I did this to minimize users' scrolling. I also found out how to use ggplot with ractive data (aes_string(x =input, y= input)) so I used that to make a visualization where the user can make a custom correlation graph by picking the variables that they want. I also made a way for the user to switch between orchardmet and whatelymet in the historic data tab. I also started working on a "favstats"" table that allows the user to get a summary of the variable the have chosen. I then worked on the raw data tab. I figured out how to get the columns in the data set to filter (allow user to select which variables). I also started writing the method section of the final paper but have not put it in an rmd file yet.
 
-- Marta: 
+- Marta: We worked on getting the about tab finalized, and I've started working on the homepage of the app, or the current weather conditions.
 
 - Mirella: I've been trying to get the images to work for all computers, since the images are currently only working on mine. I have also started working on the introduction of the paper. 
 
@@ -11,7 +11,7 @@
 
 - Julia: I'm still working on the toggle between data sets in the "raw data tab" and dowload the user's data. I have a download data button but it throws this error "ERROR: Reading objects from shinyoutput object not allowed." I'm also struggling with getting the wind rose chart to be interactive. I tried plotly and highchart but it seems like our wind direction data is in a diffrent format where these methods don't work. I'm also unsure about how we can  extract info from the current weather table and make it into a text object. I also don't know how "rticles" package works or how to format writings in rmd.file format.
 
-- Marta: 
+- Marta: Figuring out how to turn the entries of the row of the table into the kind of visualizations we want.
 
 - Mirella:Understanding why the images aren't working when the method I got from the shiny website states it should work with the way we did it.     
 
@@ -19,7 +19,7 @@
 
 -Julia:  I'm planning on working on our final paper draft! I'm also planning on finishing the "raw data tab" to be workable. I would like to get the wind rose chart to be interactive. I'm also planning on writing instructions on how to use each tab and the tue items in each tab(like how to read a windrose chart). I'm also hoping to help with the current weather tab and do more research and see how to extract the data from the existing table to be text variable. I also want to add some more comments to my recent code to make it easier to read for other people. I also think we should work on some of the documentation for the ceeds package (the "Description: What the package does (one paragraph)"). 
 
-- Marta: 
+- Marta: Working on the draft of the final paper and the current weather tab.
 
 - Mirella: Working on the final paper of the draft, collecting MacLeish pictures for the website (will be going to Macleish). Help my team in the sections they are working on if they need any help. 
 
