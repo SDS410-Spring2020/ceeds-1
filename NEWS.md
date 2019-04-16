@@ -17,7 +17,7 @@
 
 ### What are you planning to do next week?
 
--Julia:  I'm planning on working on our final paper draft! I'm also planning on finishing the "raw data tab"" to be workable. I would like to get the wind rose chart to be interactive. I'm also planning on writing instructions on how to use each tab and the tue items in each tab(like how to read a windrose chart). I'm also hoping to help with the current weather tab and do more research and see how to extract the data from the existing table to be text variable. I also want to add some more comments to my recent code to make it easier to read for other people. I also think we should work on some of the documentation for the ceeds package (the "Description: What the package does (one paragraph)"). 
+-Julia:  I'm planning on working on our final paper draft! I'm also planning on finishing the "raw data tab" to be workable. I would like to get the wind rose chart to be interactive. I'm also planning on writing instructions on how to use each tab and the tue items in each tab(like how to read a windrose chart). I'm also hoping to help with the current weather tab and do more research and see how to extract the data from the existing table to be text variable. I also want to add some more comments to my recent code to make it easier to read for other people. I also think we should work on some of the documentation for the ceeds package (the "Description: What the package does (one paragraph)"). 
 
 - Marta: 
 
