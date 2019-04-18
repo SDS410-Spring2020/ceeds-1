@@ -40,7 +40,11 @@ One tab item we built  was the current weather tab. The current weather tab give
 Another tab that we built was the historic data tab. We made a way for the user to switch between daily data for OrchardMet and WhatelyMet in the historic data tab, this means the graphs shown are reactive and are  based on the data set that was selected by the user. We did by making a reactive function inside the server that allows people to switch between data sets, this function we call datasetInput. We made graphs mapping 3 (Wind speed, precipitation, temperature) variables over time. To do build these graphs we used the Highcharter package that allows the user to filter the data based on a certain time period and high charter also has a feature that enables users to download the data used to make the graphic. 
 
   We also made a visualization where the user can make a custom correlation graph by picking the variables that they want. We made this correlation scatterplot by using ggplot and ggplotly to make the graphic more interactive.  We also made a windrose graph to show wind speed and direction using ggplot. A wind rose is a polar chart which  shows the user how wind speed and wind direction are distributed at a over a specific period of time.  We also created a way to allow the  user to choose a variable  and get summary statistics on that variable.  In this tab, we made the graphs be in a fluid page, this allows for the size of the boxes and visuals to change based on the size of the window. We then put all of our content for the tab in separate boxes that are collapsible. We did this to minimize users' scrolling. 
-  
+
+ ![](https://drive.google.com/file/d/167EeSGmtVU6Dn4qda7pzyop-JvQiEWjK/view?usp=sharing)
+
+
+
   The last tab we made is the raw data tab. This tab allows the user to filter the data based on columns  and the user can also choose between daily data for OrchardMet and WhatelyMet. This tab also allows the user to search the data table using the DT package. 
 
 ##Ceeds package:
