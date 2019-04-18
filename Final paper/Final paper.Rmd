@@ -11,7 +11,7 @@ author:
 
  
 abstract: |
-  We were tasked with finding a way to better showcase weather data from the MacLeish field station. We were also tasked with incorporating interactive graphics and allowing users to download and filter the data. So we decided to use the shiny and Shiny Dashboard packages in R to build an interactive dashboard. We also wrote a package to get the data from the MacLeish server.  
+  We were tasked with finding a way to better showcase weather data from the MacLeish Field station. We were also tasked with incorporating interactive graphics and allowing users to download and filter the data. So we decided to use the shiny and Shiny Dashboard packages in R to build an interactive dashboard. We also wrote a package to get the data from the MacLeish server.  
 
  
   
@@ -22,11 +22,19 @@ csl: plos.csl
 ---
 
 # Introduction
+   The Center for the Environment, Ecological Design, and Sustainability (CEEDS)  is located in Wright Hall building of Smith College. The goal of Ceeds is to train and allow students to consider sustainability issues across various disciplinary areas to integrate that multi-disciplinary knowledge in support of environmental decisions and action. Macleish Field Station is one of the many opportunities Ceeds provides to the Smith community to pursue environmental research, outdoor recreation, and low impact recreation. 
+  
+   The MacLeish Field Station is located in a 260 acre of forest farmland near Whately, Massachusetts, and its weather collection sites are at the end of Poplar Hill Road. There are two weather site locations in the field, one called WhatelyMet Tower and the other one called OrchardMet. The WhatelyMet tower is mounted at the top of a 25.3m tall tower, and it is 250.8m above sea level. It was initially created to collect air pollution data. In order to collect more efficient weather data, OrchardMet weather station was created. The OrchardMet weather station is 10m tall located in a forest clean area close to ground level. However, the trees do not allow OrchardMet weather station to collect data efficiently as hoped. 
+ 
+   As part of the SDS 410 Capstone class, our group of 3 were given Macleish weather data from the Macleish package that is collected through the Smith server. There is a current Macleish weather dashboard that collects a variety of weather data: date, wind speed, temperature, wind direction, real humidity, pressure, solar radiation, and rainfall.  The server has been collecting data since January 2012, and it is updated every 10 minute increments. Thus, there is over 377,016 entries. The data loggers run on solar power and stores the data so even if the server is down the data is saved. The current MacLeish weather dashboard^[current Macleish weather dashboard: http://macleish.smith.edu/index.html] contains a lot of useful information, and the data is organized into readable tabs. Because the data is trapped in individual “data silos”, it is not readily accessible. Therefore, the goal for the given project is to recreate the current Macleish weather dashboard to illuminate the data and make it more user friendly, it download accessible, and it visually interactive as proposed by our client, Paul Wetzel. Our client Paul Wetzel is the field station manager of MacLeish Field Station, and he is the main user of the current website. As discussed and mentioned earlier about our clients needs, we chose to make the new weather dashboard using the Shiny package. We choose to use Shiny, since it would allow us to make the download data opportunity catered to the audience’s needs, and it would help us make the graphs interactive and user friendly. We believe our focus would supply to the current target audiences, Paul Wetzel, other Smith students, Smith faculty/researchers, and Northampton Department of Public Works. 
+ 
+ ![](current.PNG){width=350px}^[Fig 1. Example of a what the current dashboard looks like]
+ 
+
 
 # Methods
 
 ##Shiny app:
-  
    To solve our problem, we had many options on how to create a better way of displaying the weather data. We first discussed the possibility of making a new website in HTML but we ultimately decided to build a Shiny App using the Shiny^[Winston Chang, Joe Cheng, JJ Allaire, Yihui Xie and Jonathan McPherson (2018).
   shiny: Web Application Framework for R. R package version 1.2.0.
   https://CRAN.R-project.org/package=shiny] and Shiny Dashboard^[Winston Chang and Barbara Borges Ribeiro (2018). shinydashboard: Create Dashboards
@@ -70,7 +78,7 @@ Another tab that we built was the historic data tab. We made a way for the user 
 
 
 # References {#references .unnumbered}
-
+Our Github Repository: https://github.com/beanumber/ceeds
 
 ## Packages:
 lubridate: Garrett Grolemund, Hadley Wickham (2011). Dates and Times Made Easy with lubridate.
