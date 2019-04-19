@@ -127,7 +127,13 @@ ui <- dashboardPage(
               box(highchartOutput("hc1"),width = 12, collapsible = T,solidHeader = T, 
                   title = "Temperature", collapsed =T),
               box(plotOutput("hc4"), width = 12,collapsible = T,solidHeader = T, 
-                  title = "Wind Direction", collapsed =T),
+                  title = "Wind Direction", collapsed =T,
+        sliderInput("bins",
+                  "Number of bins:",
+                  min = 4,
+                  max = 15,
+                  value = 7)
+      ),
                box(plotlyOutput("plot1"), width = 12, collapsible = T,solidHeader = T, 
           collapsed =T,title = "Other Variables (correlation)", sidebarPanel(
     selectInput('xcol', 'X Variable', names(ceeds::get_daily(whately_2015))),
@@ -197,9 +203,11 @@ server <- function(input, output, session) {
       hc_exporting(enabled = TRUE)})
   
   # ggplot2
-  
   output$hc4 <- renderPlot({
-    ggplot(data = datasetInput(), aes(x = cut(dir,15), fill = cut(maxwind,15))) +
+     x<-input$bins
+    bins <- seq(min(datasetInput()$avgWindSpeed), max(datasetInput()$avgWindSpeed), length.out = input$bins)
+    dirbins <- seq(min(datasetInput()$dir), max(datasetInput()$dir), length.out = input$bins)
+    ggplot(data = datasetInput(), aes(x = cut(dir,15) , fill = cut(maxwind,x))) +
     geom_bar() + 
     scale_x_discrete(drop = FALSE, labels = waiver()) +
     coord_polar(start = -((30/2)/360) * 2*pi) +
@@ -211,13 +219,16 @@ output$plot1 <- renderPlotly({
     geom_point(color = "green", alpha = 0.3)) 
   })
  v2<-reactive({
-  x<-input$v
-  y<-datasetInput()$x
-  return(y)
-})
- output$fast_stats <- renderTable({
-     skim(v2) 
+   dat1 <- datasetInput()
+    x<-input$v
+   x<-as.numeric(x)
+    y<-dat1$x
+    stats<-mosaic::favstats(y)
+    return(stats)
     })
+ output$fast_stats <- renderTable({
+   v2()
+ })
    
  
 # download raw data 
