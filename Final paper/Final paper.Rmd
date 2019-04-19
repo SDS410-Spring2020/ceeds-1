@@ -74,6 +74,26 @@ Another tab that we built was the historic data tab. We made a way for the user 
   Journal of Statistical Software, 40(3), 1-25. URL
   http://www.jstatsoft.org/v40/i03/.] that was very helpful. It allowed us to Parsed timestamps into dates (turning variables into dates that r can recognize as such). This allowed us to group  our data by date.  
 
+#Issues
+
+   Throughout this whole process, our group has faced a variety of issues and consequently, temporary limitations. At the beginning of our process, we first had to learn to use the Shiny package. There was a learning curve in learning to build a web app and we initially struggled with building the first parts of the app and figuring out how to integrate the R knowledge we had with this new package. We took the DataCamp course to learn the basics of Shiny and from there, dove straight into our new data, once we had access to the data. Since we were reliant on the MacLeish package, which relied on the MacLeish server to receive the data, whenever the MacLeish server was down, we struggled with working with the data we needed to move forth with the project. 
+
+
+   Also at the start of this project, we met with our client to gather more information of what he wanted and what we felt we could deliver knowing our skill set in R and Shiny. Since Wetzel was not familiar with the capabilities of R, it was up to us to fill him in with what we thought was possible. These plans included reducing the amount of tabs, changing all the graphs to being clearly interactive, and making the web app overall more user-friendly and comprehensive. We did not create a printed mockup until much later in the process so it was difficult to communicate our vision to him and for him to understand the potential of R and Shiny. However, in our biweekly meetings with him, we filled him in with whatever progress we were making and once we started creating visualizations using highcharter, he was able to better understand the kind of graphs we could create and integrate into the new web app.
+
+
+   In the similar vein as to how Wetzel did not know much about R, our group did not know much about weather data and the importance of all the variables. During our meeting Wetzel taught us the importance of certain variables but also told us that we should focus on the precipitation, temperature and wind variables if we needed to narrow our scope. In teaching us about the other variables, such as soil temperature and server temperature and this helped us figure out which variables were most important to the user. For example, the server room temperature would be most useful to the weather station manager (Wetzel) because that temperature would allow him to see when the room was overheating or too cold, and not very functional for a user looking to download weather data for a school project. Through Wetzel, we also learning that temperature data is only accurate up to the thousandth place which made us modify our app to reflect that accuracy
+
+
+#Limitations & Moving Forward
+
+  There are many things that can looked at in future to expand this project. A limitation of our project is that we have not yet surveyed our target audience about whether our app is more usable than the current dashboard. Audience feedback would help us moving forward in reach our end goal of  creating a user friendly weather dashboard. Right now our dashboard has very few features and could have more places for user interaction. For example, Our wind rose graphic is not interactive which could improve this project. Another feature we might want to have in the future isa way to allow users to identify and filter out outliers. After talking to our client, we found out that sometimes the weather equipment breaks and leads to wrong data but we don’t necessarily want to filter out possible outliers of the data assuming that they mean equipment malfunctions so we might want the users of dashboard to make that decision to not mislead them.  We might also want to have more variables in our data set like soil temperature which is used to study climate change. 
+
+
+
+
+#Conclusion
+
 
 
 
