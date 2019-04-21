@@ -150,7 +150,15 @@ ui <- dashboardPage(
     br(),
     a(href = "https://gist.github.com/4211337", "Source code"),
      downloadButton('downloadData', 'Download'),
-  width=12),width=12),box(DT::dataTableOutput("data_table"), width = 24,collapsible = T,
+  width=12, dateInput("start",
+"Start date:",
+value = 2012-01-01,
+format = "yyyy-mm-dd"),
+dateInput("end",
+"End date:",
+value = now(),
+format = "yyyy-mm-dd")
+),width=12),box(DT::dataTableOutput("data_table"), width = 24,collapsible = T,
                     solidHeader = T, title="Data table")))) 
                 
     )#end tabItems
@@ -266,7 +274,9 @@ output$plot1 <- renderPlotly({
 
     # Keep the selected columns
     data1 <-  datasetInput2()[, input$columns, drop = FALSE]
-
+    data1<-data1 %>%
+      filter(the_date >= ymd(as.character(input$start)), 
+       the_date <=ymd(as.character(input$end)))
 
     data1
   })
@@ -275,7 +285,10 @@ output$plot1 <- renderPlotly({
     filename = function() { 
       paste('Weather', '.csv', sep='') },
     content = function(file) {
-      write.csv(datasetInput2()[, input$columns, drop = FALSE], file)
+      write.csv( datasetInput2()[, input$columns, drop = FALSE]%>%
+      filter(the_date >= ymd(as.character(input$start)), 
+       the_date <=ymd(as.character(input$end)))
+                 , file)
     })
   
   # we want to switch tabs so we need to refresh session
