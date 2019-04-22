@@ -175,12 +175,12 @@ format = "yyyy-mm-dd")
 # shiny server
 server <- function(input, output, session) {
   
-  WhatelyMet <- ceeds::get_daily(whately_2015)
-  daily_whately <- ceeds::get_daily(whately_2015)
-  OrchardMet <- ceeds::get_daily(orchard_2015)
-  daily_orchard <- ceeds::get_daily(orchard_2015)
-  daily_orchard2 <- ceeds::get_daily(orchard_2015)
-  daily_whately2 <- ceeds::get_daily(whately_2015)
+  WhatelyMet <- ceeds::get_daily(whately)
+  daily_whately <- WhatelyMet
+  OrchardMet <- ceeds::get_daily(orchard)
+  daily_orchard <- OrchardMet
+  daily_orchard2 <- daily_orchard
+  daily_whately2 <- daily_whately
   data_sets <- c("daily_orchard", "daily_whately")
   # defining outputs
   # output$name <- name = highchartOutput("name")
@@ -310,3 +310,4 @@ output$plot1 <- renderPlotly({
 ```{r}
 shinyApp(ui, server)
 ```
+
