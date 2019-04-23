@@ -24,6 +24,7 @@ library(plotly)
 #install.packages("skimr")
 library(DT)
 library(skimr)
+library(shinydashboardPlus)
 ```
 
 ```{r}
@@ -41,7 +42,8 @@ daily_whately <- get_daily(whately)
 daily_orchard <- get_daily(orchard)
 last_whately <- get_lastyear(daily_whately)
 #getting current weather data
-current <- tail(whately, 1)
+current_w <- tail(whately, 1)
+current_o <- tail(orchard,1)
 # print(current[1,2])
 ```
 
@@ -70,8 +72,54 @@ ui <- dashboardPage(
     # tab items 
     tabItems(
       tabItem(tabName = "current", h2("Current Weather", align = "center"), 
-              box(tableOutput("cw"), width = 12)),
-           tabItem(tabName = "about", h2("About", align = "center"), 
+              fluidPage(
+                tags$head(
+                  tags$style(HTML(" 
+      hr {align: right
+          width: 50%
+      
+      }"))
+                ),
+      gradientBox(
+        title = "OrchardMet Station",
+        icon = "fa fa-apple-alt",
+        gradientColor = "teal", 
+        boxToolSize = "sm", 
+        footer = 
+          " ",
+        h5("as of:", current_o$when, align = "center"),
+        h1(current_o$temperature, "°C"),
+        h4("humidity  ", icon("tint"), br(),
+           current_o$rel_humidity, "%", align = "right"), hr(style = "width: 40%", align = "right"),
+        h4("pressure  ", icon("plane-departure"), br(),
+           current_o$pressure, align = "right"), hr(style = "width: 40%", align = "right"),
+        h4("precipitation ", icon("umbrella"), br(),
+           current_o$rainfall, "mm", align = "right"), hr(style = "width: 40%", align = "right"),
+        h4("wind", icon("cloud"), br(),
+           current_o$wind_speed, "m/s", align = "right"),
+        collapsible = FALSE
+      ),
+      gradientBox(
+        title = "WhatelyMet Station",
+        icon = "fa fa-leaf",
+        gradientColor = "teal", 
+        boxToolSize = "sm",
+        footer =
+          " ",  
+        h5("as of:", current_w$when, align = "center"),
+        h1(current_w$temperature, "°C"),
+        h4("humidity  ", icon("tint"), br(),
+           current_w$rel_humidity, "%", align = "right"), hr(style = "width:40%", align = "right"),
+        h4("pressure  ", icon("plane-departure"), br(),
+           current_w$pressure, align = "right"), hr(style = "width:40%", align = "right"),
+        h4("precipitation ", icon("umbrella"), br(),
+           current_w$rainfall, "mm", align = "right"), hr(style = "width:40%", align = "right"),
+        h4("wind", icon("cloud"), br(),
+           current_w$wind_speed, "m/s", align = "right"),
+        collapsible = FALSE
+      )
+              )),
+      tabItem(tabName = "about", h2("About", align = "center"), 
               h1("hello, welcome to the MacLeish Weather App"),
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
@@ -96,22 +144,22 @@ ui <- dashboardPage(
                  clearing.", style = "font-family: 'arial'; font-si50pt"),
               img(src = "https://github.com/beanumber/ceeds/blob/master/inst/height_comparison.png",
                   height = 210, width = 400, 
-              style="display: block; margin-left: auto; margin-right: auto;"),
+                  style="display: block; margin-left: auto; margin-right: auto;"),
               h4("height comparison between weather station towers, trees and 
                  people", align = "center"),
               p("We strive to make this data more accessible to those who can 
                  use it, from Smith College Statistical & Data Sciences students
                  who need large datasets to practice data visualization & data 
                  wrangling methods, to local researchers in the Pioneer Valley.",
-                 style = "font-family: 'arial'; font-si50pt"),
+                style = "font-family: 'arial'; font-si50pt"),
               img(src = "https://github.com/beanumber/ceeds/blob/master/inst/paul.png",
                   height = 250, width = 400, 
-              style="display: block; margin-left: auto; margin-right: auto;"),
+                  style="display: block; margin-left: auto; margin-right: auto;"),
               h4("meet the weather station manager, Paul Wetzel of CEEDS ", 
                  align = "center"),
               p("All the data visualizations you see are interactive so feel 
                  free to click around and learn about your local weather!", 
-                 style = "font-family: 'arial'; font-si50pt"),
+                style = "font-family: 'arial'; font-si50pt"),
               p("Sincerely,", style = "font-family: 'arial'; font-si50pt"),
               p("Marta, Mirella, and Julia (SDS 410, spring 2019)", 
                 style = "font-family: 'arial'; font-si50pt"),
