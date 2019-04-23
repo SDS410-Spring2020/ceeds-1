@@ -5,14 +5,15 @@
 
 - Marta: 
 
-- Mirella: 
+- Mirella: I finished my part of the draft, and I started working on creating simple insturctions for users to read on our shiny dashboard.
+
 ### What is it that you're struggling with right now?
 
 - Julia: I'm still struggling with "favstats" table that allows the user to get a summary of the variable the have chosen because right now it does not seem to take an input or change at all. I also don't know what is happening with our precipitation graph and that  variable for WhatelyMet. 
 
 - Marta: 
 
-- Mirella:
+- Mirella: I have been trying to fix the image issue we are having. The images we want to inlcude in our dahsboard are still not showing up despite the various ways we've tried with the assistance of stackoverflow and Professor Ben.  
 
 
 ### What are you planning to do next week?
@@ -21,7 +22,7 @@
 
 - Marta: 
 
-- Mirella:
+- Mirella: I am hoping to have the image issue solved, and our start including all the data in our dashboard (not just the 2015 data). Work on the ethical statement and our final paper wth the given feedback. 
 
 
 ## 2019-04-16
