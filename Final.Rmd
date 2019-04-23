@@ -62,8 +62,8 @@ ui <- dashboardPage(
       #making an id 
       id = "tabs",
       #creating menu items
-      menuItem("Current Weather", tabName = "current", icon = icon("globe")),
-      menuItem("About", tabName = "about", icon = icon("dashboard")),
+      menuItem("Current Weather", tabName = "current", icon = icon("seedling")),
+      menuItem("About", tabName = "about", icon = icon("newspaper")),
       menuItem("Historic Data", tabName = "historic", icon = icon("bar-chart-o")),
       menuItem("Raw data", tabName = "raw", icon = icon("table"))      
     )),
