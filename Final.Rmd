@@ -141,7 +141,15 @@ ui <- dashboardPage(
                 selected=names(ceeds::get_daily(whately_2015))[[2]])),
     box(tableOutput("fast_stats"),width = 12,collapsible = T,solidHeader = T, 
                   title = "Summary Statistics Table", collapsed =T, sidebarPanel(
-    selectInput('v', 'Variable',names(ceeds::get_daily(whately_2015))))))),
+    selectInput('v', 'Variable',names(ceeds::get_daily(whately_2015))),
+    dateInput("start1",
+"Start date:",
+value = 2012-01-01,
+format = "yyyy-mm-dd"),
+dateInput("end1",
+"End date:",
+value = now(),
+format = "yyyy-mm-dd"))))),
       tabItem(tabName = "raw", h2("Raw data", align = "center"),
              fluidPage(splitLayout(cellWidths = c("45%","55%"),
                box(sidebarPanel(
@@ -230,8 +238,11 @@ output$plot1 <- renderPlotly({
   })
  output$fast_stats <- renderTable({
     x<-as.character(input$v)
-    data2 <-  datasetInput()[, input$v, drop = FALSE]
-    stats<-skimr::skim(data2)
+    data <-  datasetInput() %>%
+      filter(the_date >= ymd(as.character(input$start1)), 
+       the_date <=ymd(as.character(input$end1)))
+    data2 <-  data[, input$v, drop = FALSE] 
+    stats<-skimr::skim(data2) 
     stats
     
  })
