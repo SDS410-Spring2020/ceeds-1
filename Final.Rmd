@@ -228,16 +228,10 @@ output$plot1 <- renderPlotly({
     ggplotly(ggplot(data = datasetInput(), aes_string(x =input$xcol, y = input$ycol)) +
     geom_point(color = "green", alpha = 0.3)) 
   })
- v2<-reactive({
-    switch(input$v,
-           names(ceeds::get_daily(whately_2015)))
-    })
  output$fast_stats <- renderTable({
-   dat1 <- datasetInput()
-    x<-v2()
-   x<-as.numeric(x)
-    y<-dat1$x
-    stats<-mosaic::fav_stats(y)
+    x<-as.character(input$v)
+    data2 <-  datasetInput()[, input$v, drop = FALSE]
+    stats<-skimr::skim(data2)
     stats
     
  })
