@@ -3,7 +3,7 @@
  
 - Julia: I finished the "raw data tab" to be workable. I found a way to allow the user to filter the data by date, pick a start and end date. I also got the filtered data to be dowloadable for the user by them clicking a button.I also made it so you can the switch between orchard and whately in raw data tab.I then found away to make the wind rose chart to be interactive by letting the user pick the the number of bins for the chart. Lastly, I put back in the live data to see how the app runs and make sure there were not any issues in our charts and raw data tab when we switch from 2015 data to real time data. I found out that there seems to be something wrong with our precipitation graph and variable for WhatelyMet but not OrchardMet  where all of the entries in our data set for rainfall are now zero or missing. I also got rid of unnecessary lines in our code that might be slowing it down when we run the app. 
 
-- Marta: 
+- Marta: I worked on my part of the draft and worked on the current weather tab. The current weather tab is presentable, but I would still like to make some minor changes.
 
 - Mirella: I finished my part of the draft, and I started working on creating simple insturctions for users to read on our shiny dashboard.
 
@@ -11,7 +11,7 @@
 
 - Julia: I'm still struggling with "favstats" table that allows the user to get a summary of the variable the have chosen because right now it does not seem to take an input or change at all. I also don't know what is happening with our precipitation graph and that  variable for WhatelyMet. 
 
-- Marta: 
+- Marta: I'm still looking up some small css style things to add to the current weather tab. Currently, I'm trying to change the spacing of the lines but I don't know if I'll be able to.
 
 - Mirella: I have been trying to fix the image issue we are having. The images we want to inlcude in our dahsboard are still not showing up despite the various ways we've tried with the assistance of stackoverflow and Professor Ben.  
 
@@ -20,7 +20,7 @@
 
 -Julia: I'm still planning on adding some more comments to my recent code to make it easier to read for other people. I also want to  finish "favstats" table and fix the precipitation graph for WhatelyMet. We are also going to meet with our client this week for the last time and try to incorporate any feedback that he has before final presentations. This week we are also planning on working on the ethical statement and the final paper and adding any citations to our code in a bibtex file.     
 
-- Marta: 
+- Marta: Finish up the ethical statement and final paper. Also add comments to my code since I haven't done that.
 
 - Mirella: I am hoping to have the image issue solved, and our start including all the data in our dashboard (not just the 2015 data). Work on the ethical statement and our final paper wth the given feedback. 
 
