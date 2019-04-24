@@ -250,7 +250,10 @@ format = "yyyy-mm-dd")
 ```{r}
 # shiny server
 server <- function(input, output, session) {
-  
+  mac_data <- read_whately()
+  whately <- purrr::pluck(mac_data, "whately")
+  orchard <- purrr::pluck(mac_data, "orchard")
+  WhatelyMet <- ceeds::get_daily(whately)
   WhatelyMet <- ceeds::get_daily(whately)
   daily_whately <- WhatelyMet
   OrchardMet <- ceeds::get_daily(orchard)
