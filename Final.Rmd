@@ -78,7 +78,7 @@ ui <- dashboardPage(
   dashboardBody(
     # tab items 
     tabItems(
-      tabItem(tabName = "current", h2("Current Weather", align = "center"), 
+      tabItem(tabName = "current", 
               fluidPage(
                 tags$head(
                   tags$style(HTML("
