@@ -81,11 +81,10 @@ ui <- dashboardPage(
       tabItem(tabName = "current", h2("Current Weather", align = "center"), 
               fluidPage(
                 tags$head(
-                  tags$style(HTML(" 
-      hr {align: right
-          width: 50%
-      
-      }"))
+                  tags$style(HTML("
+      h1{font-family: helvetica}
+      h4 {font-family: helvetica};
+      h5 {font-family: helvetica}"))
                 ),
       gradientBox(
         title = "OrchardMet Station",
