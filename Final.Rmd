@@ -82,7 +82,7 @@ ui <- dashboardPage(
               fluidPage(
                 tags$head(
                   tags$style(HTML("
-      h1{font-family: helvetica}
+      h1 {font-family: helvetica};
       h4 {font-family: helvetica};
       h5 {font-family: helvetica}"))
                 ),
@@ -143,13 +143,13 @@ ui <- dashboardPage(
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
                  weather stations at the MacLeish Field Station of Smith 
-                 College.", style = "font-family: 'arial'; font-si50pt"),
+                 College.", style = "font-family: 'helvetica'; font-si50pt"),
               h4("[[include a picture of the clearing, some pictures of the two
                  weather stations]]", align = "center"),
               p("The MacLeish Field Station weather collection sites are 
                  accessed at the end of Poplar Hill Road in Whately, 
                  Massachusetts, USA (Lat: 42 deg. 26 min. 56 sec. N Long: 72 deg.
-                 40 min. 50 sec. W).", style = "font-family: 'arial'; font-si50pt"),
+                 40 min. 50 sec. W).", style = "font-family: 'helvetica'; font-si50pt"),
               h4("[[include in a static or interactive leaflet map pinpointing 
                  these two locations?]]", align = "center"),
               p("Weather measurements are made at two locations at the MacLeish
@@ -160,7 +160,7 @@ ui <- dashboardPage(
                  standard, 10 m meteorological station, elevation 258 m above 
                  sea level. Temperature, relative humidity, and radiation are 
                  measured 2 m above the ground. The tower is located in a forest
-                 clearing.", style = "font-family: 'arial'; font-si50pt"),
+                 clearing.", style = "font-family: 'helvetica'; font-si50pt"),
               img(src = "https://github.com/beanumber/ceeds/blob/master/inst/height_comparison.png",
                   height = 210, width = 400, 
                   style="display: block; margin-left: auto; margin-right: auto;"),
@@ -170,7 +170,7 @@ ui <- dashboardPage(
                  use it, from Smith College Statistical & Data Sciences students
                  who need large datasets to practice data visualization & data 
                  wrangling methods, to local researchers in the Pioneer Valley.",
-                style = "font-family: 'arial'; font-si50pt"),
+                style = "font-family: 'helvetica'; font-si50pt"),
               img(src = "https://github.com/beanumber/ceeds/blob/master/inst/paul.png",
                   height = 250, width = 400, 
                   style="display: block; margin-left: auto; margin-right: auto;"),
@@ -178,11 +178,11 @@ ui <- dashboardPage(
                  align = "center"),
               p("All the data visualizations you see are interactive so feel 
                  free to click around and learn about your local weather!", 
-                style = "font-family: 'arial'; font-si50pt"),
-              p("Sincerely,", style = "font-family: 'arial'; font-si50pt"),
+                style = "font-family: 'helvetica'; font-si50pt"),
+              p("Sincerely,", style = "font-family: 'helvetica'; font-si50pt"),
               p("Marta, Mirella, and Julia (SDS 410, spring 2019)", 
-                style = "font-family: 'arial'; font-si50pt"),
-              p("Paul R. Wetzel", style = "font-family: 'arial'; font-si50pt",
+                style = "font-family: 'helvetica'; font-si50pt"),
+              p("Paul R. Wetzel", style = "font-family: 'helvetica'; font-si50pt",
                 a("pwetzel@smith.edu"))),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(splitLayout(cellWidths = c("15%","16%","16%","16%","16%","16%")),
