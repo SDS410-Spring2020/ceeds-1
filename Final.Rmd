@@ -66,7 +66,7 @@ ui <- dashboardPage(
                tabName = "current", 
                icon = icon("seedling")),
       menuItem("About", tabName = "about", 
-               icon = icon("dashboard")),
+               icon = icon("newspaper")),
       menuItem("Historic Data", 
                tabName = "historic", 
                icon = icon("bar-chart-o")),
