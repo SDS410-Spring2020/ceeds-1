@@ -80,12 +80,13 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "current", 
               fluidPage(
-                tags$head(
-                  tags$style(HTML("
-      h1 {font-family: helvetica};
-      h4 {font-family: helvetica};
-      h5 {font-family: helvetica}"))
-                ),
+      #           tags$head(
+      #             tags$style(HTML("
+      # h1 {font-family: helvetica};
+      # h4 {font-family: helvetica};
+      # h5 {font-family: helvetica}"))
+      #           )
+                ,
       gradientBox(
         title = "OrchardMet Station",
         icon = "fa fa-apple-alt",
@@ -94,7 +95,8 @@ ui <- dashboardPage(
         footer = 
           " ",
         h5("as of:", current_o$when, align = "center"),
-        h1(current_o$temperature, "°C"),
+        h1(current_o$temperature, "°C", 
+           style = "font-family:helvetica"),
         h4("humidity  ", icon("tint"), br(),
            current_o$rel_humidity, "%", align = "right"), 
         hr(style = "width: 40%; margin-top: 10px; margin-bottom: 10px", 
