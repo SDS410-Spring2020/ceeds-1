@@ -80,13 +80,12 @@ ui <- dashboardPage(
     tabItems(
       tabItem(tabName = "current", 
               fluidPage(
-      #           tags$head(
-      #             tags$style(HTML("
-      # h1 {font-family: helvetica};
-      # h4 {font-family: helvetica};
-      # h5 {font-family: helvetica}"))
-      #           )
-                ,
+                tags$head(
+                  tags$style(HTML("
+      h1 {font-family: helvetica};
+      h4 {font-family: helvetica};
+      h5 {font-family: helvetica}"))
+                ),
       gradientBox(
         title = "OrchardMet Station",
         icon = "fa fa-apple-alt",
