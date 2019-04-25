@@ -74,7 +74,7 @@ ui <- dashboardPage(
       menuItem("Historic Data", 
                tabName = "historic", 
                icon = icon("bar-chart-o")),
-      menuItem("Raw Data", 
+      menuItem("Download Data", 
                tabName = "raw", 
                icon = icon("table"))      
     )),
