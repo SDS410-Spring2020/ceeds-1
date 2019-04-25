@@ -87,9 +87,9 @@ ui <- dashboardPage(
               fluidPage(
                 tags$head(
                   tags$style(HTML("
-      h1 {font-family: helvetica};
-      h4 {font-family: helvetica};
-      h5 {font-family: helvetica}"))
+      h1 {font-family: Geneva};
+      h4 {font-family: Geneva};
+      h5 {font-family: Geneva}"))
                 ),
       gradientBox(
         title = "OrchardMet Station",
@@ -99,27 +99,27 @@ ui <- dashboardPage(
         footer = 
           " ",
         h5("as of:", current_o$when, align = "center",
-           style = "font-family: helvetica"),
+           style = "font-family: Geneva"),
         h1(current_o$temperature, "°C", 
-           style = "font-family: helvetica"),
+           style = "font-family: Geneva"),
         h4("humidity  ", icon("tint"), br(),
            current_o$rel_humidity, "%", align = "right",
-           style = "font-family: helvetica"), 
+           style = "font-family: Geneva"), 
         hr(style = "width: 40%; margin-top: 10px; margin-bottom: 10px", 
            align = "right"),
         h4("pressure  ", icon("plane-departure"), br(),
            current_o$pressure, align = "right",
-           style = "font-family: helvetica"), 
+           style = "font-family: Geneva"), 
         hr(style = "width: 40%; margin-top: 10px; margin-bottom: 10px", 
            align = "right"),
         h4("precipitation ", icon("umbrella"), br(),
            current_o$rainfall, "mm", align = "right",
-           style = "font-family: helvetica"), 
+           style = "font-family: Geneva"), 
         hr(style = "width: 40%; margin-top: 10px; margin-bottom: 10px", 
            align = "right"),
         h4("wind", icon("cloud"), br(),
            current_o$wind_speed, "m/s", align = "right",
-           style = "font-family: helvetica"),
+           style = "font-family: Geneva"),
         collapsible = FALSE
       ),
       gradientBox(
@@ -130,43 +130,49 @@ ui <- dashboardPage(
         footer =
           " ",  
         h5("as of:", current_w$when, align = "center",
-           style = "font-family: helvetica"),
+           style = "font-family: Geneva"),
         h1(current_w$temperature, "°C",
-           style = "font-family: helvetica"),
+           style = "font-family: Geneva"),
         h4("humidity  ", icon("tint"), br(),
            current_w$rel_humidity, "%", align = "right",
-           style = "font-family: helvetica"), 
+           style = "font-family: Geneva"), 
         hr(style = "width:40%; margin-top: 10px; margin-bottom: 10px", 
            align = "right"),
         h4("pressure  ", icon("plane-departure"), 
            br(),
            current_w$pressure, align = "right",
-           style = "font-family: helvetica"), 
+           style = "font-family: Geneva"), 
         hr(style = "width:40%; margin-top: 10px; margin-bottom: 10px", 
            align = "right"),
         h4("precipitation ", icon("umbrella"), br(),
            current_w$rainfall, "mm", align = "right",
-           style = "font-family: helvetica"), 
+           style = "font-family: Geneva"), 
         hr(style = "width:40%; margin-top: 10px; margin-bottom: 10px", 
            align = "right"),
         h4("wind", icon("cloud"), br(),
            current_w$wind_speed, "m/s", align = "right",
-           style = "font-family: helvetica"),
+           style = "font-family: Geneva"),
         collapsible = FALSE
       )
               )),
       tabItem(tabName = "about", 
-              h1("hello, welcome to the MacLeish Weather App"),
+              h1("Welcome to the MacLeish weather app!", align = "center", 
+                 style = "font-family: Geneva"),
+              hr(),
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
                  weather stations at the MacLeish Field Station of Smith 
-                 College.", style = "font-family: 'helvetica'; font-si50pt"),
-              img(src=b66, height = 210, width = 400, 
+                 College.", align = "center", style = "font-family: 'Geneva'; 
+                 margin-left: 28%; margin-right: 28%"),
+              img(src=b66, height = 326, width = 372, 
               style="display: block; margin-left: auto; margin-right: auto;" ),
+              br(),
               p("The MacLeish Field Station weather collection sites are 
                  accessed at the end of Poplar Hill Road in Whately, 
                  Massachusetts, USA (Lat: 42 deg. 26 min. 56 sec. N Long: 72 deg.
-                 40 min. 50 sec. W).", style = "font-family: 'helvetica'; font-si50pt"),
+                 40 min. 50 sec. W).", align = "center", 
+                 style = "font-family: 'Geneva'; 
+                 margin-left: 28%, margin-right: 28%"),
               br(),
               p("Weather measurements are made at two locations at the MacLeish
                  field station. On the WhatelyMet tower, meteorological 
@@ -176,27 +182,31 @@ ui <- dashboardPage(
                  standard, 10 m meteorological station, elevation 258 m above 
                  sea level. Temperature, relative humidity, and radiation are 
                  measured 2 m above the ground. The tower is located in a forest
-                 clearing.", style = "font-family: 'helvetica'; font-si50pt"),
-              img(src=b64, height = 210, width = 400, 
-              style="display: block; margin-left: auto; margin-right: auto;" ),
+                 clearing.", style = "font-family: 'Geneva'"),
+              br(),
+              img(src=b64, height = 264, width = 345.4, 
+              style="display: block; margin-left: auto; margin-right: auto;"),
+              br(),
               h4("height comparison between weather station towers, trees and 
-                 people", align = "center"),
+                 people", align = "center", style = "font-family: 'Geneva; 
+                 font-style: italic; font-size: 14px"),
               p("We strive to make this data more accessible to those who can 
                  use it, from Smith College Statistical & Data Sciences students
                  who need large datasets to practice data visualization & data 
                  wrangling methods, to local researchers in the Pioneer Valley.",
-                style = "font-family: 'helvetica'; font-si50pt"),
-              img(src=b65, height = 210, width = 400, 
-              style="display: block; margin-left: auto; margin-right: auto;" ),
+                style = "font-family: 'Geneva'"),
+              img(src=b65, height = 249, width = 322, 
+              style="display: block; margin-left: auto; margin-right: auto"),
               h4("meet the weather station manager, Paul Wetzel of CEEDS ", 
-                 align = "center"),
+                 align = "center", style = "font-family: 'Geneva; 
+                 font-style: italic; font-size: 14px"),
               p("All the data visualizations you see are interactive so feel 
                  free to click around and learn about your local weather!", 
-                style = "font-family: 'helvetica'; font-si50pt"),
-              p("Sincerely,", style = "font-family: 'helvetica'; font-si50pt"),
+                style = "font-family: 'Geneva'; font-si50pt"),
+              p("Sincerely,", style = "font-family: 'Geneva'"),
               p("Marta, Mirella, and Julia (SDS 410, spring 2019)", 
-                style = "font-family: 'helvetica'; font-si50pt"),
-              p("Paul R. Wetzel", style = "font-family: 'helvetica'; font-si50pt",
+                style = "font-family: 'Geneva'; font-si50pt"),
+              p("Paul R. Wetzel", style = "font-family: 'Geneva'; font-si50pt",
                 a("pwetzel@smith.edu"))),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(splitLayout(cellWidths = c("15%","16%","16%","16%","16%","16%")),
