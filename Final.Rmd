@@ -124,7 +124,8 @@ ui <- dashboardPage(
         boxToolSize = "sm",
         footer =
           " ",  
-        h5("as of:", current_w$when, align = "center"),
+        h5("as of:", current_w$when, align = "center",
+           style = "font-family: helvetica"),
         h1(current_w$temperature, "°C",
            style = "font-family: helvetica"),
         h4("humidity  ", icon("tint"), br(),
