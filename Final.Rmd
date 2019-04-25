@@ -209,7 +209,7 @@ ui <- dashboardPage(
               p("Marta, Mirella, and Julia (SDS 410, spring 2019)", 
                 style = "font-family: 'Geneva'"),
               p("Paul R. Wetzel", style = "font-family: 'Geneva'",
-                a("pwetzel@smith.edu"))),
+                "pwetzel@smith.edu")),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(splitLayout(cellWidths = c("15%","16%","16%","16%","16%","16%")),
               box(selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), width = 12),
