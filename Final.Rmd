@@ -206,10 +206,13 @@ ui <- dashboardPage(
                 margin-right: 28%"),
               br(),
               p("Sincerely,", style = "font-family: 'Geneva'"),
-              p("Marta, Mirella, and Julia (SDS 410, spring 2019)", 
+              p(a("Marta, Mirella, and Julia (SDS 410, spring 2019)",
+                  href = "https://github.com/beanumber/ceeds"), 
                 style = "font-family: 'Geneva'"),
-              p("Paul R. Wetzel", style = "font-family: 'Geneva'",
-                "pwetzel@smith.edu")),
+              p(a("Paul R. Wetzel", href = "mailto: pwetzel@smith.edu"),
+                style = "font-family: 'Geneva'"
+                )
+              ),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(splitLayout(cellWidths = c("15%","16%","16%","16%","16%","16%")),
               box(selectInput("dataset", "Dataset", c("WhatelyMet", "OrchardMet")), width = 12),
