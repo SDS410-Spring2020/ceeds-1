@@ -164,7 +164,7 @@ ui <- dashboardPage(
                  weather stations at the MacLeish Field Station of Smith 
                  College.", style = "font-family: 'Geneva'; 
                  margin-left: 28%; margin-right: 28%"),
-              img(src=b66, height = 326, width = 372, 
+              img(src=b66, height = 244, width = 279, 
               style="display: block; margin-left: auto; margin-right: auto;" ),
               br(),
               p("The MacLeish Field Station weather collection sites are 
