@@ -162,7 +162,7 @@ ui <- dashboardPage(
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
                  weather stations at the MacLeish Field Station of Smith 
-                 College.", align = "center", style = "font-family: 'Geneva'; 
+                 College.", style = "font-family: 'Geneva'; 
                  margin-left: 28%; margin-right: 28%"),
               img(src=b66, height = 326, width = 372, 
               style="display: block; margin-left: auto; margin-right: auto;" ),
@@ -170,10 +170,8 @@ ui <- dashboardPage(
               p("The MacLeish Field Station weather collection sites are 
                  accessed at the end of Poplar Hill Road in Whately, 
                  Massachusetts, USA (Lat: 42 deg. 26 min. 56 sec. N Long: 72 deg.
-                 40 min. 50 sec. W).", align = "center", 
-                 style = "font-family: 'Geneva'; 
-                 margin-left: 28%, margin-right: 28%"),
-              br(),
+                 40 min. 50 sec. W).", style = "font-family: 'Geneva';
+                 margin-left: 28%; margin-right: 28%"),
               p("Weather measurements are made at two locations at the MacLeish
                  field station. On the WhatelyMet tower, meteorological 
                  instruments (except the rain gauge) are mounted at the top of a 
@@ -182,11 +180,11 @@ ui <- dashboardPage(
                  standard, 10 m meteorological station, elevation 258 m above 
                  sea level. Temperature, relative humidity, and radiation are 
                  measured 2 m above the ground. The tower is located in a forest
-                 clearing.", style = "font-family: 'Geneva'"),
+                 clearing.", style = "font-family: 'Geneva'; margin-left: 28%;
+                 margin-right: 28%"),
               br(),
               img(src=b64, height = 264, width = 345.4, 
               style="display: block; margin-left: auto; margin-right: auto;"),
-              br(),
               h4("height comparison between weather station towers, trees and 
                  people", align = "center", style = "font-family: 'Geneva; 
                  font-style: italic; font-size: 14px"),
@@ -194,7 +192,9 @@ ui <- dashboardPage(
                  use it, from Smith College Statistical & Data Sciences students
                  who need large datasets to practice data visualization & data 
                  wrangling methods, to local researchers in the Pioneer Valley.",
-                style = "font-family: 'Geneva'"),
+                 style = "font-family: 'Geneva'; margin-left: 28%; 
+                 margin-right: 28%"),
+              br(),
               img(src=b65, height = 249, width = 322, 
               style="display: block; margin-left: auto; margin-right: auto"),
               h4("meet the weather station manager, Paul Wetzel of CEEDS ", 
@@ -202,11 +202,13 @@ ui <- dashboardPage(
                  font-style: italic; font-size: 14px"),
               p("All the data visualizations you see are interactive so feel 
                  free to click around and learn about your local weather!", 
-                style = "font-family: 'Geneva'; font-si50pt"),
+                style = "font-family: 'Geneva'; margin-left: 28%;
+                margin-right: 28%"),
+              br(),
               p("Sincerely,", style = "font-family: 'Geneva'"),
               p("Marta, Mirella, and Julia (SDS 410, spring 2019)", 
-                style = "font-family: 'Geneva'; font-si50pt"),
-              p("Paul R. Wetzel", style = "font-family: 'Geneva'; font-si50pt",
+                style = "font-family: 'Geneva'"),
+              p("Paul R. Wetzel", style = "font-family: 'Geneva'",
                 a("pwetzel@smith.edu"))),
       tabItem(tabName = "historic", h2("Historic Data", align = "center"),
             fluidPage(splitLayout(cellWidths = c("15%","16%","16%","16%","16%","16%")),
