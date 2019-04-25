@@ -154,7 +154,7 @@ ui <- dashboardPage(
         collapsible = FALSE
       )
               )),
-      tabItem(tabName = "about", h2("About", align = "center"), 
+      tabItem(tabName = "about", 
               h1("hello, welcome to the MacLeish Weather App"),
               p("Here you will find current weather, historical data (from 
                  January 2012 to present) and data you can download of the two 
@@ -231,7 +231,7 @@ dateInput("end1",
 "End date:",
 value = now(),
 format = "yyyy-mm-dd"))))),
-      tabItem(tabName = "raw", h2("Raw data", align = "center"),
+      tabItem(tabName = "raw", h2("Raw Data", align = "center"),
              fluidPage(splitLayout(cellWidths = c("45%","55%"),
                box(sidebarPanel(
     selectInput("dataset2", "Dataset", c("WhatelyMet", "OrchardMet")),
