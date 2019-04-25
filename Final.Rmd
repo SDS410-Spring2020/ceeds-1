@@ -25,6 +25,7 @@ library(plotly)
 library(DT)
 library(skimr)
 library(shinydashboardPlus)
+library(base64enc)
 ```
 
 ```{r}
@@ -45,6 +46,9 @@ last_whately <- get_lastyear(daily_whately)
 current_w <- tail(whately, 1)
 current_o <- tail(orchard,1)
 # print(current[1,2])
+
+b64 <- base64enc::dataURI(file= "height_comparison.png", mime="image/png")
+b65 <- base64enc::dataURI(file= "paul.png", mime="image/png")
 ```
 
 
@@ -173,9 +177,8 @@ ui <- dashboardPage(
                  sea level. Temperature, relative humidity, and radiation are 
                  measured 2 m above the ground. The tower is located in a forest
                  clearing.", style = "font-family: 'helvetica'; font-si50pt"),
-              img(src = "https://github.com/beanumber/ceeds/blob/master/inst/height_comparison.png",
-                  height = 210, width = 400, 
-                  style="display: block; margin-left: auto; margin-right: auto;"),
+              img(src=b64, height = 210, width = 400, 
+              style="display: block; margin-left: auto; margin-right: auto;" ),
               h4("height comparison between weather station towers, trees and 
                  people", align = "center"),
               p("We strive to make this data more accessible to those who can 
@@ -183,9 +186,8 @@ ui <- dashboardPage(
                  who need large datasets to practice data visualization & data 
                  wrangling methods, to local researchers in the Pioneer Valley.",
                 style = "font-family: 'helvetica'; font-si50pt"),
-              img(src = "https://github.com/beanumber/ceeds/blob/master/inst/paul.png",
-                  height = 250, width = 400, 
-                  style="display: block; margin-left: auto; margin-right: auto;"),
+              img(src=b65, height = 210, width = 400, 
+              style="display: block; margin-left: auto; margin-right: auto;" ),
               h4("meet the weather station manager, Paul Wetzel of CEEDS ", 
                  align = "center"),
               p("All the data visualizations you see are interactive so feel 
