@@ -49,6 +49,7 @@ current_o <- tail(orchard,1)
 
 b64 <- base64enc::dataURI(file= "height_comparison.png", mime="image/png")
 b65 <- base64enc::dataURI(file= "paul.png", mime="image/png")
+b66 <- base64enc::dataURI(file= "MacLeish.png", mime="image/png")
 ```
 
 
@@ -160,14 +161,13 @@ ui <- dashboardPage(
                  January 2012 to present) and data you can download of the two 
                  weather stations at the MacLeish Field Station of Smith 
                  College.", style = "font-family: 'helvetica'; font-si50pt"),
-              h4("[[include a picture of the clearing, some pictures of the two
-                 weather stations]]", align = "center"),
+              img(src=b66, height = 210, width = 400, 
+              style="display: block; margin-left: auto; margin-right: auto;" ),
               p("The MacLeish Field Station weather collection sites are 
                  accessed at the end of Poplar Hill Road in Whately, 
                  Massachusetts, USA (Lat: 42 deg. 26 min. 56 sec. N Long: 72 deg.
                  40 min. 50 sec. W).", style = "font-family: 'helvetica'; font-si50pt"),
-              h4("[[include in a static or interactive leaflet map pinpointing 
-                 these two locations?]]", align = "center"),
+              br(),
               p("Weather measurements are made at two locations at the MacLeish
                  field station. On the WhatelyMet tower, meteorological 
                  instruments (except the rain gauge) are mounted at the top of a 
