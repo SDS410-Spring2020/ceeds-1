@@ -90,7 +90,6 @@ ui <- dashboardPage(skin = "black",
                   tags$style(HTML('
       .main-header .logo {
         font-family: "Geneva";
-        font-weight: bold;
         font-size: 20px;
       }
 
@@ -105,8 +104,8 @@ ui <- dashboardPage(skin = "black",
           " ",
         h5("as of:", current_o$when, align = "center",
            style = "font-family: Geneva"),
-        h1(current_o$temperature, "°C", 
-           style = "font-family: Geneva"),
+        p(current_o$temperature, "°C", 
+           style = "font-family: Geneva; font-size: 3em"),
         h4("humidity  ", icon("tint"), br(),
            current_o$rel_humidity, "%", align = "right",
            style = "font-family: Geneva"), 
@@ -136,8 +135,8 @@ ui <- dashboardPage(skin = "black",
           " ",  
         h5("as of:", current_w$when, align = "center",
            style = "font-family: Geneva"),
-        h1(current_w$temperature, "°C",
-           style = "font-family: Geneva"),
+        p(current_w$temperature, "°C",
+           style = "font-family: Geneva; font-size: 3em"),
         h4("humidity  ", icon("tint"), br(),
            current_w$rel_humidity, "%", align = "right",
            style = "font-family: Geneva"), 
