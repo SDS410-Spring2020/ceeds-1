@@ -57,9 +57,10 @@ b66 <- base64enc::dataURI(file= "MacLeish.png", mime="image/png")
 
 ```{r}
 #setting up the ui of the dashboard
-ui <- dashboardPage(
+ui <- dashboardPage(skin = "black",
   # making a heading for the dashboard
-  dashboardHeader(title = "MacLeish Weather", dropdownMenu()),
+  dashboardHeader(title = "MacLeish Weather", 
+                  dropdownMenu()),
   #making a sidebar with tabs
   dashboardSidebar(
     # making a sidebar menu
@@ -86,13 +87,17 @@ ui <- dashboardPage(
       tabItem(tabName = "current", 
               fluidPage(
                 tags$head(
-                  tags$style(HTML("
-      h1 {font-family: Geneva};
-      h4 {font-family: Geneva};
-      h5 {font-family: Geneva}"))
+                  tags$style(HTML('
+      .main-header .logo {
+        font-family: "Geneva";
+        font-weight: bold;
+        font-size: 20px;
+      }
+
+      '))
                 ),
       gradientBox(
-        title = "OrchardMet Station",
+        title = span("OrchardMet Station", style = "font-family: Geneva"),
         icon = "fa fa-apple-alt",
         gradientColor = "teal", 
         boxToolSize = "sm", 
@@ -123,7 +128,7 @@ ui <- dashboardPage(
         collapsible = FALSE
       ),
       gradientBox(
-        title = "WhatelyMet Station",
+        title = span("WhatelyMet Station", style = "font-family: Geneva"),
         icon = "fa fa-leaf",
         gradientColor = "teal", 
         boxToolSize = "sm",
