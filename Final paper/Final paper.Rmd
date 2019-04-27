@@ -27,8 +27,10 @@ csl: plos.csl
    The MacLeish Field Station is located in a 260 acre of forest farmland near Whately, Massachusetts, and its weather collection sites are at the end of Poplar Hill Road. There are two weather site locations in the field, one called WhatelyMet Tower and the other one called OrchardMet. The WhatelyMet tower is mounted at the top of a 25.3m tall tower, and it is 250.8m above sea level. It was initially created to collect air pollution data. In order to collect more efficient weather data, OrchardMet weather station was created. The OrchardMet weather station is 10m tall located in a forest clean area close to ground level. However, the trees do not allow OrchardMet weather station to collect data efficiently as hoped. 
  
    As part of the SDS 410 Capstone class, our group of 3 were given Macleish weather data from the Macleish package that is collected through the Smith server. There is a current Macleish weather dashboard that collects a variety of weather data: date, wind speed, temperature, wind direction, real humidity, pressure, solar radiation, and rainfall.  The server has been collecting data since January 2012, and it is updated every 10 minute increments. Thus, there is over 377,016 entries. The data loggers run on solar power and stores the data so even if the server is down the data is saved. The current MacLeish weather dashboard^[current Macleish weather dashboard: http://macleish.smith.edu/index.html] contains a lot of useful information, and the data is organized into readable tabs. Because the data is trapped in individual “data silos”, it is not readily accessible. Therefore, the goal for the given project is to recreate the current Macleish weather dashboard to illuminate the data and make it more user friendly, it download accessible, and it visually interactive as proposed by our client, Paul Wetzel. Our client Paul Wetzel is the field station manager of MacLeish Field Station, and he is the main user of the current website. As discussed and mentioned earlier about our clients needs, we chose to make the new weather dashboard using the Shiny package. We choose to use Shiny, since it would allow us to make the download data opportunity catered to the audience’s needs, and it would help us make the graphs interactive and user friendly. We believe our focus would supply to the current target audiences, Paul Wetzel, other Smith students, Smith faculty/researchers, and Northampton Department of Public Works. 
+```{r, echo=FALSE, fig.cap="Example of a what the current Macleish weather dashboard looks like", out.width = 350px}
+knitr::include_graphics("current.png")
+```
  
- ![](current.PNG){width=350px}^[Fig 1. Example of a what the current dashboard looks like]
  
 
 
@@ -47,19 +49,29 @@ csl: plos.csl
 One tab item we built  was the current weather tab. The current weather tab gives the user the the current 10 minute weather for WhatelyMet and OrchardMet. Because we wanted to have our data be shown as a text object and not a table, our code for this tab was largely done using HTML. We used a bit of HTML to change the sizing of the text and the alignment of the rows. To make the teal boxes, we used the shinydashboard Plus package^[David Granjon (2019). shinydashboardPlus: Add More 'AdminLTE2' Components to
   'shinydashboard'. R package version 0.7.0.
   https://CRAN.R-project.org/package=shinydashboardPlus], allowed us to make a clear, concise first page of our Shiny app. Another tab on our dashboard is the about tab where we explain our project and give information about the weather stations. 
+  
+```{r, echo=FALSE, fig.cap="Example of a what our sidebar menu and dashboard looks like", out.width = 350px}
+knitr::include_graphics("Weather Dashboard.png")
+```
 
-![Example of a Highcharter graph that shows temperature](Weather Dashboard.png){width=350px}
-^[Fig 2. Example of a what our sidebar menu and dashboard looks like]
 
 Another tab that we built was the historic data tab. We made a way for the user to switch between daily data for OrchardMet and WhatelyMet in the historic data tab, this means the graphs shown are reactive and are  based on the data set that was selected by the user. We did by making a reactive function inside the server that allows people to switch between data sets, this function we call datasetInput. We made graphs mapping 3 (Wind speed, precipitation, temperature) variables over time. To do build these graphs we used the highcharter package^[A Wrapper for the 'Highcharts' Library. R package
   version 0.7.0. https://CRAN.R-project.org/package=highcharter] that allows the user to filter the data based on a certain time period and high charter also has a feature that enables users to download the data used to make the graphic. 
-![Example of a Highcharter graph that shows temperature](highchart.png){width=350px}
+  
+```{r, echo=FALSE, fig.cap="Example of a Highcharter graph that shows temperature", out.width = 350px}
+knitr::include_graphics("highchart.png")
+```
+
+
 ^[Fig 3. Example of a Highcharter graph that shows temperature ]
 
 
   We also made a visualization where the user can make a custom correlation graph by picking the variables that they want. We made this correlation scatterplot by using ggplot and ggplotly to make the graphic more interactive.  We also made a windrose graph to show wind speed and direction using ggplot. A wind rose is a polar chart which  shows the user how wind speed and wind direction are distributed at a over a specific period of time.  We also created a way to allow the  user to choose a variable  and get summary statistics on that variable.  In this tab, we made the graphs be in a fluid page, this allows for the size of the boxes and visuals to change based on the size of the window. We then put all of our content for the tab in separate boxes that are collapsible. We did this to minimize users' scrolling. 
-![A wind rose graph](windrose.png){width=350px}
-^[Fig 4. Example of a Windrose graph]
+  
+```{r, echo=FALSE, fig.cap="A wind rose graph", out.width = 350px}
+knitr::include_graphics("windrose.png")
+```  
+  
 
 
   The last tab we made is the raw data tab. This tab allows the user to filter the data based on columns  and the user can also choose between daily data for OrchardMet and WhatelyMet. This tab also allows the user to search the data table using the DT package. 
