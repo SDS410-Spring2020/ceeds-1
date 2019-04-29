@@ -271,8 +271,9 @@ our focus would supply to the current target audiences, Paul Wetzel,
 other Smith students, Smith faculty/researchers, and Northampton
 Department of Public Works.
 
-\includegraphics[width=3.64583in]{current.PNG}\footnote{Fig 1. Example
-  of a what the current dashboard looks like}
+\begin{figure}
+\includegraphics[width=350px]{current} \caption{Example of a what the current Macleish weather dashboard looks like}\label{fig:unnamed-chunk-1}
+\end{figure}
 
 \section{Methods}\label{methods}
 
@@ -330,8 +331,9 @@ make a clear, concise first page of our Shiny app. Another tab on our
 dashboard is the about tab where we explain our project and give
 information about the weather stations.
 
-\includegraphics[width=3.64583in]{Weather Dashboard.png}\footnote{Fig 2.
-  Example of a what our sidebar menu and dashboard looks like}
+\begin{figure}
+\includegraphics[width=350px]{Weather Dashboard} \caption{Example of a what our sidebar menu and dashboard looks like}\label{fig:unnamed-chunk-2}
+\end{figure}
 
 Another tab that we built was the historic data tab. We made a way for
 the user to switch between daily data for OrchardMet and WhatelyMet in
@@ -345,8 +347,13 @@ build these graphs we used the highcharter package\footnote{A Wrapper
   https://CRAN.R-project.org/package=highcharter} that allows the user
 to filter the data based on a certain time period and high charter also
 has a feature that enables users to download the data used to make the
-graphic. \includegraphics[width=3.64583in]{highchart.png}\footnote{Fig
-  3. Example of a Highcharter graph that shows temperature}
+graphic.
+
+\begin{figure}
+\includegraphics[width=350px]{highchart} \caption{Example of a Highcharter graph that shows temperature}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+\footnote{Fig 3. Example of a Highcharter graph that shows temperature}
 
 We also made a visualization where the user can make a custom
 correlation graph by picking the variables that they want. We made this
@@ -360,8 +367,10 @@ tab, we made the graphs be in a fluid page, this allows for the size of
 the boxes and visuals to change based on the size of the window. We then
 put all of our content for the tab in separate boxes that are
 collapsible. We did this to minimize users' scrolling.
-\includegraphics[width=3.64583in]{windrose.png}\footnote{Fig 4. Example
-  of a Windrose graph}
+
+\begin{figure}
+\includegraphics[width=350px]{windrose} \caption{A wind rose graph}\label{fig:unnamed-chunk-4}
+\end{figure}
 
 The last tab we made is the raw data tab. This tab allows the user to
 filter the data based on columns and the user can also choose between
