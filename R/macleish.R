@@ -52,7 +52,6 @@ get_lastyear <- function(y) {
 #' @rdname read_whately
 get_last5weeks <- function(y) {
   weeks <- y%>%
-    mutate(the_date = lubridate::date(when)) %>%
     filter(between(the_date, lubridate::today() - lubridate::days(35), lubridate::today()))
   return(weeks)
 }
