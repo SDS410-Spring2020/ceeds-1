@@ -4,6 +4,7 @@
 \alias{read_whately}
 \alias{get_daily}
 \alias{get_lastyear}
+\alias{get_last5weeks}
 \title{Read in the current Whately and Orchard data}
 \usage{
 read_whately()
@@ -11,6 +12,8 @@ read_whately()
 get_daily(x)
 
 get_lastyear(y)
+
+get_last5weeks(y)
 }
 \description{
 Read in the current Whately and Orchard data
