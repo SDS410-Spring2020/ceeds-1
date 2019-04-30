@@ -72,7 +72,7 @@ shinyServer(function(input, output,session) {
     x<-input$bins
     bins <- seq(min(datasetInput()$avgWindSpeed), max(datasetInput()$avgWindSpeed), length.out = input$bins)
     dirbins <- seq(min(datasetInput()$dir), max(datasetInput()$dir), length.out = input$bins)
-    ggplot(data = datasetInput(), aes(x = cut(dir,8) , fill = cut(maxwind,x))) +
+    ggplot(data = ceeds::get_lastyear(datasetInput()), aes(x = cut(dir,8) , fill = cut(maxwind,x))) +
       geom_bar() + 
       scale_x_discrete(name="Wind Direction",drop = FALSE, labels =c("N","NE","E","SE","S","SW","W", "NW")) +
       coord_polar(start = -((30/1.5)/360) *(2*pi)) +
