@@ -76,7 +76,7 @@ shinyServer(function(input, output,session) {
       geom_bar() + 
       scale_x_discrete(name="Wind Direction",drop = FALSE, labels =c("N","NE","E","SE","S","SW","W", "NW")) +
       coord_polar(start = -((30/1.5)/360) *(2*pi)) +
-      scale_colour_brewer(name = "Wind Speed (m/s)") 
+      scale_fill_discrete(name = "Wind Speed (m/s)") 
   })
   
   output$plot1 <- renderPlotly({
