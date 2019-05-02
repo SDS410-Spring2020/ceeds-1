@@ -75,7 +75,9 @@ knitr::include_graphics("correlation.png")
 knitr::include_graphics("WindRose.png")
 ```
 
-
+```{r, echo=FALSE, fig.cap="statistics summary table", out.width = "350px"}
+knitr::include_graphics("table.png")
+```
 ##Dowloand Data Tab 
   Since our client wanted users to be able to download and filter the MacLeish weather data that is displayed in the dashboard, we added a new tab, raw data tab, which the current MacLeish weather dashboard does not have. This tab allows the user to filter the data based on columns and the user can also choose between daily data for OrchardMet and WhatelyMet (see fig 9). This tab also allows the user to search the data table using the DT package. 
   
