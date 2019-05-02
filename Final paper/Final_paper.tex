@@ -331,6 +331,7 @@ tab was largely done using html. Additionally to address our clients
 need of having the MacLeish weather dashboard be more user friendly, we
 chose to design the weather tab in a minimalist style. By doing so, the
 users will be able to better see the data in one glimpse.
+<<<<<<< HEAD
 
 \section{\texorpdfstring{\texttt{\{r,echo=FALSE,\ fig.cap=\ "fig\ 2:\ Current\ Weather\ Tab\ displaying\ WhatelyMet\ and\ OrchardMet\ current\ weather\ and\ showing\ how\ our\ sidebar\ menu\ and\ dashboard\ looks\ like",\ out.width\ =\ "350px"\}\ \#\ knitr::include\_graphics("")\ \#}}{\{r,echo=FALSE, fig.cap= "fig 2: Current Weather Tab displaying WhatelyMet and OrchardMet current weather and showing how our sidebar menu and dashboard looks like", out.width = "350px"\} \# knitr::include\_graphics("") \#}}\label{rechofalse-fig.cap-fig-2-current-weather-tab-displaying-whatelymet-and-orchardmet-current-weather-and-showing-how-our-sidebar-menu-and-dashboard-looks-like-out.width-350px-knitrinclude_graphics}
 
@@ -371,6 +372,54 @@ used to make the graphic.
 
 \begin{figure}
 \includegraphics[width=350px]{highchart} \caption{fig 5:Example of a Highcharter graph that shows temperature}\label{fig:unnamed-chunk-2}
+=======
+
+\begin{figure}
+\includegraphics[width=350px]{} \caption{fig 2: Current Weather Tab displaying WhatelyMet and OrchardMet current weather and showing how our sidebar menu and dashboard looks like}\label{fig:unnamed-chunk-2}
+\end{figure}
+
+\subsection{About Tab:}\label{about-tab}
+
+The second tab we built on our dashboard is the about tab, which is
+where we explained our project and have information about the weather
+stations (see fig 3). We also added links for the public to contact Paul
+for further questions and interests as well as our repository link. This
+tab was created as the updated version of the ``Tower Locations \& Size
+Comparisons'' tab in the current MacLeish Dashboard to better
+communicate with the users. We used a bit of HTML to change the sizing
+of the text and the alignment of the rows. To make the teal boxes, we
+used the shinydashboard Plus package {[}1{]}, allowed us to make a
+clear, concise first page of our Shiny app.
+
+\begin{figure}
+\includegraphics[width=350px]{} \caption{fig 3: Welcoming the users and letting them know who to reach out to for further information and how the app works}\label{fig:unnamed-chunk-3}
+\end{figure}
+
+\subsection{Historic Data Tab:}\label{historic-data-tab}
+
+The third tab we built was the historic data tab (see fig 4). This tab
+is the updated version of the ``OrchardMet Historic'' and ``WhatelyMet
+Historic'' of the current MacLeish weather dashboard. When building this
+tab, we focused on displaying the weather data through visual
+interactive graphs as our client requested. We made a way for the user
+to switch between daily data for OrchardMet and WhatelyMet in the
+historic data tab, this means the graphs shown are reactive and are
+based on the data set that was selected by the user. We did this by
+making a reactive function inside the server that allows people to
+switch between data sets. We made graphs mapping 3 of our client's focus
+variables (Wind speed, precipitation, temperature) over time (see fig
+5). To build these graphs, we used the Highcharter package {[}2{]} that
+allows the user to filter the data based on a certain time period and
+high charter also has a feature that enables users to download the data
+used to make the graphic.
+
+\begin{figure}
+\includegraphics[width=350px]{} \caption{fig 4: The way the Historic Data tab looks and how it allows the users to choose what weather station they would like to look at}\label{fig:unnamed-chunk-4}
+\end{figure}
+
+\begin{figure}
+\includegraphics[width=350px]{highchart} \caption{fig 5:Example of a Highcharter graph that shows temperature}\label{fig:unnamed-chunk-5}
+>>>>>>> 7adf29e894be8320944d9657a32aa17702603c07
 \end{figure}
 
 We also made a visualization where the user can make a custom
@@ -387,7 +436,11 @@ We then put all of our content for the tab in separate boxes that are
 collapsible. We did this to minimize users' scrolling.
 
 \begin{figure}
+<<<<<<< HEAD
 \includegraphics[width=350px]{windrose} \caption{fig 6: A wind rose graph}\label{fig:unnamed-chunk-3}
+=======
+\includegraphics[width=350px]{WindRose} \caption{fig 6: A wind rose graph}\label{fig:unnamed-chunk-6}
+>>>>>>> 7adf29e894be8320944d9657a32aa17702603c07
 \end{figure}
 
 \subsection{Dowloand Data Tab}\label{dowloand-data-tab}
@@ -400,7 +453,13 @@ the user can also choose between daily data for OrchardMet and
 WhatelyMet (see fig 7). This tab also allows the user to search the data
 table using the DT package.
 
+<<<<<<< HEAD
 \section{\texorpdfstring{\texttt{\{r,\ echo=FALSE,\ fig.cap="fig\ 7:\ The\ way\ dowloading\ data\ tab\ looks,\ and\ how\ it\ allows\ users\ to\ filter\ the\ data\ they\ would\ like\ to\ download",\ out.width\ =\ "350px"\}\ \#\ knitr::include\_graphics("")\ \#}}{\{r, echo=FALSE, fig.cap="fig 7: The way dowloading data tab looks, and how it allows users to filter the data they would like to download", out.width = "350px"\} \# knitr::include\_graphics("") \#}}\label{r-echofalse-fig.capfig-7-the-way-dowloading-data-tab-looks-and-how-it-allows-users-to-filter-the-data-they-would-like-to-download-out.width-350px-knitrinclude_graphics}
+=======
+\begin{figure}
+\includegraphics[width=350px]{} \caption{fig 7: The way dowloading data tab looks, and how it allows users to filter the data they would like to download}\label{fig:unnamed-chunk-7}
+\end{figure}
+>>>>>>> 7adf29e894be8320944d9657a32aa17702603c07
 
 \subsection{Ceeds package:}\label{ceeds-package}
 
