@@ -200,7 +200,7 @@
 % Insert author names, affiliations and corresponding author email (do not include titles, positions, or degrees).
 \\
 Julia Lee\textsuperscript{},
-Marta Garcia\textsuperscript{},
+Marta García\textsuperscript{},
 Mirella Hernandez\textsuperscript{}\\
 \bigskip
 \bigskip
@@ -208,11 +208,11 @@ Mirella Hernandez\textsuperscript{}\\
 % Please keep the abstract below 300 words
 \section*{Abstract}
 We were tasked with finding a way to better showcase weather data from
-the MacLeish Field station. We were also tasked with incorporating
-interactive graphics and allowing users to download and filter the data.
-So we decided to use the shiny and Shiny Dashboard packages in R to
-build an interactive dashboard. We also wrote a package to get the data
-from the MacLeish server.
+the MacLeish Field station, as well with incorporating interactive
+graphics and allowing users to download and filter the data. Due to the
+capabilities of Shiny, we decided to use the shiny and Shiny Dashboard
+packages in R to build an interactive dashboard. We also wrote a package
+to get the data from the MacLeish server.
 
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step.
@@ -421,9 +421,30 @@ most important to the user. For example, the server room temperature
 would be most useful to the weather station manager (Wetzel) because
 that temperature would allow him to see when the room was overheating or
 too cold, and not very functional for a user looking to download weather
-data for a school project. Through Wetzel, we also learning that
+data for a school project. Through Wetzel, we also learned that
 temperature data is only accurate up to the thousandth place which made
-us modify our app to reflect that accuracy
+us modify our app to reflect that accuracy.
+
+Arguably our largest and most time-consuming issue, making tabs work in
+Shiny took us a while. Since our project is so visual, and tabs played a
+major part in our functioning dashboard, this set us back and we were
+unable to move forward with the HTML \& CSS coding until we could solve
+this problem. With some help from our professor Ben Baumer, we were able
+to get tabs to work. Through this, we learned the importance of correct
+placement of commas and parentheses in Shiny since as we discovered
+later, that had been our problem the whole time. Once tabs worked, we
+were able to put all the appropriate graphs in each tab and start
+working on the user interface that we coded mostly with HTML \& CSS.
+
+A smaller issue that we had was making graphs reactive. Since we were so
+familiar with using ggplot package through tidyverse, we wanted to have
+all our data visualizations be programmed using ggplot. However, we had
+a lot of issues with making these visualizations reactive with Shiny,
+which posed a problem of how a user would then interact with these
+graphs. After trying for a short while, we ultimately moved onto a
+different package called highcharter, which made the graphs interactive
+and also allowed an element of downloading data that we expanded on
+later with a tab we included.
 
 \section{Limitations \& Moving
 Forward}\label{limitations-moving-forward}

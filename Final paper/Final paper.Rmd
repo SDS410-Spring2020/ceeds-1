@@ -3,7 +3,7 @@ title: CEEDS Weather Dashboard
 author:
   - name: Julia Lee
     email: jclee@smith.edu
-  - name: Marta Garcia
+  - name: Marta García
     email: mgarcia36@smith.edu
   - name: Mirella Hernandez
     email: mHernandez@smith.edu
@@ -11,7 +11,7 @@ author:
 
  
 abstract: |
-  We were tasked with finding a way to better showcase weather data from the MacLeish Field station. We were also tasked with incorporating interactive graphics and allowing users to download and filter the data. So we decided to use the shiny and Shiny Dashboard packages in R to build an interactive dashboard. We also wrote a package to get the data from the MacLeish server.  
+  We were tasked with finding a way to better showcase weather data from the MacLeish Field station, as well with incorporating interactive graphics and allowing users to download and filter the data. Due to the capabilities of Shiny, we decided to use the Shiny and Shiny Dashboard packages in R to build an interactive dashboard. We also wrote a package to get the data from the MacLeish server.  
 
  
   
@@ -80,10 +80,17 @@ knitr::include_graphics("windrose.png")
    Throughout this whole process, our group has faced a variety of issues and consequently, temporary limitations. At the beginning of our process, we first had to learn to use the Shiny package. There was a learning curve in learning to build a web app and we initially struggled with building the first parts of the app and figuring out how to integrate the R knowledge we had with this new package. We took the DataCamp course to learn the basics of Shiny and from there, dove straight into our new data, once we had access to the data. Since we were reliant on the MacLeish package, which relied on the MacLeish server to receive the data, whenever the MacLeish server was down, we struggled with working with the data we needed to move forth with the project. 
 
 
-   Also at the start of this project, we met with our client to gather more information of what he wanted and what we felt we could deliver knowing our skill set in R and Shiny. Since Wetzel was not familiar with the capabilities of R, it was up to us to fill him in with what we thought was possible. These plans included reducing the amount of tabs, changing all the graphs to being clearly interactive, and making the web app overall more user-friendly and comprehensive. We did not create a printed mockup until much later in the process so it was difficult to communicate our vision to him and for him to understand the potential of R and Shiny. However, in our biweekly meetings with him, we filled him in with whatever progress we were making and once we started creating visualizations using highcharter, he was able to better understand the kind of graphs we could create and integrate into the new web app.
-
-
-   In the similar vein as to how Wetzel did not know much about R, our group did not know much about weather data and the importance of all the variables. During our meeting Wetzel taught us the importance of certain variables but also told us that we should focus on the precipitation, temperature and wind variables if we needed to narrow our scope. In teaching us about the other variables, such as soil temperature and server temperature and this helped us figure out which variables were most important to the user. For example, the server room temperature would be most useful to the weather station manager (Wetzel) because that temperature would allow him to see when the room was overheating or too cold, and not very functional for a user looking to download weather data for a school project. Through Wetzel, we also learning that temperature data is only accurate up to the thousandth place which made us modify our app to reflect that accuracy
+   Also at the start of this project, we met with our client to gather more information of what he wanted and what we felt we could deliver knowing our skill set in R and Shiny. Since Wetzel was not familiar with the capabilities of R, it was up to us to fill him in with what we thought was possible. These plans included reducing the amount of tabs, changing all the graphs to being clearly interactive, and making the web app overall more user-friendly and comprehensive. We did not create a printed mockup until much later in the process so it was difficult to communicate our vision to him and for him to understand the potential of R and Shiny. However, in our biweekly meetings with him, we filled him in with whatever progress we were making and once we started creating visualizations using highcharter, he was able to better understand the kind of graphs we could create and integrate into the new web app.  
+   
+   
+   In the similar vein as to how Wetzel did not know much about R, our group did not know much about weather data and the importance of all the variables. During our meeting Wetzel taught us the importance of certain variables but also told us that we should focus on the precipitation, temperature and wind variables if we needed to narrow our scope. In teaching us about the other variables, such as soil temperature and server temperature and this helped us figure out which variables were most important to the user. For example, the server room temperature would be most useful to the weather station manager (Wetzel) because that temperature would allow him to see when the room was overheating or too cold, and not very functional for a user looking to download weather data for a school project. Through Wetzel, we also learned that temperature data is only accurate up to the thousandth place which made us modify our app to reflect that accuracy.  
+   
+   
+   Arguably our largest and most time-consuming issue, making tabs work in Shiny took us a while. Since our project is so visual, and tabs played a major part in our functioning dashboard, this set us back and we were unable to move forward with the HTML & CSS coding until we could solve this problem. We had already programmed in some graphs but with tabs not working, they would all appear on the same page and when the user tried to click to different tabs, they would not switch. However, with some help from our professor Ben Baumer, we were able to get tabs to work. Through this, we learned the importance of correct placement of commas and parentheses in Shiny since as we discovered later, that had been our problem the whole time. Once tabs worked, we were able to put all the appropriate graphs in each tab and start working on the user interface that we coded mostly with HTML & CSS.
+   
+   A smaller issue that we had was making graphs reactive. Since we were so familiar with using ggplot package through tidyverse, we wanted to have all our data visualizations be programmed using ggplot. However, we had a lot of issues with making these visualizations reactive with Shiny, which posed a problem of how a user would then interact with these graphs. After trying for a short while, we ultimately moved onto a different package called highcharter, which made the graphs interactive and also allowed an element of downloading data that we expanded on later with a tab we included.
+   
+   
 
 
 #Limitations & Moving Forward
