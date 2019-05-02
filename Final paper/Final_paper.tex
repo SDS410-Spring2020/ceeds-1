@@ -210,7 +210,7 @@ Mirella Hernandez\textsuperscript{}\\
 We were tasked with finding a way to better showcase weather data from
 the MacLeish Field station, as well with incorporating interactive
 graphics and allowing users to download and filter the data. Due to the
-capabilities of Shiny, we decided to use the shiny and Shiny Dashboard
+capabilities of Shiny, we decided to use the Shiny and Shiny Dashboard
 packages in R to build an interactive dashboard. We also wrote a package
 to get the data from the MacLeish server.
 
@@ -245,15 +245,15 @@ However, the trees do not allow OrchardMet weather station to collect
 data efficiently as hoped.
 
 As part of the SDS 410 Capstone class, our group of 3 were given
-Macleish weather data from the Macleish package that is collected
-through the Smith server. There is a current Macleish weather dashboard
-that collects a variety of weather data: date, wind speed, temperature,
-wind direction, real humidity, pressure, solar radiation, and rainfall.
-The server has been collecting data since January 2012, and it is
-updated every 10 minute increments. Thus, there is over 377,016 entries.
-The data loggers run on solar power and stores the data so even if the
-server is down the data is saved. The current MacLeish weather
-dashboard\footnote{current Macleish weather dashboard:
+Macleish weather data from the Macleish package {[}1{]} that is
+collected through the Smith server. There is a current Macleish weather
+dashboard that collects a variety of weather data: date, wind speed,
+temperature, wind direction, real humidity, pressure, solar radiation,
+and rainfall. The server has been collecting data since January 2012,
+and it is updated every 10 minute increments. Thus, there is over
+377,016 entries. The data loggers run on solar power and stores the data
+so even if the server is down the data is saved. The current MacLeish
+weather dashboard\footnote{current Macleish weather dashboard:
   http://macleish.smith.edu/index.html} contains a lot of useful
 information, and the data is organized into readable tabs. Because the
 data is trapped in individual ``data silos'', it is not readily
@@ -264,11 +264,11 @@ as proposed by our client, Paul Wetzel. Our client Paul Wetzel is the
 field station manager of MacLeish Field Station, and he is the main user
 of the current website. As discussed and mentioned earlier about our
 clients needs, we chose to make the new weather dashboard using the
-Shiny package. We choose to use Shiny, since it would allow us to make
-the download data opportunity catered to the audience's needs, and it
-would help us make the graphs interactive and user friendly. We believe
-our focus would supply to the current target audiences, Paul Wetzel,
-other Smith students, Smith faculty/researchers, and Northampton
+Shiny package {[}2{]}. We choose to use Shiny, since it would allow us
+to make the download data opportunity catered to the audience's needs,
+and it would help us make the graphs interactive and user friendly. We
+believe our focus would supply to the current target audiences, Paul
+Wetzel, other Smith students, Smith faculty/researchers, and Northampton
 Department of Public Works.
 
 \begin{figure}
@@ -316,9 +316,9 @@ WhatelyMet and OrchardMet. Because we wanted to have our data be shown
 as a text object and not a table, our code for this tab was largely done
 using HTML. We used a bit of HTML to change the sizing of the text and
 the alignment of the rows. To make the teal boxes, we used the
-shinydashboard Plus package, allowed us to make a clear, concise first
-page of our Shiny app. Another tab on our dashboard is the about tab
-where we explain our project and give information about the weather
+shinydashboard Plus package {[}3{]}, allowed us to make a clear, concise
+first page of our Shiny app. Another tab on our dashboard is the about
+tab where we explain our project and give information about the weather
 stations.
 
 \begin{figure}
@@ -332,10 +332,10 @@ based on the data set that was selected by the user. We did by making a
 reactive function inside the server that allows people to switch between
 data sets, this function we call datasetInput. We made graphs mapping 3
 (Wind speed, precipitation, temperature) variables over time. To do
-build these graphs we used the highcharter package that allows the user
-to filter the data based on a certain time period and high charter also
-has a feature that enables users to download the data used to make the
-graphic.
+build these graphs we used the highcharter package {[}4{]} that allows
+the user to filter the data based on a certain time period and high
+charter also has a feature that enables users to download the data used
+to make the graphic.
 
 \begin{figure}
 \includegraphics[width=350px]{highchart} \caption{Example of a Highcharter graph that shows temperature}\label{fig:unnamed-chunk-3}
@@ -379,7 +379,7 @@ data from the server comes in 10 minute increments but we might want to
 group by date. So we used the Lubridate package that was very helpful.
 It allowed us to Parsed timestamps into dates (turning variables into
 dates that r can recognize as such). This allowed us to group our data
-by date.
+by date. {[}5{]}
 
 \section{Issues}\label{issues}
 
@@ -429,12 +429,15 @@ Arguably our largest and most time-consuming issue, making tabs work in
 Shiny took us a while. Since our project is so visual, and tabs played a
 major part in our functioning dashboard, this set us back and we were
 unable to move forward with the HTML \& CSS coding until we could solve
-this problem. With some help from our professor Ben Baumer, we were able
-to get tabs to work. Through this, we learned the importance of correct
-placement of commas and parentheses in Shiny since as we discovered
-later, that had been our problem the whole time. Once tabs worked, we
-were able to put all the appropriate graphs in each tab and start
-working on the user interface that we coded mostly with HTML \& CSS.
+this problem. We had already programmed in some graphs but with tabs not
+working, they would all appear on the same page and when the user tried
+to click to different tabs, they would not switch. However, with some
+help from our professor Ben Baumer, we were able to get tabs to work.
+Through this, we learned the importance of correct placement of commas
+and parentheses in Shiny since as we discovered later, that had been our
+problem the whole time. Once tabs worked, we were able to put all the
+appropriate graphs in each tab and start working on the user interface
+that we coded mostly with HTML \& CSS.
 
 A smaller issue that we had was making graphs reactive. Since we were so
 familiar with using ggplot package through tidyverse, we wanted to have
@@ -469,7 +472,35 @@ used to study climate change.
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-Our Github Repository: https://github.com/beanumber/ceeds
+{[}6{]}
+
+\hypertarget{refs}{}
+\hypertarget{ref-macleish}{}
+1. Baumer BS, Goueth R, Li W, Zhang W, Horton N. Macleish: Retrieve data
+from macleish field station {[}Internet{]}. 2018. Available:
+\url{https://CRAN.R-project.org/package=macleish}
+
+\hypertarget{ref-shiny}{}
+2. Chang W, Cheng J, Allaire J, Xie Y, McPherson J. Shiny: Web
+application framework for r {[}Internet{]}. 2018. Available:
+\url{https://CRAN.R-project.org/package=shiny}
+
+\hypertarget{ref-dashboardplus}{}
+3. Granjon D. ShinydashboardPlus: Add more 'adminlte2' components to
+'shinydashboard' {[}Internet{]}. 2019. Available:
+\url{https://CRAN.R-project.org/package=shinydashboardPlus}
+
+\hypertarget{ref-highcharter}{}
+4. Kunst J. Highcharter: A wrapper for the 'highcharts' library
+{[}Internet{]}. 2019. Available:
+\url{https://CRAN.R-project.org/package=highcharter}
+
+\hypertarget{ref-ceeds}{}
+5. Baumer BS, García M, Hernandez M, Lee J. Ceeds. 2019.
+
+\hypertarget{ref-ceeds_repo}{}
+6. Baumer BS, García M, Hernandez M, Lee J. Ceeds github repository.
+\url{https://github.com/beanumber/ceeds}; 2019.
 
 \nolinenumbers
 

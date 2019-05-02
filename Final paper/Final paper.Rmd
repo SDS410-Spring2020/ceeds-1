@@ -8,17 +8,13 @@ author:
   - name: Mirella Hernandez
     email: mHernandez@smith.edu
     
-
+bibliography: mybibfile.bib
+output: rticles::plos_article
+csl: plos.csl
  
 abstract: |
   We were tasked with finding a way to better showcase weather data from the MacLeish Field station, as well with incorporating interactive graphics and allowing users to download and filter the data. Due to the capabilities of Shiny, we decided to use the Shiny and Shiny Dashboard packages in R to build an interactive dashboard. We also wrote a package to get the data from the MacLeish server.  
 
- 
-  
-
-bibliography: mybibfile.bib
-output: rticles::plos_article
-csl: plos.csl
 ---
 
 # Introduction
@@ -26,7 +22,7 @@ csl: plos.csl
   
    The MacLeish Field Station is located in a 260 acre of forest farmland near Whately, Massachusetts, and its weather collection sites are at the end of Poplar Hill Road. There are two weather site locations in the field, one called WhatelyMet Tower and the other one called OrchardMet. The WhatelyMet tower is mounted at the top of a 25.3m tall tower, and it is 250.8m above sea level. It was initially created to collect air pollution data. In order to collect more efficient weather data, OrchardMet weather station was created. The OrchardMet weather station is 10m tall located in a forest clean area close to ground level. However, the trees do not allow OrchardMet weather station to collect data efficiently as hoped. 
  
-   As part of the SDS 410 Capstone class, our group of 3 were given Macleish weather data from the Macleish package that is collected through the Smith server. There is a current Macleish weather dashboard that collects a variety of weather data: date, wind speed, temperature, wind direction, real humidity, pressure, solar radiation, and rainfall.  The server has been collecting data since January 2012, and it is updated every 10 minute increments. Thus, there is over 377,016 entries. The data loggers run on solar power and stores the data so even if the server is down the data is saved. The current MacLeish weather dashboard^[current Macleish weather dashboard: http://macleish.smith.edu/index.html] contains a lot of useful information, and the data is organized into readable tabs. Because the data is trapped in individual “data silos”, it is not readily accessible. Therefore, the goal for the given project is to recreate the current Macleish weather dashboard to illuminate the data and make it more user friendly, it download accessible, and it visually interactive as proposed by our client, Paul Wetzel. Our client Paul Wetzel is the field station manager of MacLeish Field Station, and he is the main user of the current website. As discussed and mentioned earlier about our clients needs, we chose to make the new weather dashboard using the Shiny package. We choose to use Shiny, since it would allow us to make the download data opportunity catered to the audience’s needs, and it would help us make the graphs interactive and user friendly. We believe our focus would supply to the current target audiences, Paul Wetzel, other Smith students, Smith faculty/researchers, and Northampton Department of Public Works. 
+   As part of the SDS 410 Capstone class, our group of 3 were given Macleish weather data from the Macleish package @macleish that is collected through the Smith server. There is a current Macleish weather dashboard that collects a variety of weather data: date, wind speed, temperature, wind direction, real humidity, pressure, solar radiation, and rainfall.  The server has been collecting data since January 2012, and it is updated every 10 minute increments. Thus, there is over 377,016 entries. The data loggers run on solar power and stores the data so even if the server is down the data is saved. The current MacLeish weather dashboard^[current Macleish weather dashboard: http://macleish.smith.edu/index.html] contains a lot of useful information, and the data is organized into readable tabs. Because the data is trapped in individual “data silos”, it is not readily accessible. Therefore, the goal for the given project is to recreate the current Macleish weather dashboard to illuminate the data and make it more user friendly, it download accessible, and it visually interactive as proposed by our client, Paul Wetzel. Our client Paul Wetzel is the field station manager of MacLeish Field Station, and he is the main user of the current website. As discussed and mentioned earlier about our clients needs, we chose to make the new weather dashboard using the Shiny package @shiny. We choose to use Shiny, since it would allow us to make the download data opportunity catered to the audience’s needs, and it would help us make the graphs interactive and user friendly. We believe our focus would supply to the current target audiences, Paul Wetzel, other Smith students, Smith faculty/researchers, and Northampton Department of Public Works. 
    
    
    
@@ -45,14 +41,14 @@ knitr::include_graphics("current.png")
   Shiny is based on a reactive programming model which means that it takes in input given by the user of the app and acts accordingly.  Shiny apps have two components: the user interface (UI) and the server.  You can think of the UI as what the user of your app will see when they open your app. The UI component converts your code in R and generates it into a web document in HTML. UI contains the instruction about what you want the user to see and the layout of your app.  our UI  is where we define the dashboard page. And inside this dashboard page we define our elements like the sidebar menu, tabs, the dashboard body (Tab items, boxes, text).  The server is the R code that tells your shiny server what to do when the user does certain things in the app. The server is a function where we define the output and tell the host of our app what to do with the user input. Server function  is where we render the charts, visualizations, and tables.  We then knit together the Server function and UI using the ShinyApp (UI, server) function in the Shiny package. 
 
   So we built a Shiny dashboard. Our dashboard has a sidebar menu that has four tab items. 
-One tab item we built  was the current weather tab. The current weather tab gives the user the the current 10 minute weather for WhatelyMet and OrchardMet. Because we wanted to have our data be shown as a text object and not a table, our code for this tab was largely done using HTML. We used a bit of HTML to change the sizing of the text and the alignment of the rows. To make the teal boxes, we used the shinydashboard Plus package, allowed us to make a clear, concise first page of our Shiny app. Another tab on our dashboard is the about tab where we explain our project and give information about the weather stations. 
+One tab item we built  was the current weather tab. The current weather tab gives the user the the current 10 minute weather for WhatelyMet and OrchardMet. Because we wanted to have our data be shown as a text object and not a table, our code for this tab was largely done using HTML. We used a bit of HTML to change the sizing of the text and the alignment of the rows. To make the teal boxes, we used the shinydashboard Plus package @dashboardplus, allowed us to make a clear, concise first page of our Shiny app. Another tab on our dashboard is the about tab where we explain our project and give information about the weather stations. 
   
 ```{r, echo=FALSE, fig.cap="Example of a what our sidebar menu and dashboard looks like", out.width = "350px"}
 knitr::include_graphics("Weatherdashboard.png")
 ```
 
 
-Another tab that we built was the historic data tab. We made a way for the user to switch between daily data for OrchardMet and WhatelyMet in the historic data tab, this means the graphs shown are reactive and are  based on the data set that was selected by the user. We did by making a reactive function inside the server that allows people to switch between data sets, this function we call datasetInput. We made graphs mapping 3 (Wind speed, precipitation, temperature) variables over time. To do build these graphs we used the highcharter package that allows the user to filter the data based on a certain time period and high charter also has a feature that enables users to download the data used to make the graphic. 
+Another tab that we built was the historic data tab. We made a way for the user to switch between daily data for OrchardMet and WhatelyMet in the historic data tab, this means the graphs shown are reactive and are  based on the data set that was selected by the user. We did by making a reactive function inside the server that allows people to switch between data sets, this function we call datasetInput. We made graphs mapping 3 (Wind speed, precipitation, temperature) variables over time. To do build these graphs we used the highcharter package @highcharter that allows the user to filter the data based on a certain time period and high charter also has a feature that enables users to download the data used to make the graphic. 
   
 ```{r, echo=FALSE, fig.cap="Example of a Highcharter graph that shows temperature", out.width = "350px"}
 knitr::include_graphics("highchart.png")
@@ -73,7 +69,7 @@ knitr::include_graphics("windrose.png")
 
 
 ##Ceeds package:
-   The data from the two weather stations is currently being saved on the Macleish Server hosted at Smith college.  We used the Macleish package to fetch the two data  tables from the server. However this involved a lot of  code that would have to be repeated  anytime we wanted to run the app. So we decided to write an R package called "ceeds" to more efficiently do these tasks.  This package was also built Help other students to work on the MacLeish weather data. We wrote a  function that uses the Macleish package and fetches 2 data sets (Whately, Orchard) that is updated every ten minutes. We also created a function,get_daily(), inside the package that takes a data set and  gives the user the data grouped by date. Our data from the server comes in 10 minute increments but we might want to group by date. So we used the Lubridate package that was very helpful. It allowed us to Parsed timestamps into dates (turning variables into dates that r can recognize as such). This allowed us to group  our data by date.  
+   The data from the two weather stations is currently being saved on the Macleish Server hosted at Smith college.  We used the Macleish package to fetch the two data tables from the server. However this involved a lot of  code that would have to be repeated  anytime we wanted to run the app. So we decided to write an R package called "ceeds" to more efficiently do these tasks.  This package was also built Help other students to work on the MacLeish weather data. We wrote a  function that uses the Macleish package and fetches 2 data sets (Whately, Orchard) that is updated every ten minutes. We also created a function,get_daily(), inside the package that takes a data set and  gives the user the data grouped by date. Our data from the server comes in 10 minute increments but we might want to group by date. So we used the Lubridate package that was very helpful. It allowed us to Parsed timestamps into dates (turning variables into dates that r can recognize as such). This allowed us to group  our data by date. @ceeds
 
 #Issues
 
@@ -106,7 +102,7 @@ knitr::include_graphics("windrose.png")
 
 
 # References {#references .unnumbered}
-Our Github Repository: https://github.com/beanumber/ceeds
+@ceeds_repo
 
 
 
