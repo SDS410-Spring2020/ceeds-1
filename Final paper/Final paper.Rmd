@@ -26,7 +26,7 @@ abstract: |
  
    
 ```{r,echo=FALSE, fig.cap= "fig 1: Example of a what the current Macleish weather dashboard looks like", out.width = "350px"}
-knitr::include_graphics("current.png")
+knitr::include_graphics("current.PNG")
 ```
  
  
@@ -67,7 +67,7 @@ knitr::include_graphics("highchart.png")
   We also made a visualization where the user can make a custom correlation graph by picking the variables that they want. We made this correlation scatterplot by using ggplot and ggplotly to make the graphic more interactive.  We also made a windrose graph to show wind speed and direction using ggplot (see fig 6). A wind rose is a polar chart which shows the user how wind speed and wind direction are distributed at a over a specific period of time. We also created a way to allow the user to choose a variable  and get summary statistics on that variable. In this tab, we made the graphs be in a fluid page, this allows for the size of the boxes and visuals to change based on the size of the window. We then put all of our content for the tab in separate boxes that are collapsible. We did this to minimize users' scrolling. 
   
 ```{r, echo=FALSE, fig.cap="fig 6: A wind rose graph", out.width = "350px"}
-knitr::include_graphics("windrose.png")
+knitr::include_graphics("WindRose.png")
 ```  
   
 
