@@ -207,12 +207,21 @@ Mirella Hernandez\textsuperscript{}\\
 \end{flushleft}
 % Please keep the abstract below 300 words
 \section*{Abstract}
-We were tasked with finding a way to better showcase weather data from
-the MacLeish Field station, as well with incorporating interactive
-graphics and allowing users to download and filter the data. Due to the
-capabilities of Shiny, we decided to use the Shiny and Shiny Dashboard
-packages in R to build an interactive dashboard. We also wrote a package
-to get the data from the MacLeish server.
+The MacLeish Field Station is open to all the Smith College community,
+and the field station contains and captures a lot of weather data and
+historical information, such as precipitation, temperature, and wind
+speed. Thus, the station currently has a weather dashboard where all the
+information and data from the year 2012 of the field is collected and
+displayed. Despite there being an existing MacLeish weather dashboard,
+the MacLeish Field Station manager, Paul Wetzel, wants to update the
+weather dashboard to better showcase the weather data for the public to
+feel more inclined to download the MacLeish weather data and overall use
+the dashboard. Therefore, we primarily focused on creating the updated
+MacLeish weather dashboard to be more user friendly by incorporating
+interactive graphics and allowing users to download and filter the data.
+We created a Shiny App to update the dashboard, so we used ``shiny'' and
+``shiny dashboard'' packages in R as well as HTML and CSS to build and
+interactive dashboard.
 
 % Please keep the Author Summary between 150 and 200 words
 % Use first person. PLOS ONE authors please skip this step.
@@ -224,55 +233,53 @@ to get the data from the MacLeish server.
 \section{Introduction}\label{introduction}
 
 The Center for the Environment, Ecological Design, and Sustainability
-(CEEDS) is located in Wright Hall building of Smith College. The goal of
-Ceeds is to train and allow students to consider sustainability issues
-across various disciplinary areas to integrate that multi-disciplinary
-knowledge in support of environmental decisions and action. Macleish
-Field Station is one of the many opportunities Ceeds provides to the
-Smith community to pursue environmental research, outdoor recreation,
-and low impact recreation.
+(CEEDS) is located in Wright Hall building of Smith College. The
+Macleish Field Station is a part of CEEDS, and students are able to
+conduct research, work on environmental projects, and overall explore
+the field there. The MacLeish Field Station is located near Whately,
+Massachusetts, and its weather collection sites are at the end of Poplar
+Hill Road (footnote/cite current MacLeish weather dashboard). There are
+two weather site locations in the field, one called WhatelyMet tower and
+the other tower is called OrchardMet. The WhatelyMet tower is 25.3
+meters tall and it is slightly further away from the center of the field
+station, since it was initially created to collect air pollution data.
+In order to collect more efficient weather data on ground level,
+OrchardMet weather station was created. Despite this, the trees do not
+allow OrchardMet weather station to collect data efficiently as hoped.
 
-The MacLeish Field Station is located in a 260 acre of forest farmland
-near Whately, Massachusetts, and its weather collection sites are at the
-end of Poplar Hill Road. There are two weather site locations in the
-field, one called WhatelyMet Tower and the other one called OrchardMet.
-The WhatelyMet tower is mounted at the top of a 25.3m tall tower, and it
-is 250.8m above sea level. It was initially created to collect air
-pollution data. In order to collect more efficient weather data,
-OrchardMet weather station was created. The OrchardMet weather station
-is 10m tall located in a forest clean area close to ground level.
-However, the trees do not allow OrchardMet weather station to collect
-data efficiently as hoped.
+As part of the SDS 410 Capstone class, we worked with Paul Wetzel, the
+MacLeish field station manager, in updating the current MacLeish weather
+dashboard. The current MacLeish weather dashboard collects a variety of
+weather data: date, wind speed, temperature, wind direction, real
+humidity, pressure, solar radiation, and rainfall. The server has been
+collecting data since January 2012 through WhatelyMet tower, and it has
+been collecting additional weather data since 2015 through OrchardMet
+tower. The data is updated every 10 minutes; thus, there is over 377,016
+entries. The data loggers run on solar power and stores the data so even
+if the server is down the data is saved.
 
-As part of the SDS 410 Capstone class, our group of 3 were given
-Macleish weather data from the Macleish package {[}1{]} that is
-collected through the Smith server. There is a current Macleish weather
-dashboard that collects a variety of weather data: date, wind speed,
-temperature, wind direction, real humidity, pressure, solar radiation,
-and rainfall. The server has been collecting data since January 2012,
-and it is updated every 10 minute increments. Thus, there is over
-377,016 entries. The data loggers run on solar power and stores the data
-so even if the server is down the data is saved. The current MacLeish
-weather dashboard\footnote{current Macleish weather dashboard:
-  http://macleish.smith.edu/index.html} contains a lot of useful
-information, and the data is organized into readable tabs. Because the
-data is trapped in individual ``data silos'', it is not readily
-accessible. Therefore, the goal for the given project is to recreate the
-current Macleish weather dashboard to illuminate the data and make it
-more user friendly, it download accessible, and it visually interactive
-as proposed by our client, Paul Wetzel. Our client Paul Wetzel is the
-field station manager of MacLeish Field Station, and he is the main user
-of the current website. As discussed and mentioned earlier about our
-clients needs, we chose to make the new weather dashboard using the
-Shiny package {[}2{]}. We choose to use Shiny, since it would allow us
-to make the download data opportunity catered to the audience's needs,
-and it would help us make the graphs interactive and user friendly. We
-believe our focus would supply to the current target audiences, Paul
-Wetzel, other Smith students, Smith faculty/researchers, and Northampton
-Department of Public Works.
+The current MacLeish weather dashboard\footnote{current Macleish weather
+  dashboard: http://macleish.smith.edu/index.html} contains a lot of
+useful information, and the data is organized into readable tabs (see
+fig. 1). Our client, Paul, is the currently the one who uses it the most
+and understands it. Despite this, Paul wants to update the MacLeish
+weather dashboard for others in addition to himself to better access and
+use the MacLeish weather data and its dashboard. Therefore, the focus we
+chose for this project is to recreate the current Macleish weather
+dashboard to better showcase the data and make it more user friendly by
+keeping its tab structure, adding visually interactive graphs, and
+allowing users to download and filter data as proposed by Paul. We chose
+to create a Shiny App when updating the MacLeish weather dashboard, so
+we used ``shiny'' and ``shiny dashboard'' packages. We choose to use
+Shiny, since it would allow us to make the download data opportunity
+catered to the audience's needs, it would help us make the graphs
+interactive, and it be more user friendly. We believe our focus would
+supply to the current target audiences, Paul Wetzel, other Smith
+students, Smith faculty/researchers, and Northampton Department of
+Public Works.
 
 \begin{figure}
-\includegraphics[width=350px]{current} \caption{Example of a what the current Macleish weather dashboard looks like}\label{fig:unnamed-chunk-1}
+\includegraphics[width=350px]{current} \caption{fig 1: Example of a what the current Macleish weather dashboard looks like}\label{fig:unnamed-chunk-1}
 \end{figure}
 
 \section{Methods}\label{methods}
@@ -281,87 +288,119 @@ Department of Public Works.
 
 To solve our problem, we had many options on how to create a better way
 of displaying the weather data. We first discussed the possibility of
-making a new website in HTML but we ultimately decided to build a Shiny
-App using the Shiny packages in R. Shiny is a package that allows us
-``to build interactive web applications (apps) straight from R.'' Shiny
-allows the user to be able better communicate data with interactive
-charts, visualizations, text and tables. We then decided to use Shiny
-Dashboard which is a package that allows us to create an interactive
-dashboard using Shiny. Because our problem was to find a way to display
-interactive data visualizations, the Shiny package seemed to be the
-better option because that is what it was built to do. Shiny also allows
-us to make normally static plots like ggplots interactive and take in
-user input so we don't need to use HTML widgets.
+making a new website in html but we ultimately decided to build a Shiny
+App using the Shiny and Shiny Dashboard packages in R. Shiny is a
+package that allows us ``to build interactive web applications (apps)
+straight from R.'' Shiny allows the user to be able better communicate
+data with interactive charts, visualizations, text and tables. We then
+decided to use Shiny Dashboard which is a package that allows us to
+create an interactive dashboard, an informative platform that visually
+collects, analyzes, and displays data, using Shiny. Because our problem
+was to find a way to display interactive data visualizations, the Shiny
+package seemed to be the better option because that is what it was built
+to do. Shiny also allows us to make normally static plots like ggplots
+interactive and take in user input so we don't need to use html widgets.
 
 Shiny is based on a reactive programming model which means that it takes
 in input given by the user of the app and acts accordingly. Shiny apps
 have two components: the user interface (UI) and the server. You can
 think of the UI as what the user of your app will see when they open
 your app. The UI component converts your code in R and generates it into
-a web document in HTML. UI contains the instruction about what you want
-the user to see and the layout of your app. our UI is where we define
-the dashboard page. And inside this dashboard page we define our
-elements like the sidebar menu, tabs, the dashboard body (Tab items,
-boxes, text). The server is the R code that tells your shiny server what
-to do when the user does certain things in the app. The server is a
-function where we define the output and tell the host of our app what to
-do with the user input. Server function is where we render the charts,
+a web document in html. UI contains the instruction about what you want
+the user to see and the layout of your app. Our UI is where we define
+the dashboard page. Inside the dashboard page, we define our elements
+like the sidebar menu, tabs, the dashboard body (tab items, boxes,
+text). The server is the R code that tells your shiny server what to do
+when the user does certain things in the app. The server is a function
+where we define the output and tell the host of our app what to do with
+the user input. Server function is also where we render the charts,
 visualizations, and tables. We then knit together the Server function
 and UI using the ShinyApp (UI, server) function in the Shiny package.
 
-So we built a Shiny dashboard. Our dashboard has a sidebar menu that has
-four tab items. One tab item we built was the current weather tab. The
-current weather tab gives the user the the current 10 minute weather for
-WhatelyMet and OrchardMet. Because we wanted to have our data be shown
-as a text object and not a table, our code for this tab was largely done
-using HTML. We used a bit of HTML to change the sizing of the text and
-the alignment of the rows. To make the teal boxes, we used the
-shinydashboard Plus package {[}3{]}, allowed us to make a clear, concise
-first page of our Shiny app. Another tab on our dashboard is the about
-tab where we explain our project and give information about the weather
-stations.
+\subsection{Current Weather Tab:}\label{current-weather-tab}
+
+Thus, we built a Shiny dashboard. Our dashboard has a sidebar menu that
+has four tab items: current weather, about, historical data, and
+download data. We chose to focus on these 4 tab items since it answers
+to our client's primary needs. The first tab we built and have displayed
+as the main page of the weather dashboard is the current weather tab
+(see fig. 2). The current weather tab gives the user the current 10
+minute weather for WhatelyMet and OrchardMet. Because we wanted to have
+our data be shown as a text object and not a table, our code for this
+tab was largely done using html. Additionally to address our clients
+need of having the MacLeish weather dashboard be more user friendly, we
+chose to design the weather tab in a minimalist style. By doing so, the
+users will be able to better see the data in one glimpse.
+
+\section{\texorpdfstring{\texttt{\{r,echo=FALSE,\ fig.cap=\ "fig\ 2:\ Current\ Weather\ Tab\ displaying\ WhatelyMet\ and\ OrchardMet\ current\ weather\ and\ showing\ how\ our\ sidebar\ menu\ and\ dashboard\ looks\ like",\ out.width\ =\ "350px"\}\ \#\ knitr::include\_graphics("")\ \#}}{\{r,echo=FALSE, fig.cap= "fig 2: Current Weather Tab displaying WhatelyMet and OrchardMet current weather and showing how our sidebar menu and dashboard looks like", out.width = "350px"\} \# knitr::include\_graphics("") \#}}\label{rechofalse-fig.cap-fig-2-current-weather-tab-displaying-whatelymet-and-orchardmet-current-weather-and-showing-how-our-sidebar-menu-and-dashboard-looks-like-out.width-350px-knitrinclude_graphics}
+
+\subsection{About Tab:}\label{about-tab}
+
+The second tab we built on our dashboard is the about tab, which is
+where we explained our project and have information about the weather
+stations (see fig 3). We also added links for the public to contact Paul
+for further questions and interests as well as our repository link. This
+tab was created as the updated version of the ``Tower Locations \& Size
+Comparisons'' tab in the current MacLeish Dashboard to better
+communicate with the users. We used a bit of HTML to change the sizing
+of the text and the alignment of the rows. To make the teal boxes, we
+used the shinydashboard Plus package {[}1{]}, allowed us to make a
+clear, concise first page of our Shiny app.
+
+\section{\texorpdfstring{\texttt{\{r,\ echo=FALSE,\ fig.cap="fig\ 3:\ Welcoming\ the\ users\ and\ letting\ them\ know\ who\ to\ reach\ out\ to\ for\ further\ information\ and\ how\ the\ app\ works",\ out.width\ =\ "350px"\}\ \#\ knitr::include\_graphics("")\ \#}}{\{r, echo=FALSE, fig.cap="fig 3: Welcoming the users and letting them know who to reach out to for further information and how the app works", out.width = "350px"\} \# knitr::include\_graphics("") \#}}\label{r-echofalse-fig.capfig-3-welcoming-the-users-and-letting-them-know-who-to-reach-out-to-for-further-information-and-how-the-app-works-out.width-350px-knitrinclude_graphics}
+
+\subsection{Historic Data Tab:}\label{historic-data-tab}
+
+The third tab we built was the historic data tab (see fig 4). This tab
+is the updated version of the ``OrchardMet Historic'' and ``WhatelyMet
+Historic'' of the current MacLeish weather dashboard. When building this
+tab, we focused on displaying the weather data through visual
+interactive graphs as our client requested. We made a way for the user
+to switch between daily data for OrchardMet and WhatelyMet in the
+historic data tab, this means the graphs shown are reactive and are
+based on the data set that was selected by the user. We did this by
+making a reactive function inside the server that allows people to
+switch between data sets. We made graphs mapping 3 of our client's focus
+variables (Wind speed, precipitation, temperature) over time (see fig
+5). To build these graphs, we used the Highcharter package {[}2{]} that
+allows the user to filter the data based on a certain time period and
+high charter also has a feature that enables users to download the data
+used to make the graphic.
+
+\section{\texorpdfstring{\texttt{\{r,\ echo=FALSE,\ fig.cap="fig\ 4:\ The\ way\ the\ Historic\ Data\ tab\ looks\ and\ how\ it\ allows\ the\ users\ to\ choose\ what\ weather\ station\ they\ would\ like\ to\ look\ at",\ out.width\ =\ "350px"\}\ \#\ knitr::include\_graphics("")\ \#}}{\{r, echo=FALSE, fig.cap="fig 4: The way the Historic Data tab looks and how it allows the users to choose what weather station they would like to look at", out.width = "350px"\} \# knitr::include\_graphics("") \#}}\label{r-echofalse-fig.capfig-4-the-way-the-historic-data-tab-looks-and-how-it-allows-the-users-to-choose-what-weather-station-they-would-like-to-look-at-out.width-350px-knitrinclude_graphics}
 
 \begin{figure}
-\includegraphics[width=350px]{Weatherdashboard} \caption{Example of a what our sidebar menu and dashboard looks like}\label{fig:unnamed-chunk-2}
-\end{figure}
-
-Another tab that we built was the historic data tab. We made a way for
-the user to switch between daily data for OrchardMet and WhatelyMet in
-the historic data tab, this means the graphs shown are reactive and are
-based on the data set that was selected by the user. We did by making a
-reactive function inside the server that allows people to switch between
-data sets, this function we call datasetInput. We made graphs mapping 3
-(Wind speed, precipitation, temperature) variables over time. To do
-build these graphs we used the highcharter package {[}4{]} that allows
-the user to filter the data based on a certain time period and high
-charter also has a feature that enables users to download the data used
-to make the graphic.
-
-\begin{figure}
-\includegraphics[width=350px]{highchart} \caption{Example of a Highcharter graph that shows temperature}\label{fig:unnamed-chunk-3}
+\includegraphics[width=350px]{highchart} \caption{fig 5:Example of a Highcharter graph that shows temperature}\label{fig:unnamed-chunk-2}
 \end{figure}
 
 We also made a visualization where the user can make a custom
 correlation graph by picking the variables that they want. We made this
 correlation scatterplot by using ggplot and ggplotly to make the graphic
 more interactive. We also made a windrose graph to show wind speed and
-direction using ggplot. A wind rose is a polar chart which shows the
-user how wind speed and wind direction are distributed at a over a
-specific period of time. We also created a way to allow the user to
-choose a variable and get summary statistics on that variable. In this
-tab, we made the graphs be in a fluid page, this allows for the size of
-the boxes and visuals to change based on the size of the window. We then
-put all of our content for the tab in separate boxes that are
+direction using ggplot (see fig 6). A wind rose is a polar chart which
+shows the user how wind speed and wind direction are distributed at a
+over a specific period of time. We also created a way to allow the user
+to choose a variable and get summary statistics on that variable. In
+this tab, we made the graphs be in a fluid page, this allows for the
+size of the boxes and visuals to change based on the size of the window.
+We then put all of our content for the tab in separate boxes that are
 collapsible. We did this to minimize users' scrolling.
 
 \begin{figure}
-\includegraphics[width=350px]{windrose} \caption{A wind rose graph}\label{fig:unnamed-chunk-4}
+\includegraphics[width=350px]{windrose} \caption{fig 6: A wind rose graph}\label{fig:unnamed-chunk-3}
 \end{figure}
 
-The last tab we made is the raw data tab. This tab allows the user to
-filter the data based on columns and the user can also choose between
-daily data for OrchardMet and WhatelyMet. This tab also allows the user
-to search the data table using the DT package.
+\subsection{Dowloand Data Tab}\label{dowloand-data-tab}
+
+Since our client wanted users to be able to download and filter the
+MacLeish weather data that is displayed in the dashboard, we added a new
+tab, raw data tab, which the current MacLeish weather dashboard does not
+have. This tab allows the user to filter the data based on columns and
+the user can also choose between daily data for OrchardMet and
+WhatelyMet (see fig 7). This tab also allows the user to search the data
+table using the DT package.
+
+\section{\texorpdfstring{\texttt{\{r,\ echo=FALSE,\ fig.cap="fig\ 7:\ The\ way\ dowloading\ data\ tab\ looks,\ and\ how\ it\ allows\ users\ to\ filter\ the\ data\ they\ would\ like\ to\ download",\ out.width\ =\ "350px"\}\ \#\ knitr::include\_graphics("")\ \#}}{\{r, echo=FALSE, fig.cap="fig 7: The way dowloading data tab looks, and how it allows users to filter the data they would like to download", out.width = "350px"\} \# knitr::include\_graphics("") \#}}\label{r-echofalse-fig.capfig-7-the-way-dowloading-data-tab-looks-and-how-it-allows-users-to-filter-the-data-they-would-like-to-download-out.width-350px-knitrinclude_graphics}
 
 \subsection{Ceeds package:}\label{ceeds-package}
 
@@ -369,17 +408,17 @@ The data from the two weather stations is currently being saved on the
 Macleish Server hosted at Smith college. We used the Macleish package to
 fetch the two data tables from the server. However this involved a lot
 of code that would have to be repeated anytime we wanted to run the app.
-So we decided to write an R package called ``ceeds'' to more efficiently
-do these tasks. This package was also built Help other students to work
-on the MacLeish weather data. We wrote a function that uses the Macleish
+So we decided to write an R package to more efficiently do these tasks.
+This package was also built to help other students to work on the
+MacLeish weather data. We wrote a function that uses the Macleish
 package and fetches 2 data sets (Whately, Orchard) that is updated every
 ten minutes. We also created a function,get\_daily(), inside the package
 that takes a data set and gives the user the data grouped by date. Our
 data from the server comes in 10 minute increments but we might want to
-group by date. So we used the Lubridate package that was very helpful.
-It allowed us to Parsed timestamps into dates (turning variables into
-dates that r can recognize as such). This allowed us to group our data
-by date. {[}5{]}
+group by date. So we used the Lubridate package was very helpful. It
+allowed us to Parsed timestamps into dates (turning variables into dates
+that r can recognize as such). This allowed us to group our data by
+date. {[}3{]}
 
 \section{Issues}\label{issues}
 
@@ -447,7 +486,13 @@ which posed a problem of how a user would then interact with these
 graphs. After trying for a short while, we ultimately moved onto a
 different package called highcharter, which made the graphs interactive
 and also allowed an element of downloading data that we expanded on
-later with a tab we included.
+later with a tab we included. We also faced issues when building the tab
+that allowed users to download data and making images show up in the
+about tab. Both of these issues were solved by continuously trying new
+methods over and over again, but specifically solved the issue with
+images by installing the package base64enc since the problem was about
+different directories and file paths that were not accessible by all
+machines.
 
 \section{Moving Forward}\label{moving-forward}
 
@@ -457,67 +502,49 @@ surveyed our target audience about whether our app is more usable than
 the current dashboard. Audience feedback would help us moving forward in
 reach our end goal of creating a user friendly weather dashboard. We
 have already tested our dashboard with a group of peers, however we
-would have liked to test on a wider audience.
+would like to test on a wider audience.
 
 After talking to our client, we found out that sometimes the weather
-equipment breaks and leads to wrong data but we don't necessarily want
-to filter out possible outliers of the data assuming that they mean
-equipment malfunctions so we might want the users of dashboard to make
-that decision to not mislead them. We might also want to have more
-variables in our data set like soil temperature which is used to study
-climate change. We would also liked to implement some sort of special
-setting that would have extra tabs for our client, the weather manager.
-These extra tabs would include data that is important to him, such as
-soil temperature and the bunker room temperature, both tabs we felt were
-not important to our general audience of students and others looking to
-check the weather or download a large amount of data.
+equipment breaks which leads to inaccuracy in the data it records. Due
+to this, Wetzel often goes in and manually changes the data. We don't
+necessarily want to filter out possible outliers of the data (assuming
+that they mean equipment malfunctions), but we would have liked to
+either include a small disclaimer that would tell people downloading or
+analyzing the data about this or include both the raw and corrected
+data. That way, users can reach that conclusion on their own just by
+comparing the two datasets.
 
-Since the data is recorded by weather instruments that are sometimes
-faulty, the data that is sent to servers is not always accurate. Due to
-this, Wetzel often goes in and manually changes the data. We would have
-liked to either include a small disclaimer that would tell people
-downloading or analyzing the data about this since the data used in the
-dashboard is server data, not the corrected data. Besides that, we also
-wished to include the corrected data in our app, in order to have both
-datasets on the dashboard.
-
-Right now our dashboard has very few features and could have more places
-for user interaction. For example, Our wind rose graphic is not
-interactive which could improve this project. Another feature we might
-want to have in the future isa way to allow users to identify and filter
-out outliers.
+We would have also liked to implement some sort of special setting that
+would have extra tabs for our client, the weather manager. These extra
+tabs would include data that is important to him, such as soil
+temperature and the bunker room temperature, both tabs we felt were not
+important to our general audience of students and others looking to
+check the weather or download a large amount of data. A variable like
+soil temperature is used to study climate change so while it may not
+seem important immediately, with context, it could prove to be a
+valuable variable to study and analyze.
 
 \section*{References}\label{references}
 \addcontentsline{toc}{section}{References}
 
-{[}6{]}
+{[}4{]}
 
 \hypertarget{refs}{}
-\hypertarget{ref-macleish}{}
-1. Baumer BS, Goueth R, Li W, Zhang W, Horton N. Macleish: Retrieve data
-from macleish field station {[}Internet{]}. 2018. Available:
-\url{https://CRAN.R-project.org/package=macleish}
-
-\hypertarget{ref-shiny}{}
-2. Chang W, Cheng J, Allaire J, Xie Y, McPherson J. Shiny: Web
-application framework for r {[}Internet{]}. 2018. Available:
-\url{https://CRAN.R-project.org/package=shiny}
-
 \hypertarget{ref-dashboardplus}{}
-3. Granjon D. ShinydashboardPlus: Add more 'adminlte2' components to
+1. Granjon D. ShinydashboardPlus: Add more 'adminlte2' components to
 'shinydashboard' {[}Internet{]}. 2019. Available:
 \url{https://CRAN.R-project.org/package=shinydashboardPlus}
 
 \hypertarget{ref-highcharter}{}
-4. Kunst J. Highcharter: A wrapper for the 'highcharts' library
+2. Kunst J. Highcharter: A wrapper for the 'highcharts' library
 {[}Internet{]}. 2019. Available:
 \url{https://CRAN.R-project.org/package=highcharter}
 
 \hypertarget{ref-ceeds}{}
-5. Baumer BS, García M, Hernandez M, Lee J. Ceeds. 2019.
+3. Baumer BS, García M, Hernandez M, Lee J. Ceeds. 2019.
 
 \hypertarget{ref-ceeds_repo}{}
-6. Baumer BS, García M, Hernandez M, Lee J. Ceeds github repository.
+4. Baumer BS, García M, Hernandez M, Lee J. Ceeds github repository.
 \url{https://github.com/beanumber/ceeds}; 2019.
 
 \nolinenumbers

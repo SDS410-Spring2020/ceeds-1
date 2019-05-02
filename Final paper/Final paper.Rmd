@@ -41,24 +41,24 @@ knitr::include_graphics("current.png")
 ##Current Weather Tab: 
   Thus, we built a Shiny dashboard. Our dashboard has a sidebar menu that has four tab items: current weather, about, historical data, and download data. We chose to focus on these 4 tab items since it answers to our client’s primary needs. The first tab we built and have displayed as the main page of the weather dashboard is the current weather tab (see fig. 2). The current weather tab gives the user the current 10 minute weather for WhatelyMet and OrchardMet. Because we wanted to have our data be shown as a text object and not a table, our code for this tab was largely done using html. Additionally to address our clients need of having the MacLeish weather dashboard be more user friendly, we chose to design the weather tab in a minimalist style. By doing so, the users will be able to better see the data in one glimpse. 
 
-```{r,echo=FALSE, fig.cap= "fig 2: Current Weather Tab displaying WhatelyMet and OrchardMet current weather and showing how our sidebar menu and dashboard looks like", out.width = "350px"}
-knitr::include_graphics("")
-```
+# ```{r,echo=FALSE, fig.cap= "fig 2: Current Weather Tab displaying WhatelyMet and OrchardMet current weather and showing how our sidebar menu and dashboard looks like", out.width = "350px"}
+# knitr::include_graphics("")
+# ```
 
 
 ##About Tab:
    The second tab we built on our dashboard is the about tab, which is where we explained our project and have information about the weather stations (see fig 3). We also added links for the public to contact Paul for further questions and interests as well as our repository link. This tab was created as the updated version of the “Tower Locations & Size Comparisons” tab in the current MacLeish Dashboard to better communicate with the users. We used a bit of HTML to change the sizing of the text and the alignment of the rows. To make the teal boxes, we used the shinydashboard Plus package @dashboardplus, allowed us to make a clear, concise first page of our Shiny app. 
   
-```{r, echo=FALSE, fig.cap="fig 3: Welcoming the users and letting them know who to reach out to for further information and how the app works", out.width = "350px"}
-knitr::include_graphics("")
-```
+# ```{r, echo=FALSE, fig.cap="fig 3: Welcoming the users and letting them know who to reach out to for further information and how the app works", out.width = "350px"}
+# knitr::include_graphics("")
+# ```
 
 ##Historic Data Tab:
   The third tab we built was the historic data tab (see fig 4). This tab is the updated version of the “OrchardMet Historic” and “WhatelyMet Historic” of the current MacLeish weather dashboard. When building this tab, we focused on displaying the weather data through visual interactive graphs as our client requested. We made a way for the user to switch between daily data for  OrchardMet and WhatelyMet in the historic data tab, this means the graphs shown are reactive and are  based on the data set that was selected by the user. We did this by making a reactive function inside the server that allows people to switch between data sets. We made graphs mapping 3 of our client’s focus variables (Wind speed, precipitation, temperature) over time (see fig 5). To build these graphs, we used the Highcharter package @highcharter that allows the user to filter the data based on a certain time period and high charter also has a feature that enables users to download the data used to make the graphic. 
 
-```{r, echo=FALSE, fig.cap="fig 4: The way the Historic Data tab looks and how it allows the users to choose what weather station they would like to look at", out.width = "350px"}
-knitr::include_graphics("")
-```
+# ```{r, echo=FALSE, fig.cap="fig 4: The way the Historic Data tab looks and how it allows the users to choose what weather station they would like to look at", out.width = "350px"}
+# knitr::include_graphics("")
+# ```
   
 ```{r, echo=FALSE, fig.cap="fig 5:Example of a Highcharter graph that shows temperature", out.width = "350px"}
 knitr::include_graphics("highchart.png")
@@ -74,9 +74,9 @@ knitr::include_graphics("windrose.png")
 ##Dowloand Data Tab 
   Since our client wanted users to be able to download and filter the MacLeish weather data that is displayed in the dashboard, we added a new tab, raw data tab, which the current MacLeish weather dashboard does not have. This tab allows the user to filter the data based on columns and the user can also choose between daily data for OrchardMet and WhatelyMet (see fig 7). This tab also allows the user to search the data table using the DT package. 
   
-```{r, echo=FALSE, fig.cap="fig 7: The way dowloading data tab looks, and how it allows users to filter the data they would like to download", out.width = "350px"}
-knitr::include_graphics("")
-```  
+# ```{r, echo=FALSE, fig.cap="fig 7: The way dowloading data tab looks, and how it allows users to filter the data they would like to download", out.width = "350px"}
+# knitr::include_graphics("")
+# ```  
 
 
 ##Ceeds package:
