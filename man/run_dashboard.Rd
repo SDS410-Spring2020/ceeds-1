@@ -10,5 +10,7 @@ run_dashboard()
 Run the CEEDS bashboard Shiny app
 }
 \examples{
+\dontrun{
 run_dashboard()
+}
 }

@@ -36,3 +36,11 @@ devtools::install_github("beanumber/ceeds")
 ```{r, eval=FALSE}
 ceeds::run_dashboard()
 ```
+
+```{r, eval=FALSE, include=FALSE}
+webshot::appshot(system.file("shiny-macleish", package = "ceeds"), 
+                 "inst/ceeds.png")
+```
+
+![](inst/ceeds.png)
+

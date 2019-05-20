@@ -27,3 +27,5 @@ devtools::install_github("beanumber/ceeds")
 ``` r
 ceeds::run_dashboard()
 ```
+
+![](inst/ceeds.png)

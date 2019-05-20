@@ -1,6 +1,6 @@
 Package: ceeds
 Title: Center for the Environment, Ecological Design, and Sustainability
-Version: 0.0.0.9003
+Version: 0.0.1.9000
 Authors@R: c(
     person("Benjamin S.", "Baumer", email = "ben.baumer@gmail.com", 
       role = c("aut", "cre")),
@@ -10,7 +10,7 @@ Authors@R: c(
     )
 Description: The Center for the Environment, Ecological Design, and 
     Sustainability at Smith College engages in many differents kinds of 
-    programming. These functions facilitate the new CEEDS dashboard
+    programming. These functions facilitate the new CEEDS dashboard. 
 License: CC0
 Depends:
     R (>= 3.4.3)

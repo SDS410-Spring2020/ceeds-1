@@ -1,3 +1,7 @@
+globalVariables(c("avgTemp", "maxtemp", "mintemp", "rainfall", 
+                  "rel_humidity", "temperature", "the_date", "when", 
+                  "wind_dir", "wind_speed"))
+
 #' Read in the current Whately and Orchard data
 #' @importFrom magrittr %>%
 #' @importFrom etl etl_extract etl_transform
@@ -68,7 +72,9 @@ get_last5weeks <- function(x) {
 #' Run the CEEDS bashboard Shiny app
 #' @export
 #' @examples 
+#' \dontrun{
 #' run_dashboard()
+#' }
 
 run_dashboard <- function() {
   dir <- system.file("shiny-macleish", package = "ceeds")
