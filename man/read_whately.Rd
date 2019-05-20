@@ -11,9 +11,12 @@ read_whately()
 
 get_daily(x)
 
-get_lastyear(y)
+get_lastyear(x)
 
-get_last5weeks(y)
+get_last5weeks(x)
+}
+\arguments{
+\item{x}{a tibble from WhatelyMet or OrchardMet}
 }
 \description{
 Read in the current Whately and Orchard data

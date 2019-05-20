@@ -23,35 +23,58 @@ read_whately <- function() {
 }
 
 #' @export
+#' @param x a tibble from WhatelyMet or OrchardMet
 #' @rdname read_whately
 get_daily <- function(x) {
   daily <- x %>%
     mutate(the_date = lubridate::date(when)) %>%
-    group_by(the_date)%>% 
-    summarise(avgTemp=mean(temperature), precipitation=sum(rainfall,na.rm = TRUE), 
-              avgWindSpeed=mean(wind_speed), avghumidity=mean(rel_humidity),
-              maxtemp= max(temperature), 
+    group_by(the_date ) %>% 
+    summarise(avgTemp = mean(temperature), 
+              precipitation = sum(rainfall, na.rm = TRUE), 
+              avgWindSpeed = mean(wind_speed), 
+              avghumidity = mean(rel_humidity),
+              maxtemp = max(temperature), 
               mintemp = min(temperature),
-              maxwind= max(wind_speed), 
+              maxwind = max(wind_speed), 
               minwind = min(wind_speed),
               dir = mean(wind_dir)) %>%
-    mutate(avgTemp = round(avgTemp,digits=2)) %>%
-    mutate(avgF = round(((avgTemp * 1.8)+32),digits=2)) %>%
-    mutate(MaxF = round(((maxtemp * 1.8)+32),digits=2)) %>%
-    mutate(minF = round(((mintemp * 1.8)+32),digits=2))
+    mutate(avgTemp = round(avgTemp, digits = 2),
+           avgF = round(((avgTemp * 1.8) + 32), digits = 2),
+           MaxF = round(((maxtemp * 1.8) + 32), digits = 2),
+           minF = round(((mintemp * 1.8) + 32), digits = 2))
   return(daily)
 }
 #' @export
 #' @rdname read_whately
-get_lastyear <- function(y) {
-  This_year <- y%>%
-    filter(between(the_date, lubridate::today() - lubridate::days(365), lubridate::today()))
-  return(This_year)
+get_lastyear <- function(x) {
+  x %>%
+    filter(between(the_date, 
+                   lubridate::today() - lubridate::days(365), 
+                   lubridate::today()
+                   )
+           )
 }
 #' @export
 #' @rdname read_whately
-get_last5weeks <- function(y) {
-  weeks <- y%>%
-    filter(between(the_date, lubridate::today() - lubridate::days(35), lubridate::today()))
-  return(weeks)
+get_last5weeks <- function(x) {
+  x %>%
+    filter(between(the_date, 
+                   lubridate::today() - lubridate::days(35), 
+                   lubridate::today()
+                   )
+           )
 }
+
+#' Run the CEEDS bashboard Shiny app
+#' @export
+#' @examples 
+#' run_dashboard()
+
+run_dashboard <- function() {
+  dir <- system.file("shiny-macleish", package = "ceeds")
+  if (!fs::is_dir(dir)) {
+    stop("Could not find Shiny directory. Try re-installing `ceeds`.", call. = FALSE)
+  }
+  shiny::runApp(dir, display.mode = "normal")
+}
+
