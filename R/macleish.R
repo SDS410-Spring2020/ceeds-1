@@ -32,7 +32,7 @@ read_whately <- function() {
 get_daily <- function(x) {
   daily <- x %>%
     mutate(the_date = lubridate::date(when)) %>%
-    group_by(the_date ) %>% 
+    group_by(the_date) %>% 
     summarise(avgTemp = mean(temperature), 
               precipitation = sum(rainfall, na.rm = TRUE), 
               avgWindSpeed = mean(wind_speed), 
