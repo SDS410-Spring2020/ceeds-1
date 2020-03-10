@@ -93,6 +93,16 @@ shinyServer(function(input, output,session) {
     stats
     
   })
+  # Pre-check algorithms
+  are_any_bad <- function(x) {
+    any(x > 40)
+  }
+  
+  show_me_bad <- function(.data) {
+    .data %>%
+      filter(maxtemp > 40)
+  }
+  
   
   
   # download raw data 
