@@ -95,12 +95,19 @@ shinyServer(function(input, output,session) {
   })
   # Pre-check algorithms
   are_any_bad <- function(x) {
-    any(x > 40)
+    any(x$maxtemp > 40)
+    any(x$mintemp < -40)
+    any(360 < x$dir | x$dir < 0)
+    any(100 < x$avghumidity | x$avghumidity < 20)
   }
   
   show_me_bad <- function(.data) {
     .data %>%
-      filter(maxtemp > 40)
+      filter(maxtemp > 40 | 
+               mintemp < -40 | 
+               dir < 0 | dir > 360 | 
+               avghumidity < 100 | 
+               avghumidity <20 ) 
   }
   
   
