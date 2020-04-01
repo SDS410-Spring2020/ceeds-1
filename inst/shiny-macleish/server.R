@@ -94,23 +94,37 @@ shinyServer(function(input, output,session) {
     
   })
   # Pre-check algorithms
-  are_any_bad <- function(x) {
-    any(x$maxtemp > 40)
-    any(x$mintemp < -40)
-    any(360 < x$dir | x$dir < 0)
+  are_any_bad_maxtemp <- function(x) {
+    any(x$maxtemp > 40) }
+  
+  are_any_bad_mintemp <- function(x) {
+    any(x$mintemp < -40) }
+  
+  are_any_bad_dir <- function(x) {
+    any(360 < x$dir | x$dir < 0) }
+  
+  are_any_bad_humidity <- function(x){
     any(100 < x$avghumidity | x$avghumidity < 20)
   }
   
-  show_me_bad <- function(.data) {
+  show_me_bad_maxtemp <- function(.data) {
     .data %>%
-      filter(maxtemp > 40 | 
-               mintemp < -40 | 
-               dir < 0 | dir > 360 | 
-               avghumidity < 100 | 
-               avghumidity <20 ) 
+      filter(maxtemp > 40 )}
+  
+  show_me_bad_mintemp <- function(.data) {
+    .data %>%
+      filter(mintemp < -40)
   }
   
+  show_me_bad_dir <- function(.data) {
+    .data %>%
+      filter(dir < 0 | dir > 360)
+  }
   
+  show_me_bad_humidity <- function(.data) {
+    .data %>%
+      filter(avghumidity < 100 | avghumidity <20 )
+  }
   
   # download raw data 
   output$choose_dataset <- renderUI({
