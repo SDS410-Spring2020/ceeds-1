@@ -23,6 +23,7 @@ library(timetk)
 library(kableExtra)
 library(plotly)
 library(blastula)
+library(keyring)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output,session) {
    
@@ -105,7 +106,7 @@ shinyServer(function(input, output,session) {
   
   # Checking if there is any outlier on dir
   are_any_bad_dir <- function(.data) {
-    any(360 < .data$dir | x$dir < 0) }
+    any(360 < .data$dir | .data$dir < 0) }
   
   # Checking if there is any outlier on humidity
   are_any_bad_humidity <- function(.data){
@@ -120,35 +121,28 @@ shinyServer(function(input, output,session) {
     provider = "gmail"
   )
   
-  email %>%
-    smtp_send(
-      from = "macleish@smith.edu", 
-      to = "macleish@smith.edu",
-      subject = "Macleish data error",
-      credentials = creds_key(id = "gmail")
-    )
   
   email <- compose_email(
     body = md(c(
-      if(are_any_bad_maxtemp(x)== TRUE){
+      if(are_any_bad_maxtemp(.data)== TRUE){
       attach_connect_email(
         subject = sprintf("Temperature misrecorded - Macleish data!", .data$maxtemp,
         text = "Hello! Please check the incoming Macleish data as temperature has been misrecorded above 40 degrees Celsius. 
         If this is not an error, please disregard this message.")
       )
-    } else if(are_any_bad_mintemp(x)== TRUE){
+    } else if(are_any_bad_mintemp(.data)== TRUE){
       attach_connect_email(
         subject = sprintf("Temperature misrecorded - Macleish data!", .data$mintemp,
         text = "Hello! Please check the incoming Macleish data as temperature has been misrecorded below 40 degrees Celsius. 
         If this is not an error, please disregard this message.")
       )
-    } else if(are_any_bad_dir(x)== TRUE){
+    } else if(are_any_bad_dir(.data)== TRUE){
       attach_connect_email(
         subject = sprintf("Wind direction misrecorded - Macleish data!", .data$mintemp,
         text = "Hello! Please check the incoming Macleish data as wind direction has been misrecorded. 
         If this is not an error, please disregard this message.")
         )
-    } else if(are_any_bad_humidity(x)== TRUE){
+    } else if(are_any_bad_humidity(.data)== TRUE){
       attach_connect_email(
         subject = sprintf("Humidity misrecorded - Macleish data!", .data$mintemp,
         text = "Hello! Please check the incoming Macleish data as humidity has been misrecorded. 
@@ -160,6 +154,14 @@ shinyServer(function(input, output,session) {
     ))
     )
   
+  email %>%
+    smtp_send(
+      from = "macleish@smith.edu", 
+      to = "macleish@smith.edu",
+      subject = "Macleish data error",
+      credentials = creds_key(id = "gmail")
+    )
+  
   precheck <- function(x){
     if(are_any_bad_maxtemp(x)== TRUE)
       print("bad maxtemp")
@@ -168,7 +170,7 @@ shinyServer(function(input, output,session) {
     else print("passed")
   }
 
-    
+  # Shwoing the row including outlier variable  
   show_me_bad_maxtemp <- function(.data) {
     .data %>%
       filter(maxtemp > 40 )}
