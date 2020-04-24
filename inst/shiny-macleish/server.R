@@ -22,6 +22,7 @@ library(highcharter)
 library(timetk)
 library(kableExtra)
 library(plotly)
+library(blastula)
 # Define server logic required to draw a histogram
 shinyServer(function(input, output,session) {
    
@@ -110,6 +111,54 @@ shinyServer(function(input, output,session) {
   are_any_bad_humidity <- function(.data){
     any(100 < .data$avghumidity | .data$avghumidity < 20)
   }
+  
+  #automated email to be sent to CEEDS data admin when an outlier/abnormal data point is recorded
+  
+  create_smtp_creds_key(
+    id = "gmail",
+    user = "macleish@smith.edu",
+    provider = "gmail"
+  )
+  
+  email %>%
+    smtp_send(
+      from = "macleish@smith.edu", 
+      to = "macleish@smith.edu",
+      subject = "Macleish data error",
+      credentials = creds_key(id = "gmail")
+    )
+  
+  email <- compose_email(
+    body = md(c(
+      if(are_any_bad_maxtemp(x)== TRUE){
+      attach_connect_email(
+        subject = sprintf("Temperature misrecorded - Macleish data!", .data$maxtemp,
+        text = "Hello! Please check the incoming Macleish data as temperature has been misrecorded above 40 degrees Celsius. 
+        If this is not an error, please disregard this message.")
+      )
+    } else if(are_any_bad_mintemp(x)== TRUE){
+      attach_connect_email(
+        subject = sprintf("Temperature misrecorded - Macleish data!", .data$mintemp,
+        text = "Hello! Please check the incoming Macleish data as temperature has been misrecorded below 40 degrees Celsius. 
+        If this is not an error, please disregard this message.")
+      )
+    } else if(are_any_bad_dir(x)== TRUE){
+      attach_connect_email(
+        subject = sprintf("Wind direction misrecorded - Macleish data!", .data$mintemp,
+        text = "Hello! Please check the incoming Macleish data as wind direction has been misrecorded. 
+        If this is not an error, please disregard this message.")
+        )
+    } else if(are_any_bad_humidity(x)== TRUE){
+      attach_connect_email(
+        subject = sprintf("Humidity misrecorded - Macleish data!", .data$mintemp,
+        text = "Hello! Please check the incoming Macleish data as humidity has been misrecorded. 
+        If this is not an error, please disregard this message.")
+        )
+    } else {
+      suppress_scheduled_email()
+    }
+    ))
+    )
   
   precheck <- function(x){
     if(are_any_bad_maxtemp(x)== TRUE)
