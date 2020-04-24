@@ -94,19 +94,32 @@ shinyServer(function(input, output,session) {
     
   })
   # Pre-check algorithms
-  are_any_bad_maxtemp <- function(x) {
-    any(x$maxtemp > 40) }
+  # Checking if there is any outlier on maxtemp 
+  are_any_bad_maxtemp <- function(.data) {
+    any(.data$maxtemp > 40) }
   
-  are_any_bad_mintemp <- function(x) {
-    any(x$mintemp < -40) }
+  # Checking if there is any outlier on mintemp
+  are_any_bad_mintemp <- function(.data) {
+    any(.data$mintemp < -40) }
   
-  are_any_bad_dir <- function(x) {
-    any(360 < x$dir | x$dir < 0) }
+  # Checking if there is any outlier on dir
+  are_any_bad_dir <- function(.data) {
+    any(360 < .data$dir | x$dir < 0) }
   
-  are_any_bad_humidity <- function(x){
-    any(100 < x$avghumidity | x$avghumidity < 20)
+  # Checking if there is any outlier on humidity
+  are_any_bad_humidity <- function(.data){
+    any(100 < .data$avghumidity | .data$avghumidity < 20)
   }
   
+  precheck <- function(x){
+    if(are_any_bad_maxtemp(x)== TRUE)
+      print("bad maxtemp")
+    else if(are_any_bad_dir(x)== TRUE)
+      print("bad dir")
+    else print("passed")
+  }
+
+    
   show_me_bad_maxtemp <- function(.data) {
     .data %>%
       filter(maxtemp > 40 )}
